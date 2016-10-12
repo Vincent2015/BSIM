@@ -1,0 +1,39 @@
+﻿<!--  IMChat 对话title -->
+<div class="IMChat-title cl">
+    <h2 class="title-item z">
+        公众号</h2>
+</div>
+<!-- 消息、人员展现窗口 -->
+<div class="IMChat-entity-display contacts">
+    <div class="switch-tab">
+        <div ng-class="{true: 'cur', false: 'uncur'}[tabShowFlag]" ng-click="tabShowFlag=!tabShowFlag">广播号</div>
+        <div ng-class="{false: 'cur', true: 'uncur'}[tabShowFlag]" ng-click="tabShowFlag=!tabShowFlag">订阅号</div>
+    </div>
+    <!-- 消息实体 -->
+    <ul class="contacts-entity pub-acc" ng-repeat="account in publicAccountList" ng-show="tabShowFlag">
+        <li ng-if="account.type==2" ng-click="goToMessage_pubaccount(account,$event)">
+            <div class="avt-s-l rainbow-{{account.name|getFirstLetter}}">
+                <img ng-if="account.headurl" ng-src="{{account.headurl}}" style="height: 40px; width: 40px; border-radius: 25px;" />
+                <span ng-if="!account.headurl" style="color: White;" ng-bind="account.name | limitTo : 1">
+                </span>
+            </div>
+            {{account.name}}
+            <!-- <div ng-if="account.type==1" class="cancel-subscribe option" ng-click="subscribePublicAccount(account,$event,'1')">取消订阅</div> -->
+            <!-- <div ng-if="account.type==2" class="subscribe option" ng-click="subscribePublicAccount(account,$event,'0')">订阅</div> -->
+        </li>
+    </ul>
+
+     <ul class="contacts-entity pub-acc" ng-repeat="account in publicAccountList" ng-show="!tabShowFlag">
+        <li ng-if="account.type==1" ng-click="goToMessage_pubaccount(account,$event)">
+            <div class="avt-s-l rainbow-{{account.name|getFirstLetter}}">
+                <img ng-if="account.headurl" ng-src="{{account.headurl}}" style="height: 40px; width: 40px; border-radius: 25px;"  />
+                <span ng-if="!account.headurl" style="color: White;" ng-bind="account.name | limitTo : 1">
+                </span>
+            </div>
+            {{account.name}}
+            <div ng-if="account.type==1" class="cancel-subscribe option" ng-click="subscribePublicAccount(account,$event,'1')">取消订阅</div>
+            <!-- <div ng-if="account.type==2" class="subscribe option" ng-click="subscribePublicAccount(account,$event,'0')">订阅</div> -->
+        </li>
+    </ul>
+    <!-- 联系人实体 -->
+</div>

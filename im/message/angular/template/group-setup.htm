@@ -1,0 +1,46 @@
+<div class="IMChat-group-slide group-set hidden" ng-controller="groupSetupController">
+    <div class="box-head">
+        群设置 <span class="close-g-set" onclick="jQuery('.IMChat-group-slide').addClass('beforeHide');setTimeout(function(){jQuery('.IMChat-group-slide').removeClass('beforeHide').addClass('hidden')},500);">
+        </span>
+    </div>
+    <div class="box-bd">
+        <ul>
+            <li>
+                <div class="edit-group-name y"  ng-if="groupSetupInfo.groupOwnerId==currentPerson.pid" ng-click="editGroupName(groupSetupInfo,$event);">
+                    修改</div>
+                群名称：<input type="text" readonly class="gchat-name"   id="editgroupname" value="{{groupSetupInfo.groupName | limitTo:15}}" /></li>
+            <li>群主：{{groupSetupInfo.groupOwnerName}}</li>
+            <li ng-if="false">
+                <div class="y">
+                    <input id="noDisturb" type="checkbox" /><label class="switch-btn" for="noDisturb"><span></span></label>
+                </div>
+                消息免打扰 </li>
+            <li ng-if="false">
+                <div class="y">
+                    <input id="setTop" type="checkbox" /><label class="switch-btn" for="setTop"><span></span></label>
+                </div>
+                群置顶 </li>
+            <li>群成员：{{groupSetupInfo.groupNumberCount}}人
+                <div>
+                    <dl ng-repeat="per in groupSetupInfo.groupNumberList" ng-click="goToPersonInfo_group(per,$event)">
+                        <dt class="rainbow-{{per.name|getFirstLetter}} avt-s-s" ng-if="per.name">{{per.name|cutString:1:2}}<i ng-if="groupSetupInfo.groupOwnerId==currentPerson.pid&&per.id!=currentPerson.pid"  ng-click="deleteGroupMember_Click(per,$event)"></i></dt>
+                        <dt class="rainbow-{{per.id|getFirstLetter}} avt-s-s" ng-if="!per.name">{{per.id|cutString:5:5}}<i ng-if="groupSetupInfo.groupOwnerId==currentPerson.pid&&per.id!=currentPerson.pid" ng-click="deleteGroupMember_Click(per,$event)"></i></dt>
+                        
+                        <dd ng-if="per.name">{{per.name|cutString:0:3}}</dd>
+                        <dd ng-if="!per.name">{{per.id|cutString:5:5}}</dd>
+                    </dl>
+                    <dl class="add-mem-btn" ng-if="groupSetupInfo.groupOwnerId==currentPerson.pid" ng-click="addGroupMember_Click()">
+                        <dt><span></span><span></span></dt>
+                        <dd> 添加</dd>
+                    </dl>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="box-foot">
+        <div id="exit_group" ng-click="quitChatGroup()" ng-if="groupSetupInfo.groupOwnerId!=currentPerson.pid">
+            退出群聊</div>
+        <div id="exit_group" ng-click="exitChatGroup()" ng-if="(groupSetupInfo.groupOwnerId==currentPerson.pid)&&quitEnable()">
+            解散群组</div>
+    </div>
+</div>

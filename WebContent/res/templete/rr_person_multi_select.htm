@@ -1,0 +1,20 @@
+﻿<div ng-controller="personController">
+    <ui-select multiple ng-model="multipleDemo.selectedPeopleWithGroupBy" theme="bootstrap"
+        ng-disabled="disabled" close-on-select="true" style="width: 500px; height: 300px;"
+        title="Choose a person" reset-search-input="true">
+    <ui-select-match placeholder="搜索 姓名、员工号、邮箱、电话...">
+        {{$item.name}} &lt;{{$item.email}}&gt;
+    </ui-select-match>
+    <ui-select-choices group-by="someGroupFn" 
+                       repeat="person in PersonList | filter: $select.search track by person.uid"
+                       refresh="refreshPersons($select.search)"
+                       refresh-delay="0">
+      <div ng-bind-html="person.name+'&nbsp;&nbsp; '+person.email  | highlight: $select.search">
+      </div>
+      <small>
+        <span ng-bind-html="''+person.department| highlight: $select.search"></span>
+      </small>
+    </ui-select-choices>
+  </ui-select>
+    <p>Selected: {{multipleDemo.selectedPeopleWithGroupBy}}</p>
+</div>

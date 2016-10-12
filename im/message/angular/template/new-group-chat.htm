@@ -1,0 +1,82 @@
+﻿<div class="IMChat-model-bd IMChat-new-gchat hidden" ng-controller="personController">
+    <div class="box-head cen-align">
+        <div class="close-model win" ng-if="iswin" onclick="jQuery('.IMChat-model-cover').addClass('hidden');jQuery(this).closest('.IMChat-model-bd').addClass('hidden');">
+        </div>
+        <div class="close-model mac"  ng-if="ismac" onclick="jQuery('.IMChat-model-cover').addClass('hidden');jQuery(this).closest('.IMChat-model-bd').addClass('hidden');">
+        </div>
+        创建群聊天
+    </div>
+    <div class="box-bd cl">
+        <div class="l-blk">
+            <p>
+                群成员：</p>
+            <div style="width: 380px; height: 250px; border: 1px solid #e1e1e1; border-radius: 4px;overflow-x: hidden;overflow-y: scroll;
+                background-color: White; color: White;">
+                <ui-select multiple ng-model="multipleDemo.selectedPeopleWithGroupBy" theme="bootstrap"
+                    ng-disabled="disabled" close-on-select="true" style="width: 375px;" title="搜索集团员工姓名、员工号、邮箱、电话..."
+                    reset-search-input="true">
+                        <ui-select-match style="width:200px;" placeholder="搜索集团员工姓名、员工号、邮箱、电话...">
+                            {{$item.name}} 
+                        </ui-select-match>
+                            <ui-select-choices group-by="someGroupFn" 
+                                               repeat="person in PersonList"
+                                               refresh="refreshPersons($select.search)"
+                                               refresh-delay="300"
+                                               position="down">
+                              <div ng-bind-html="person.name+'&nbsp;&nbsp; '+person.email  | highlight: $select.search">
+                              </div>
+                              <small>
+                                <span ng-bind-html="''+person.department| highlight: $select.search"></span>
+                              </small>
+                            </ui-select-choices>
+                    </ui-select>
+            </div>
+            <p>
+                群名称：</p>
+            <input class="set-gname" ng-model="input_GroupName" placeholder="请输入群名称（非必填）">
+        </div>
+        <div class="r-blk">
+            <p>
+                选择成员：</p>
+            <div class="pick-tab">
+                <div class="tab-head cl">
+                    <div class="text-ellipsis" title="{{personListDept[0].department}}" ng-class="{true: 'cur', false: 'uncur'}[tabShowFlag]" ng-click="tabShowFlag=!tabShowFlag" ng-init="tabShowFlag=true">
+                        {{personListDept[0].department}}</div>
+                    <!--<div ng-class="{true: 'uncur', false: 'cur'}[tabShowFlag]" ng-click="tabShowFlag=!tabShowFlag">
+                        我的好友</div>-->
+                </div>
+                <div class="tab-cont" ng-show="tabShowFlag">
+                    <!--                    <div class="dep-node weak">
+                        {{personListDept[0].department}}</div>-->
+                    <div class="check-all">
+                        <input id="newchat_select_all" type="checkbox" ng-checked="seleteDeptAllFlag" ng-click="selectDeptAll($event)"
+                             /><label for="newchat_select_all"></label>全选</div>
+                    <ul class="user-list">
+                        <li ng-repeat="per in personListDept" ng-class="{false: 'unchecked', true: 'checked'}[per.checktype]"
+                            ng-click="addPerson($event,per,'dept')">
+                            <div class="rainbow-{{per.name|getFirstLetter}} avt-s-s">
+                                <span></span><span style="color: White;" ng-bind="per.name | photoname"></span>
+                            </div>
+                            {{per.name}} </li>
+                    </ul>
+                </div>
+                <!-- <div class="tab-cont" ng-show="!tabShowFlag">
+                    <div class="dep-node weak">
+                         我的好友</div>
+                    <div class="check-all">
+                        <input type="checkbox" onclick="jQuery('.tab-cont').find('.user-list li').removeClass().addClass(jQuery(this).is(':checked')?'checked':'')" />全选</div>
+                    <ul class="user-list">
+                        <li ng-repeat="follow in followList" ng-class="{false: 'unchecked', true: 'checked'}[follow.checktype]" ng-click="addPerson($event,follow,'follow')">
+                            <div class="rainbow-k avt-s-s">
+                                <span></span> <span style="color: White;" ng-bind="follow.name | photoname"></span></div>
+                            {{follow.name}} </li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+    </div>
+    <div class="box-foot cen-align">
+        <div class="btn-alive" ng-click="addGroup($event)">
+            完成</div>
+    </div>
+</div>

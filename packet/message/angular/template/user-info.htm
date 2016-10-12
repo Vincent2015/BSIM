@@ -1,0 +1,108 @@
+<div class="IMChat-model-bd IMChat-set-vcard" ng-controller="personcardController">
+	<div class="form-head">
+		<div class="close-model win" ng-if="iswin" ng-click="closeWin($event)">
+		</div>
+		<div class="close-model mac" ng-if="ismac" ng-click="closeWin($event)">
+		</div>
+		<div class="base-info">
+			<!--<div class="y fans-num">
+                299</div>-->
+            <div class="avt rainbow-{{personCardInfo.name|getFirstLetter}} "  >
+                {{personCardInfo.name| cutString:1:2}}</div>
+            <div class="name-info">
+                {{personCardInfo.name}}<span ng-if="false" onclick="jQuery(this).addClass('hidden').siblings('p').removeClass('hidden')">备注</span><p
+                    class="hidden">
+                   <input name="" readonly="true" value="" ng-model="personCardInfo.signature"  /><span class="confirm">确定</span>
+      
+                    <p>
+            </div>
+        </div>
+    </div>
+    <div class="form-bd" ng-class="{full:roster.rosterType == 'myself'}">
+        <div class="avt-set hidden">
+            <div class="img-can weak cen-align" style="font-size: 12px;">
+                <span>仅支持JPG、JPEG、PNG且小于5M</span>
+                <div class="img">
+                    <!--<img src="message/style/images/avt_default.png">-->
+                </div>
+            </div>
+            <div class="foot-btns">
+                <div>
+                    确认</div>
+                <div onclick="jQuery(this).closest('.avt-set').addClass('hidden')">
+                    取消</div>
+            </div>
+        </div>
+        <ul>
+		    <li>
+				<label>姓名</label>
+				<input name="" readonly="readonly" value="" ng-model="personCardInfo.name" />
+			</li>
+
+			<li>
+				<label>邮箱</label>
+				<input name="" ng-readonly="roster.rosterType != 'myself'" ng-focus="copyOriginal($event,'email')" ng-blur="saveMyInfo($event,'email')" value="" ng-model="personCardInfo.email" max-length="50" />
+			</li>
+
+			<li>
+				<label>部门</label>
+				<input name="" readonly="readonly" value="" ng-model="personCardInfo.organization" max-length="30" />
+			</li>
+
+			<li>
+				<label>手机</label>
+				<input name="" ng-readonly="roster.rosterType != 'myself'" ng-focus="copyOriginal($event,'mobile')" ng-blur="saveMyInfo($event,'mobile')" value="" ng-model="personCardInfo.mobile" max-length="11" />
+			</li>
+
+			<li ng-if="enableVCardFields.indexOf('position') > -1">
+				<label>职位</label>
+				<input name="" ng-readonly="roster.rosterType != 'myself'" ng-focus="copyOriginal($event,'position')" ng-blur="saveMyInfo($event,'position')" value="" ng-model="personCardInfo.position" max-length="50" />
+			</li>
+
+			<li ng-if="enableVCardFields.indexOf('gender') > -1">
+				<label>性别</label>
+				<input name="" ng-readonly="roster.rosterType != 'myself'" ng-focus="copyOriginal($event,'gender')" ng-blur="saveMyInfo($event,'gender')" value="" ng-model="personCardInfo.gender" />
+			</li>
+
+			<li ng-if="enableVCardFields.indexOf('number') > -1">
+				<label>工号</label>
+				<input name="" readonly="readonly" value="" ng-model="personCardInfo.number" max-length="30" />
+			</li>
+
+			<li ng-if="enableVCardFields.indexOf('telephone') > -1">
+				<label>分机号</label>
+				<input name="" ng-readonly="roster.rosterType != 'myself'" ng-focus="copyOriginal($event,'telephone')" ng-blur="saveMyInfo($event,'telephone')" value="" ng-model="personCardInfo.telephone" max-length="20" />
+			</li>
+
+			<li ng-if="enableVCardFields.indexOf('location') > -1">
+				<label>办公地点</label>
+				<input name="" readonly="readonly" value="" ng-model="personCardInfo.location" />
+			</li>
+
+			<li ng-if="enableVCardFields.indexOf('remarks') > -1">
+				<label>备注</label>
+				<input name="" readonly="readonly" value="" ng-model="personCardInfo.remarks" max-length="50" />
+			</li>
+
+		</ul>
+	</div>
+
+	<div class="form-foot clearfix" ng-if="roster.rosterType != 'myself'">
+		<div class="user-options" ng-hide="operator.isuser" ng-if="roster.rosterType == 'none'" ng-click="addFriend(roster,$event)">
+			+添加好友</div>
+
+		<div class="user-options grey" ng-hide="operator.isuser" ng-if="roster.rosterType == 'ask'">
+			已发送请求</div>
+
+		<div class="user-options" ng-hide="operator.isuser" ng-if="roster.rosterType == 'recv'" ng-click="approveFriend(roster,$event)">
+			同意好友请求</div>
+
+		<div class="user-options" ng-hide="operator.isuser" ng-if="roster.rosterType == 'friend'" ng-click="removeFriend(roster,$event)">
+			删除好友</div>
+
+		<div class="user-options" ng-click="goToMessageChat(roster,$event)" ng-hide="operator.isuser">
+			发消息
+		</div>
+	</div>
+
+</div>

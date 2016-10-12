@@ -1,0 +1,176 @@
+@CHARSET "UTF-8";
+html, body{
+	height: 100%;
+	font-family: "Microsoft YaHei";
+}
+
+body{
+	overflow: hidden;
+}
+
+body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, p, blockquote, th, td {
+	margin: 0;
+	padding: 0;
+}
+
+
+form {
+	border: 0;
+}
+
+a {
+	cursor: pointer;
+}
+
+img{
+	border: 0;
+}
+
+.bg {
+	background: url("default/icons/bg.jpg") no-repeat center top;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+.v-middle, .v-middle>* {
+	vertical-align: middle;
+}
+
+.btm {
+	text-align: center;
+	color: #6B6B6A;
+	font-size: 12px;
+	padding: 5px 0;
+	min-width: 960px;
+	z-index: -1;
+}
+
+.btm p {
+	padding: 5px 0;
+}
+
+.login-text {
+	width: 88%;
+	margin-top: 20px;
+	height: 40px;
+	line-height: 40px;
+	padding-left: 30px;
+	border: 1px solid #77c8af;
+	border-radius: 6px;
+	outline: none;
+}
+
+.login-text:FOCUS {
+	border: 1px solid #F49177;
+}
+
+#username.login-text {
+	margin-top: 30px;
+	background: url("default/icons/login_icon_gray_man.png") white 10px center no-repeat;
+}
+
+#userpwd.login-text {
+	margin-top: 16px;
+	background: url("default/icons/login_icon_gray_key.png") white 10px center no-repeat;
+}
+
+.content-960 {
+	position: relative;
+	left: 50%;
+	margin-left: -480px;
+	width: 960px;
+	text-align: center;
+}
+
+.content-960 .login-area {
+	position: relative;
+	width: 249px;
+	left: 50%;
+	margin-left: -126px;
+	
+	*margin-left:0;
+	*position:static;
+}
+
+@media ( max-width : 960px) {
+	.content-960 {
+		left: 480px;
+	}
+}
+
+.content-960 .login-area input[type='button'] {
+	margin-top: 20px;
+	width: 49%;
+	float:left;
+}
+
+.content-960 .login-area input[type='text']:FOCUS {
+	box-shadow: inset 0 0 4px #aeaeae;
+}
+
+.loginBtn, .registBtn {
+	height: 40px;
+	border: 0;
+	color: white;
+	background: #eb8a23;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.link-item {
+	margin-top: 50px;
+	margin-left: 66px;
+	width: 75px;
+}
+
+.link-item img {
+	width: 69px;
+	height: 69px;
+}
+
+.link-item img:hover {
+	width: 83px;
+	height: 83px;
+	margin: -11px 0 0 -7px;
+}
+
+.link-item a {
+	text-align: center;
+	text-decoration: none;
+	color: #fff;
+	font-size: 14px;
+	width: 75px;
+}
+
+.link-item p {
+	margin-top: 18px;
+	width: 75px;
+}
+
+.ewm {
+	background: url("default/icons/QR_code.png") no-repeat 0 0;
+	background-size:cover;
+/* 	background: url("default/icons/ewm_pgyer.bmp") no-repeat scroll 0 0; */
+    bottom: 0;
+    height: 156px;
+    position: absolute;
+    right: 160px;
+    width: 156px;
+}
+
+.ewm a {
+	color: #FFFFFF;
+	margin-left: -1px;
+	font-size: 13px;
+	line-height: 275px;
+	background: #2ecc50;
+	padding: 10px 9px;
+	border-radius: 5px;
+	text-decoration: none;
+}

@@ -1,0 +1,15 @@
+<div class="IMChat-model-bd IMChat-confirm-dialog">
+	<div class="confirm-header">
+		<span ng-bind="ngDialogData.title" class="title"></span>
+		<span class="exitBtn" ng-click="cancel($event)"></span>
+	</div>
+	
+	<div class="confirm-body"  ng-bind="ngDialogData.message">
+		
+	</div>
+	
+	<div class="confirm-footer">
+		<span class="confirmBtn y" ng-click="ngDialogData.fun($event)" ng-if="ngDialogData.confirmText" ng-bind="ngDialogData.confirmText">确定</span>
+		<span class="cancelBtn y" ng-click="cancel($event)">取消</span>
+	</div>
+</div>

@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html>
+<!-- removed for now, causes problems in Firefox: manifest="svg-editor.manifest" -->
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1"/>
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<link rel="stylesheet" href="jgraduate/css/jPicker.css" type="text/css"/>
+<link rel="stylesheet" href="jgraduate/css/jgraduate.css" type="text/css"/>
+<link rel="stylesheet" href="svg-editor.css" type="text/css"/>
+<link rel="stylesheet" href="spinbtn/JQuerySpinBtn.css" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="rainbow.css"/>
+
+<!--{if jquery_release}>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+<!{else}-->
+<script src="pathseg.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="jquery.js"></script>
+<!--{endif}-->
+
+<script type="text/javascript" src="js-hotkeys/jquery.hotkeys.min.js"></script>
+<script type="text/javascript" src="jquerybbq/jquery.bbq.min.js"></script>
+<script type="text/javascript" src="svgicons/jquery.svgicons.js"></script>
+<script type="text/javascript" src="jgraduate/jquery.jgraduate.min.js"></script>
+<script type="text/javascript" src="spinbtn/JQuerySpinBtn.min.js"></script>
+<script type="text/javascript" src="touch.js"></script>
+
+<!--{if svg_edit_release}-->
+  <!-- <script type="text/javascript" src="svgedit.compiled.js"></script> -->
+<!--{else}>
+<!{endif}-->
+  <script type="text/javascript" src="contextmenu/jquery.contextMenu.js"></script>
+  <script type="text/javascript" src="browser.js"></script>
+  <script type="text/javascript" src="svgtransformlist.js"></script>
+  <script type="text/javascript" src="math.js"></script>
+  <script type="text/javascript" src="units.js"></script>
+  <script type="text/javascript" src="svgutils.js"></script>
+  <script type="text/javascript" src="sanitize.js"></script>
+  <script type="text/javascript" src="history.js"></script>
+  <script type="text/javascript" src="select.js"></script>
+  <script type="text/javascript" src="draw.js"></script>
+  <script type="text/javascript" src="path.js"></script>
+  <script type="text/javascript" src="svgcanvas.js"></script>
+  <script type="text/javascript" src="svg-editor.js"></script>
+  <script type="text/javascript" src="locale/locale.js"></script>
+  <script type="text/javascript" src="contextmenu.js"></script>
+
+<!-- you can load extensions here -->
+<!-- <script type="text/javascript" src="extensions/ext-helloworld.js"></script> -->
+
+<!-- always minified scripts -->
+<script type="text/javascript" src="jquery-ui/jquery-ui-1.8.17.custom.min.js"></script>
+<script type="text/javascript" src="jgraduate/jpicker.js"></script>
+
+<!-- feeds -->
+<link rel="alternate" type="application/atom+xml" title="SVG-edit General Discussion" href="http://groups.google.com/group/svg-edit/feed/atom_v1_0_msgs.xml" />
+<link rel="alternate" type="application/atom+xml" title="SVG-edit Updates (Issues/Fixes/Commits)" href="http://code.google.com/feeds/p/svg-edit/updates/basic" />
+
+<!-- Add script with custom handlers here -->
+
+<script src="IMCustomize.js" type="text/javascript" charset="utf-8"></script>
+<script src="Math.uuid.js" type="text/javascript" charset="utf-8"></script>
+<!--<script src="debuggap.js?192.168.1.106:11111" type="text/javascript" charset="utf-8"></script>-->
+<link rel="stylesheet" type="text/css" href="IMCustomize.css"/>
+
+<title>白板</title>
+</head>
+<body>
+<!-- <a href="data:image/png;base64,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
+	" id="save_button" style="position: relative;z-index: 3;background:aqua;padding: 10px;cursor: pointer;" download="img.png">save the image</a> -->
+<div id="svg_editor">
+	<div id="comment_area" class="hidden">
+		<div class="comments-container">
+				<div class="comment-item clearfix">
+						<div class="fl avator rainbow-q">马云</div>
+						<div class="comment-detail">
+								<div class="usr">马云</div>
+								<div class="comment-cont">我上传了项目的需求文档麻烦@宁磊看一下客户的名称对吗？</div>
+								<div class="oper-time">凌晨2点20分</div>
+						</div>
+				</div>
+				<div class="comment-item clearfix">
+						<div class="fl avator rainbow-i">宁磊</div>
+						<div class="comment-detail">
+								<div class="usr">宁磊</div>
+								<div class="comment-cont">建议增加一个副标题，把项目类型标注一下，另外就是这个图一般都是咱们公司的PPT的最后一页的换一下图吧...</div>
+								<div class="oper-time">凌晨2点20分</div>
+						</div>
+				</div>
+		</div>
+		<input type="text" placeholder="点击进行评论"/>
+	</div>
+
+<div id="rulers">
+	<div id="ruler_corner"></div>
+	<div id="ruler_x">
+		<div>
+			<canvas height="15"></canvas>
+		</div>
+	</div>
+	<div id="ruler_y">
+		<div>
+			<canvas width="15"></canvas>
+		</div>
+	</div>
+</div>
+
+<div id="workarea">
+<style id="styleoverrides" type="text/css" media="screen" scoped="scoped"></style>
+<div id="svgcanvas" style="position:relative">
+	<div id="tool_title" class="hidden">白板</div>
+
+</div>
+</div>
+
+<div id="sidepanels">
+	<div id="layerpanel">
+		<h3 id="layersLabel">Layers</h3>
+		<fieldset id="layerbuttons">
+			<div id="layer_new" class="layer_button"  title="New Layer"></div>
+			<div id="layer_delete" class="layer_button"  title="Delete Layer"></div>
+			<div id="layer_rename" class="layer_button"  title="Rename Layer"></div>
+			<div id="layer_up" class="layer_button"  title="Move Layer Up"></div>
+			<div id="layer_down" class="layer_button"  title="Move Layer Down"></div>
+			<div id="layer_moreopts" class="layer_button"  title="More Options"></div>
+		</fieldset>
+		
+		<table id="layerlist">
+			<tr class="layer">
+				<td class="layervis"></td>
+				<td class="layername">Layer 1</td>
+			</tr>
+		</table>
+		<span id="selLayerLabel">Move elements to:</span>
+		<select id="selLayerNames" title="Move selected elements to a different layer" disabled="disabled">
+			<option selected="selected" value="layer1">Layer 1</option>
+		</select>
+	</div>
+	<div id="sidepanel_handle" title="Drag left/right to resize side panel [X]">L a y e r s</div>
+</div>
+
+<div id="main_button">
+	<div id="main_icon" class="tool_button" title="Main Menu">
+		<span>SVG-Edit</span>
+		<div id="logo"></div>
+		<div class="dropdown"></div>
+	</div>
+		
+	<div id="main_menu"> 
+	
+		<!-- File-like buttons: New, Save, Source -->
+		<ul>
+			<li id="tool_clear">
+				<div></div>
+				New Image (N)
+			</li>
+			
+			<li id="tool_open" style="display:none;">
+				<div id="fileinputs">
+					<div></div>
+				</div>
+				Open Image
+			</li>
+			
+			<li id="tool_import" style="display:none;">
+				<div id="fileinputs_import">
+					<div></div>
+				</div>
+				Import Image
+			</li>
+			
+			<li id="tool_save">
+				<div></div>
+				Save Image (S)
+			</li>
+			
+			<li id="tool_export">
+				<div></div>
+				Export as PNG
+			</li>
+			
+			<li id="tool_docprops">
+				<div></div>
+				Document Properties (D)
+			</li>
+		</ul>
+
+		<p>
+			<a href="http://svg-edit.googlecode.com/" target="_blank">
+				SVG-edit Home Page
+			</a>
+		</p>
+
+		<button id="tool_prefs_option">
+			Editor Options
+		</button>
+
+
+	</div>
+</div>
+
+
+
+<div id="tools_top" class="tools_panel">
+
+	<div id="editor_panel">
+		<div class="tool_sep"></div>
+		<div class="push_button" id="tool_source" title="Edit Source [U]"></div>
+		<div class="tool_button" id="tool_wireframe" title="Wireframe Mode [F]"></div>
+	</div>
+
+	<!-- Buttons when a single element is selected -->
+	<div id="selected_panel">
+		<div class="toolset">
+			<div class="tool_sep"></div>
+			<div class="push_button" id="tool_clone" title="Duplicate Element [D]"></div>
+			<div class="push_button" id="tool_delete" title="Delete Element [Delete/Backspace]"></div>
+			<div class="tool_sep"></div>
+			<div class="push_button" id="tool_move_top" title="Bring to Front [ Ctrl+Shift+] ]"></div>
+			<div class="push_button" id="tool_move_bottom" title="Send to Back [ Ctrl+Shift+[ ]"></div>
+			<div class="push_button" id="tool_topath" title="Convert to Path"></div>
+			<div class="push_button" id="tool_reorient" title="Reorient path"></div>
+			<div class="push_button" id="tool_make_link" title="Make (hyper)link"></div>
+			<div class="tool_sep"></div>
+			<label id="idLabel" title="Identify the element">
+				<span>id:</span>
+				<input id="elem_id" class="attr_changer" data-attr="id" size="10" type="text"/>
+			</label>
+		</div>
+
+		<label id="tool_angle" title="Change rotation angle" class="toolset">
+			<span id="angleLabel" class="icon_label"></span>
+			<input id="angle" size="2" value="0" type="text"/>
+		</label>
+		
+		<div class="toolset" id="tool_blur" title="Change gaussian blur value">
+			<label>
+				<span id="blurLabel" class="icon_label"></span>
+				<input id="blur" size="2" value="0" type="text"/>
+			</label>
+			<div id="blur_dropdown" class="dropdown">
+				<button></button>
+				<ul>
+					<li class="special"><div id="blur_slider"></div></li>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="dropdown toolset" id="tool_position" title="Align Element to Page">
+				<div id="cur_position" class="icon_label"></div>
+				<button></button>
+		</div>		
+
+		<div id="xy_panel" class="toolset">
+			<label>
+				x: <input id="selected_x" class="attr_changer" title="Change X coordinate" size="3" data-attr="x"/>
+			</label>
+			<label>
+				y: <input id="selected_y" class="attr_changer" title="Change Y coordinate" size="3" data-attr="y"/>
+			</label>
+		</div>
+	</div>
+	
+	<!-- Buttons when multiple elements are selected -->
+	<div id="multiselected_panel">
+		<div class="tool_sep"></div>
+		<div class="push_button" id="tool_clone_multi" title="Clone Elements [C]"></div>
+		<div class="push_button" id="tool_delete_multi" title="Delete Selected Elements [Delete/Backspace]"></div>
+		<div class="tool_sep"></div>
+		<div class="push_button" id="tool_group" title="Group Elements [G]"></div>
+		<div class="push_button" id="tool_make_link_multi" title="Make (hyper)link"></div>
+		<div class="push_button" id="tool_alignleft" title="Align Left"></div>
+		<div class="push_button" id="tool_aligncenter" title="Align Center"></div>
+		<div class="push_button" id="tool_alignright" title="Align Right"></div>
+		<div class="push_button" id="tool_aligntop" title="Align Top"></div>
+		<div class="push_button" id="tool_alignmiddle" title="Align Middle"></div>
+		<div class="push_button" id="tool_alignbottom" title="Align Bottom"></div>
+		<label id="tool_align_relative"> 
+			<span id="relativeToLabel">relative to:</span>
+			<select id="align_relative_to" title="Align relative to ...">
+			<option id="selected_objects" value="selected">selected objects</option>
+			<option id="largest_object" value="largest">largest object</option>
+			<option id="smallest_object" value="smallest">smallest object</option>
+			<option id="page" value="page">page</option>
+			</select>
+		</label>
+		<div class="tool_sep"></div>
+
+	</div>
+
+	<div id="rect_panel">
+		<div class="toolset">
+			<label id="rect_width_tool" title="Change rectangle width">
+				<span id="rwidthLabel" class="icon_label"></span>
+				<input id="rect_width" class="attr_changer" size="3" data-attr="width"/>
+			</label>
+			<label id="rect_height_tool" title="Change rectangle height">
+				<span id="rheightLabel" class="icon_label"></span>
+				<input id="rect_height" class="attr_changer" size="3" data-attr="height"/>
+			</label>
+		</div>
+		<label id="cornerRadiusLabel" title="Change Rectangle Corner Radius" class="toolset">
+			<span class="icon_label"></span>
+			<input id="rect_rx" size="3" value="0" type="text" data-attr="Corner Radius"/>
+		</label>
+	</div>
+
+	<div id="image_panel">
+	<div class="toolset">
+		<label><span id="iwidthLabel" class="icon_label"></span>
+		<input id="image_width" class="attr_changer" title="Change image width" size="3" data-attr="width"/>
+		</label>
+		<label><span id="iheightLabel" class="icon_label"></span>
+		<input id="image_height" class="attr_changer" title="Change image height" size="3" data-attr="height"/>
+		</label>
+	</div>
+	<div class="toolset">
+		<label id="tool_image_url">url:
+			<input id="image_url" type="text" title="Change URL" size="35"/>
+		</label>
+		<label id="tool_change_image">
+			<button id="change_image_url" style="display:none;">Change Image</button>
+			<span id="url_notice" title="NOTE: This image cannot be embedded. It will depend on this path to be displayed"></span>
+		</label>
+	</div>
+  </div>
+
+	<div id="circle_panel">
+		<div class="toolset">
+			<label id="tool_circle_cx">cx:
+			<input id="circle_cx" class="attr_changer" title="Change circle's cx coordinate" size="3" data-attr="cx"/>
+			</label>
+			<label id="tool_circle_cy">cy:
+			<input id="circle_cy" class="attr_changer" title="Change circle's cy coordinate" size="3" data-attr="cy"/>
+			</label>
+		</div>
+		<div class="toolset">
+			<label id="tool_circle_r">r:
+			<input id="circle_r" class="attr_changer" title="Change circle's radius" size="3" data-attr="r"/>
+			</label>
+		</div>
+	</div>
+
+	<div id="ellipse_panel">
+		<div class="toolset">
+			<label id="tool_ellipse_cx">cx:
+			<input id="ellipse_cx" class="attr_changer" title="Change ellipse's cx coordinate" size="3" data-attr="cx"/>
+			</label>
+			<label id="tool_ellipse_cy">cy:
+			<input id="ellipse_cy" class="attr_changer" title="Change ellipse's cy coordinate" size="3" data-attr="cy"/>
+			</label>
+		</div>
+		<div class="toolset">
+			<label id="tool_ellipse_rx">rx:
+			<input id="ellipse_rx" class="attr_changer" title="Change ellipse's x radius" size="3" data-attr="rx"/>
+			</label>
+			<label id="tool_ellipse_ry">ry:
+			<input id="ellipse_ry" class="attr_changer" title="Change ellipse's y radius" size="3" data-attr="ry"/>
+			</label>
+		</div>
+	</div>
+
+	<div id="line_panel" style="display: none;">
+		<div class="toolset">
+			<label id="tool_line_x1">x1:
+			<input id="line_x1" class="attr_changer" title="Change line's starting x coordinate" size="3" data-attr="x1"/>
+			</label>
+			<label id="tool_line_y1">y1:
+			<input id="line_y1" class="attr_changer" title="Change line's starting y coordinate" size="3" data-attr="y1"/>
+			</label>
+		</div>
+		<div class="toolset">
+			<label id="tool_line_x2">x2:
+			<input id="line_x2" class="attr_changer" title="Change line's ending x coordinate" size="3" data-attr="x2"/>
+			</label>
+			<label id="tool_line_y2">y2:
+			<input id="line_y2" class="attr_changer" title="Change line's ending y coordinate" size="3" data-attr="y2"/>
+			</label>
+		</div>
+	</div>
+
+	<div id="text_panel">
+		<div class="toolset">
+			<div class="tool_button" id="tool_bold" title="Bold Text [B]"><span></span>B</div>
+			<div class="tool_button" id="tool_italic" title="Italic Text [I]"><span></span>i</div>
+		</div>
+		
+		<div class="toolset" id="tool_font_family">
+			<label>
+				<!-- Font family -->
+				<input id="font_family" type="text" title="Change Font Family" size="12"/>
+			</label>
+			<div id="font_family_dropdown" class="dropdown">
+				<button></button>
+				<ul>
+					<li style="font-family:serif">Serif</li>
+					<li style="font-family:sans-serif">Sans-serif</li>
+					<li style="font-family:cursive">Cursive</li>
+					<li style="font-family:fantasy">Fantasy</li>
+					<li style="font-family:monospace">Monospace</li>
+				</ul>
+			</div>
+		</div>
+
+		<label id="tool_font_size" title="Change Font Size">
+			<span id="font_sizeLabel" class="icon_label"></span>
+			<input id="font_size" size="3" value="0" type="text"/>
+		</label>
+		
+		<!-- Not visible, but still used -->
+		<input id="text" type="text" size="35"/>
+	</div>
+
+	<!-- History buttons -->
+		<div id="history_panel">
+			<div class="tool_sep"></div>
+			<div class="push_button tool_button_disabled" id="tool_undo" title="Undo [Z]"></div>
+			<div class="push_button tool_button_disabled" id="tool_redo" title="Redo [Y]"></div>
+		</div>
+
+	<!-- formerly gsvg_panel -->
+	<div id="container_panel">
+		<div class="tool_sep"></div>
+
+		<!-- Add viewBox field here? -->
+
+		<label id="group_title" title="Group identification label">
+			<span>label:</span>
+			<input id="g_title" data-attr="title" size="10" type="text"/>
+		</label>
+	</div>
+	
+	<div id="use_panel">
+		<div class="push_button" id="tool_unlink_use" title="Break link to reference element (make unique)"></div>
+	</div>
+	
+	<div id="g_panel">
+		<div class="push_button" id="tool_ungroup" title="Ungroup Elements [G]"></div>
+	</div>
+
+	<!-- For anchor elements -->
+	<div id="a_panel">
+		<label id="tool_link_url" title="Set link URL (leave empty to remove)">
+			<span id="linkLabel" class="icon_label"></span>
+			<input id="link_url" type="text" size="35"/>
+		</label>	
+	</div>
+	
+	<div id="path_node_panel">
+		<div class="tool_sep"></div>
+		<div class="tool_button push_button_pressed" id="tool_node_link" title="Link Control Points"></div>
+		<div class="tool_sep"></div>
+		<label id="tool_node_x">x:
+			<input id="path_node_x" class="attr_changer" title="Change node's x coordinate" size="3" data-attr="x"/>
+		</label>
+		<label id="tool_node_y">y:
+			<input id="path_node_y" class="attr_changer" title="Change node's y coordinate" size="3" data-attr="y"/>
+		</label>
+		
+		<select id="seg_type" title="Change Segment type">
+			<option id="straight_segments" selected="selected" value="4">Straight</option>
+			<option id="curve_segments" value="6">Curve</option>
+		</select>
+		<div class="tool_button" id="tool_node_clone" title="Clone Node"></div>
+		<div class="tool_button" id="tool_node_delete" title="Delete Node"></div>
+		<div class="tool_button" id="tool_openclose_path" title="Open/close sub-path"></div>
+		<div class="tool_button" id="tool_add_subpath" title="Add sub-path"></div>
+	</div>
+</div> <!-- tools_top -->
+	<div id="cur_context_panel">
+		
+	</div>
+
+
+<div id="tools_left" class="tools_panel">
+	<!--<div class="tool_button" id="tool_stroke_color"></div>
+	<div class="tool_button flyout_current" id="tool_stroke_width_show" title="Stroke Width">
+		<div class="flyout_arrow_horiz"></div>
+	</div>-->
+	
+	<div class="tool_button" id="tool_select" title="Select Tool"></div>
+	<div class="tool_button" id="tool_fhpath" title="Pencil Tool"></div>
+	<div class="tool_button" id="tool_line" title="Line Tool"></div>
+	<div class="tool_button flyout_current" id="tools_rect_show" title="Square/Rect Tool">
+		<div class="flyout_arrow_horiz"></div>
+	</div>
+	<div class="tool_button flyout_current" id="tools_ellipse_show" title="Ellipse/Circle Tool">
+		<div class="flyout_arrow_horiz"></div>
+	</div>
+	<div class="tool_button" id="tool_path" title="Path Tool"></div>
+	<div class="tool_button" id="tool_text" title="Text Tool"></div>
+	<div class="tool_button" id="tool_image" title="Image Tool"></div>
+	<div class="tool_button" id="tool_zoom" title="Zoom Tool [Ctrl+Up/Down]"></div>
+	<div class="tool_button" id="tool_zoom_in"></div>
+	<div class="tool_button" id="tool_zoom_out"></div>
+	
+	<div style="display: none">
+		<div id="tool_rect" title="Rectangle"></div>
+		<div id="tool_square" title="Square"></div>
+		<div id="tool_fhrect" title="Free-Hand Rectangle"></div>
+		<div id="tool_ellipse" title="Ellipse"></div>
+		<div id="tool_circle" title="Circle"></div>
+		<div id="tool_fhellipse" title="Free-Hand Ellipse"></div>
+	</div>
+</div> <!-- tools_left -->
+
+<div id="new_tools_bottom">
+	<ul class="left-menu fl">
+		<li></li>
+		<li></li>
+		<li  class="im-zoom-in" data-title="放大"></li>
+		<li class="im-zoom-out" data-title="缩小"></li>
+		<li onclick="fullScreen()" data-title="全屏"></li>
+	</ul>
+	<div class="fr-btns fr">
+		<div class="fold-btn" data-title="标注"></div>
+		<div class="comment-btn" data-title="评论"></div>
+	</div>
+	<ul class="fr main-tool">
+				<li class="im-tool-redo" data-title="复原"></li>
+				<li class="im-tool-undo" data-title="重做"></li>
+				<li class="im-tool-eraser" data-title="橡皮擦"></li>
+				<li class="im-tool-baloon" data-title="气泡"></li>
+				<li class="relative tools-folded-trigger im-shape-btn" data-title="形状">
+					<ul class="tools-folded shapes-opts hidden">
+						<li class="im-tool-rect">矩形</li>
+						<li class="im-tool-triangle">三角形</li>
+						<li class="im-tool-ellipse">椭圆形</li>
+						<li class="im-tool-line">直线</li>
+					</ul>
+				</li>
+				<li class="im-tool-arrow" data-title="箭头"></li>
+				<li class="im-tool-image" data-title="图片"></li>
+				<li class="im-tool-text" data-title="文字"></li>
+				<li class="im-tool-pencil" data-title="画笔"></li>
+				<li class="relative tools-folded-trigger im-color-btn">
+					<span></span>
+					<ul class="tools-folded stroke-color-opts hidden"></ul>
+				</li>
+				<li class="tools-folded-trigger im-stroke-btn">
+					<ul class="tools-folded stroke-width-opts hidden">
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</li>
+				
+				
+				<li class="im-tool-select" data-title="选择"></li>
+				<li class="im-fontsize-btn tools-folded-trigger hidden">
+					12px
+					<ul  class="tools-folded fontsize-opts hidden">
+						<li data-val="12">12px</li>
+						<li data-val="14">14px</li>
+						<li data-val="16">16px</li>
+						<li data-val="20">20px</li>
+						<li data-val="24">24px</li>
+						<li data-val="28">28px</li>
+						<li data-val="32">32px</li>
+						<li data-val="36">36px</li>
+					</ul>
+				</li>
+				<li class="im-fontfamily-btn tools-folded-trigger hidden">
+					Serif
+					<ul  class="tools-folded fontfamily-opts hidden">
+						<li data-val="fantasy">Fantasy</li>
+						<li data-val="arial">Arial</li>
+						<li data-val="cursive">Cursive</li>
+						<li data-val="Helvetica">Helvetica</li>
+						<li data-val="serif">Serif</li>
+						<li data-val="monospace">Monospace</li>
+					</ul>
+				</li>
+	</ul>
+</div>
+
+
+
+<div id="tools_bottom" class="tools_panel">
+    <!-- Zoom buttons -->
+	<div id="zoom_panel" class="toolset" title="Change zoom level">
+		<label>
+		<span id="zoomLabel" class="zoom_tool icon_label"></span>
+		<input id="zoom" size="3" value="100" type="text" />
+		</label>
+		<div id="zoom_dropdown" class="dropdown">
+			<button></button>
+			<ul>
+				<li>1000%</li>
+				<li>400%</li>
+				<li>200%</li>
+				<li>100%</li>
+				<li>50%</li>
+				<li>25%</li>
+				<li id="fit_to_canvas" data-val="canvas">Fit to canvas</li>
+				<li id="fit_to_sel" data-val="selection">Fit to selection</li>
+				<li id="fit_to_layer_content" data-val="layer">Fit to layer content</li>
+				<li id="fit_to_all" data-val="content">Fit to all content</li>
+				<li>100%</li>
+			</ul>
+		</div>
+		<div class="tool_sep"></div>
+	</div>
+
+	<div id="tools_bottom_2">
+		<div id="color_tools">
+			
+			<div class="color_tool" id="tool_fill">
+				<label class="icon_label" for="fill_color" title="Change fill color"></label>
+				<div class="color_block">
+					<div id="fill_bg"></div>
+					<div id="fill_color" class="color_block"></div>
+				</div>
+			</div>
+		
+			<div class="color_tool" id="tool_stroke">
+				<label class="icon_label" title="Change stroke color"></label>
+				<div class="color_block">
+					<div id="stroke_bg"></div>
+					<div id="stroke_color" class="color_block" title="Change stroke color"></div>
+				</div>
+				
+				<label class="stroke_label">
+					<input id="stroke_width" title="Change stroke width by 1, shift-click to change by 0.1" size="2" value="5" type="text" data-attr="Stroke Width"/>
+				</label>
+
+				<div id="toggle_stroke_tools" title="Show/hide more stroke tools"></div>
+				
+				<label class="stroke_tool">
+					<select id="stroke_style" title="Change stroke dash style">
+						<option selected="selected" value="none">&mdash;</option>
+						<option value="2,2">...</option>
+						<option value="5,5">- -</option>
+						<option value="5,2,2,2">- .</option>
+						<option value="5,2,2,2,2,2">- ..</option>
+					</select>
+				</label>	
+
+ 				<div class="stroke_tool dropdown" id="stroke_linejoin">
+					<div id="cur_linejoin" title="Linejoin: Miter"></div>
+					<button></button>
+ 				</div>
+ 				
+ 				<div class="stroke_tool dropdown" id="stroke_linecap">
+					<div id="cur_linecap" title="Linecap: Butt"></div>
+					<button></button>
+ 				</div>
+
+			</div>
+
+			<div class="color_tool" id="tool_opacity" title="Change selected item opacity">
+				<label>
+					<span id="group_opacityLabel" class="icon_label"></span>
+					<input id="group_opacity" size="3" value="100" type="text"/>
+				</label>
+				<div id="opacity_dropdown" class="dropdown">
+					<button></button>
+					<ul>
+						<li>0%</li>
+						<li>25%</li>
+						<li>50%</li>
+						<li>75%</li>
+						<li>100%</li>
+						<li class="special"><div id="opac_slider"></div></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div id="tools_bottom_3">
+		<div id="palette_holder"><div id="palette" title="Click to change fill color, shift-click to change stroke color"></div></div>
+	</div>
+	<!-- <div id="copyright"><span id="copyrightLabel">Powered by</span> <a href="http://svg-edit.googlecode.com/" target="_blank">SVG-edit v2.6-beta</a></div> -->
+</div>
+
+<div id="option_lists" class="dropdown">
+	<ul id="linejoin_opts">
+		<li class="tool_button current" id="linejoin_miter" title="Linejoin: Miter"></li>
+		<li class="tool_button" id="linejoin_round" title="Linejoin: Round"></li>
+		<li class="tool_button" id="linejoin_bevel" title="Linejoin: Bevel"></li>
+	</ul>
+	
+	<ul id="linecap_opts">
+		<li class="tool_button current" id="linecap_butt" title="Linecap: Butt"></li>
+		<li class="tool_button" id="linecap_square" title="Linecap: Square"></li>
+		<li class="tool_button" id="linecap_round" title="Linecap: Round"></li>
+	</ul>
+	
+	<ul id="position_opts" class="optcols3">
+		<li class="push_button" id="tool_posleft" title="Align Left"></li>
+		<li class="push_button" id="tool_poscenter" title="Align Center"></li>
+		<li class="push_button" id="tool_posright" title="Align Right"></li>
+		<li class="push_button" id="tool_postop" title="Align Top"></li>
+		<li class="push_button" id="tool_posmiddle" title="Align Middle"></li>
+		<li class="push_button" id="tool_posbottom" title="Align Bottom"></li>
+	</ul>
+</div>
+
+
+<!-- hidden divs -->
+<div id="color_picker"></div>
+
+
+
+		<!--<div class="tools_flyout" id="tools_stroke_width" style="left: 1141px; top: auto; bottom: 100px; display: block;">
+			<div class="tool_button" id="tool_stroke_width" title="Line Tool (L)">
+				<img class="svg_icon" src="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgY2xhc3M9InN2Z19pY29uIj48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCAyNCAyNCI+CgkgPGRlZnM+CgkgIDxsaW5lYXJHcmFkaWVudCBpZD0ic3ZnXzE2IiB4MT0iMC40NjQ4NCIgeTE9IjAuMTU2MjUiIHgyPSIwLjkzNzUiIHkyPSIwLjM5NDUzIj4KCSAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2YyZmVmZiIgc3RvcC1vcGFjaXR5PSIxIj48L3N0b3A+CgkgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxNDYwOWIiIHN0b3Atb3BhY2l0eT0iMSI+PC9zdG9wPgoJICA8L2xpbmVhckdyYWRpZW50PgoJICA8bGluZWFyR3JhZGllbnQgaWQ9InN2Z18xOSIgeDE9IjAuMTgzNTkiIHkxPSIwLjI2MTcyIiB4Mj0iMC43NzczNCIgeTI9IjAuNTY2NDEiPgoJICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZmZmZmZmIiBzdG9wLW9wYWNpdHk9IjEiPjwvc3RvcD4KCSAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2ZjZTU2NCIgc3RvcC1vcGFjaXR5PSIxIj48L3N0b3A+CgkgIDwvbGluZWFyR3JhZGllbnQ+CgkgPC9kZWZzPgoJICA8bGluZSB4MT0iMC45OTg0NCIgeTE9IjEuNDkwNjciIHgyPSIxMi45NzY5MSIgeTI9IjIxLjE0MTQ5IiBpZD0ic3ZnXzUiIHN0cm9rZT0iIzAwMDAwMCIgZmlsbD0ibm9uZSI+PC9saW5lPgoJICA8cGF0aCBkPSJtMTQuMDUyNzIsMTMuNjg3MzJsLTEuNDY0NTEsNy41MjYzMmw0LjAzNzY5LC02LjMyNTcxIiBpZD0ic3ZnXzYiIGZpbGw9IiNhMGEwYTAiIHN0cm9rZT0iIzAwMDAwMCI+PC9wYXRoPgoJICA8cGF0aCBkPSJtMTMuNjEyMTUsMTAuMjY1NjNjLTAuMzg1NjcsMS4wNTI1NyAtMC42MDcyMywyLjQwMjYxIC0wLjUwNDAzLDMuMTI1bDQuMzM0NjgsMS44MTQ1MmMwLjQ2MTUzLC0wLjMwNzY5IDEuNjEyOSwtMS43MTM3MSAxLjYxMjksLTIuNTIwMTYiIGlkPSJzdmdfNyIgZmlsbD0idXJsKCNzdmdfMTkpIiBzdHJva2U9IiMwMDAwMDAiPjwvcGF0aD4KCSAgPHBhdGggZD0ibTE2LjYxMzM1LDEuMDAwMjhsLTMuNjczMjUsOC42MDI0N2w3LjEwMjg1LDMuNDczMThsMy4xNzc4MywtNy4yMDU0OSIgaWQ9InN2Z184IiBmaWxsPSJ1cmwoI3N2Z18xNikiIHN0cm9rZT0iIzAwMDAwMCI+PC9wYXRoPgoJPC9zdmc+PC9zdmc+"></div><div id="mode_connect" title="Connect two objects" class="tool_button"><img class="svg_icon" src="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgY2xhc3M9InN2Z19pY29uIj48c3ZnIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+CgkJIDxkZWZzPgoKCQkgIDxsaW5lIHN0cm9rZS13aWR0aD0iNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwMDAwIiBpZD0ic3ZnXzIiIHkyPSIxMjEiIHgyPSIxMzYiIHkxPSI3IiB4MT0iMTM2Ij4KCQkgICA8c3RvcCBzdG9wLW9wYWNpdHk9IjEiIHN0b3AtY29sb3I9IiM0Njg3YTAiPjwvc3RvcD4KCQkgICA8c3RvcCBzdG9wLW9wYWNpdHk9IjEiIHN0b3AtY29sb3I9IiNmZmZmZmYiPjwvc3RvcD4KCQkgIDwvbGluZT4KCQkgIDxsaW5lYXJHcmFkaWVudCB5Mj0iMC4xODM1OSIgeDI9IjAuMjk2ODgiIHkxPSIwLjkyMTg4IiB4MT0iMC42MjEwOSIgaWQ9InN2Z18zIj4KCQkgICA8c3RvcCBzdG9wLW9wYWNpdHk9IjEiIHN0b3AtY29sb3I9IiM0MTdkYWQiIG9mZnNldD0iMCI+PC9zdG9wPgoJCSAgIDxzdG9wIHN0b3Atb3BhY2l0eT0iMSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgb2Zmc2V0PSIxIj48L3N0b3A+CgkJICA8L2xpbmVhckdyYWRpZW50PgoJCSA8L2RlZnM+CgkJIDxnPgoJCSAgPHRpdGxlPkxheWVyIDE8L3RpdGxlPgoJCSAgPGxpbmUgeDE9IjUuNjQ2NzYiIHkxPSI1LjYwMDU2IiB4Mj0iMTguNTAwMzciIHkyPSIxOC42MjU1NyIgaWQ9InN2Z181IiBzdHJva2U9IiMwMDAwMDAiIGZpbGw9Im5vbmUiPjwvbGluZT4KCQkgIDxyZWN0IG9wYWNpdHk9IjAuNzUiIHN0cm9rZS13aWR0aD0iMC41IiB4PSIwLjUiIHk9IjAuNSIgd2lkdGg9IjkuNjI1IiBoZWlnaHQ9IjUuMTI1IiBpZD0ic3ZnXzEiIGZpbGw9InVybCgjc3ZnXzMpIiBzdHJva2U9IiMwMDAwMDAiPjwvcmVjdD4KCQkgIDxyZWN0IG9wYWNpdHk9IjAuNzUiIGlkPSJzdmdfNCIgc3Ryb2tlLXdpZHRoPSIwLjUiIHg9IjEzLjc1IiB5PSIxOC4yNSIgd2lkdGg9IjkuNjI1IiBoZWlnaHQ9IjUuMTI1IiBmaWxsPSJ1cmwoI3N2Z18zKSIgc3Ryb2tlPSIjMDAwMDAwIj48L3JlY3Q+CgkJICA8ZyBpZD0ic3ZnXzkiPgoJCSAgIDxwYXRoIGQ9Im0xNC41NzExOSw5LjEyMTQzbC0wLjk4MjQ0LDUuMTg4NTJsMi43MDg2MSwtNC4zNjA4NCIgaWQ9InN2Z182IiBmaWxsPSIjYTBhMGEwIiBzdHJva2U9IiMwMDAwMDAiPjwvcGF0aD4KCQkgICA8cGF0aCBkPSJtMTQuMjc1NjQsNi43NjI1OGMtMC4yNTg3MiwwLjcyNTYyIC0wLjQwNzM1LDEuNjU2MzIgLTAuMzM4MTIsMi4xNTQzMmwyLjkwNzg0LDEuMjUwOWMwLjMwOTYxLC0wLjIxMjEyIDEuMDgxOTgsLTEuMTgxNCAxLjA4MTk4LC0xLjczNzM2IiBpZD0ic3ZnXzciIGZpbGw9InVybCgjc3ZnXzMpIiBzdHJva2U9IiMwMDAwMDAiPjwvcGF0aD4KCQkgICA8cGF0aCBkPSJtMTYuMjg4OTMsMC4zNzUxOWwtMi40NjQxMyw1LjkzMDRsNC43NjQ4MSwyLjM5NDM1bDIuMTMxNzgsLTQuOTY3MzUiIGlkPSJzdmdfOCIgZmlsbD0idXJsKCNzdmdfMykiIHN0cm9rZT0iIzAwMDAwMCI+PC9wYXRoPgoJCSAgPC9nPgoJCSA8L2c+CgkJPC9zdmc+PC9zdmc+">
+					
+				</div>
+		</div>-->
+
+
+</div> <!-- svg_editor -->
+
+<div id="svg_source_editor">
+	<div id="svg_source_overlay"></div>
+	<div id="svg_source_container">
+		<div id="tool_source_back" class="toolbar_button">
+			<button id="tool_source_save">Apply Changes</button>
+			<button id="tool_source_cancel">Cancel</button>
+		</div>
+		<div id="save_output_btns">
+			<p id="copy_save_note">Copy the contents of this box into a text editor, then save the file with a .svg extension.</p>
+			<button id="copy_save_done">Done</button>
+		</div>
+		<form>
+			<textarea id="svg_source_textarea" spellcheck="false"></textarea>
+		</form>
+	</div>
+</div>
+
+
+<div id="svg_docprops">
+	<div id="svg_docprops_overlay"></div>
+	<div id="svg_docprops_container">
+		<div id="tool_docprops_back" class="toolbar_button">
+			<button id="tool_docprops_save">OK</button>
+			<button id="tool_docprops_cancel">Cancel</button>
+		</div>
+
+
+		<fieldset id="svg_docprops_docprops">
+			<legend id="svginfo_image_props">Image Properties</legend>
+			<label>
+				<span id="svginfo_title">Title:</span>
+				<input type="text" id="canvas_title"/>
+			</label>			
+	
+			<fieldset id="change_resolution">
+				<legend id="svginfo_dim">Canvas Dimensions</legend>
+
+				<label><span id="svginfo_width">width:</span> <input type="text" id="canvas_width" size="6"/></label>
+					
+				<label><span id="svginfo_height">height:</span> <input type="text" id="canvas_height" size="6"/></label>
+				
+				<label>
+					<select id="resolution">
+						<option id="selectedPredefined" selected="selected">Select predefined:</option>
+						<option>640x480</option>
+						<option>800x600</option>
+						<option>1024x768</option>
+						<option>1280x960</option>
+						<option>1600x1200</option>
+						<option id="fitToContent" value="content">Fit to Content</option>
+					</select>
+				</label>
+			</fieldset>
+
+			<fieldset id="image_save_opts">
+				<legend id="includedImages">Included Images</legend>
+				<label><input type="radio" name="image_opt" value="embed" checked="checked"/> <span id="image_opt_embed">Embed data (local files)</span> </label>
+				<label><input type="radio" name="image_opt" value="ref"/> <span id="image_opt_ref">Use file reference</span> </label>
+			</fieldset>			
+		</fieldset>
+
+	</div>
+</div>
+
+<div id="svg_prefs">
+	<div id="svg_prefs_overlay"></div>
+	<div id="svg_prefs_container">
+		<div id="tool_prefs_back" class="toolbar_button">
+			<button id="tool_prefs_save">OK</button>
+			<button id="tool_prefs_cancel">Cancel</button>
+		</div>
+
+		<fieldset>
+			<legend id="svginfo_editor_prefs">Editor Preferences</legend>
+
+			<label><span id="svginfo_lang">Language:</span>
+				<!-- Source: http://en.wikipedia.org/wiki/Language_names -->
+				<select id="lang_select">
+				  <option id="lang_ar" value="ar">العربية</option>
+					<option id="lang_cs" value="cs">Čeština</option>
+					<option id="lang_de" value="de">Deutsch</option>
+					<option id="lang_en" value="en" selected="selected">English</option>
+					<option id="lang_es" value="es">Español</option>
+					<option id="lang_fa" value="fa">فارسی</option>
+					<option id="lang_fr" value="fr">Français</option>
+					<option id="lang_fy" value="fy">Frysk</option>
+					<option id="lang_hi" value="hi">&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;, &#2361;&#2367;&#2306;&#2342;&#2368;</option>
+					<option id="lang_it" value="it">Italiano</option>
+					<option id="lang_ja" value="ja">日本語</option>
+					<option id="lang_nl" value="nl">Nederlands</option>
+					<option id="lang_pt-BR" value="pt-BR">Português (BR)</option>
+					<option id="lang_ro" value="ro">Română</option>
+					<option id="lang_ru" value="ru">Русский</option>
+					<option id="lang_sk" value="sk">Slovenčina</option>
+					<option id="lang_zh-TW" value="zh-TW">繁體中文</option>
+				</select>
+			</label>
+
+			<label><span id="svginfo_icons">Icon size:</span>
+				<select id="iconsize">
+					<option id="icon_small" value="s">Small</option>
+					<option id="icon_medium" value="m" selected="selected">Medium</option>
+					<option id="icon_large" value="l">Large</option>
+					<option id="icon_xlarge" value="xl">Extra Large</option>
+				</select>
+			</label>
+
+			<fieldset id="change_background">
+				<legend id="svginfo_change_background">Editor Background</legend>
+				<div id="bg_blocks"></div>
+				<label><span id="svginfo_bg_url">URL:</span> <input type="text" id="canvas_bg_url"/></label>
+				<p id="svginfo_bg_note">Note: Background will not be saved with image.</p>
+			</fieldset>
+			
+			<fieldset id="change_grid">
+				<legend id="svginfo_grid_settings">Grid</legend>
+				<label><span id="svginfo_snap_onoff">Snapping on/off</span><input type="checkbox" value="snapping_on" id="grid_snapping_on"></label>
+				<label><span id="svginfo_snap_step">Snapping Step-Size:</span> <input type="text" id="grid_snapping_step" size="3" value="10"/></label>
+			</fieldset>
+
+			<fieldset id="units_rulers">
+				<legend id="svginfo_units_rulers">Units & Rulers</legend>
+				<label><span id="svginfo_rulers_onoff">Show rulers</span><input type="checkbox" value="show_rulers" id="show_rulers" checked></label>
+				<label>
+					<span id="svginfo_unit">Base Unit:</span>
+					<select id="base_unit">
+						<option value="px">Pixels</option>
+						<option value="cm">Centimeters</option>
+						<option value="mm">Millimeters</option>
+						<option value="in">Inches</option>
+						<option value="pt">Points</option>
+						<option value="pc">Picas</option>
+						<option value="em">Ems</option>
+						<option value="ex">Exs</option>
+					</select>
+				</label>
+				<!-- Should this be an export option instead? -->
+<!-- 
+				<span id="svginfo_unit_system">Unit System:</span>
+				<label>
+					<input type="radio" name="unit_system" value="single" checked="checked"/>
+					<span id="svginfo_single_type_unit">Single type unit</span>
+					<small id="svginfo_single_type_unit_sub">CSS unit type is set on root element. If a different unit type is entered in a text field, it is converted back to user units on export.</small>
+				</label>
+				<label>
+					<input type="radio" name="unit_system" value="multi"/>
+					<span id="svginfo_multi_units">Multiple CSS units</span> 
+					<small id="svginfo_single_type_unit_sub">Attributes can be given different CSS units, which may lead to inconsistant results among viewers.</small>
+				</label>
+ -->
+			</fieldset>
+	
+		</fieldset>
+
+	</div>
+</div>
+
+<div id="dialog_box">
+	<div id="dialog_box_overlay"></div>
+	<div id="dialog_container">
+		<div id="dialog_content"></div>
+		<div id="dialog_buttons"></div>
+	</div>
+</div>
+
+<ul id="cmenu_canvas" class="contextMenu">
+	<li><a href="#cut">Cut</a></li>
+	<li><a href="#copy">Copy</a></li>
+	<li><a href="#paste">Paste</a></li>
+	<li><a href="#paste_in_place">Paste in Place</a></li>
+	<li class="separator"><a href="#delete">Delete</a></li>
+	<li class="separator"><a href="#group">Group<span class="shortcut">G</span></a></li>
+	<li><a href="#ungroup">Ungroup<span class="shortcut">G</span></a></li>
+        <li class="separator"><a href="#move_front">Bring to Front<span class="shortcut">SHFT+CTRL+]</span></a></li>
+	<li><a href="#move_up">Bring Forward<span class="shortcut">CTRL+]</span></a></li>
+	<li><a href="#move_down">Send Backward<span class="shortcut">CTRL+[</span></a></li>
+        <li><a href="#move_back">Send to Back<span class="shortcut">SHFT+CTRL+[</span></a></li>
+</ul>
+
+
+<ul id="cmenu_layers" class="contextMenu">
+	<li><a href="#dupe">Duplicate Layer...</a></li>
+	<li><a href="#delete">Delete Layer</a></li>
+	<li><a href="#merge_down">Merge Down</a></li>
+	<li><a href="#merge_all">Merge All</a></li>
+</ul>
+
+</body>
+</html>
+

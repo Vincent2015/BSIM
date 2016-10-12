@@ -1,0 +1,131 @@
+﻿<div class="loading-animation cen-align hidden">
+	<span></span>
+	<span></span>
+	<span></span>
+</div>
+<div ng-include="'WebContent/res/templete/group-setup.htm'"></div>
+
+<!--  IMChat 对话title -->
+<div class="IMChat-title cl">
+	<h2 class="title-item single z" ng-if="chattype.chattype=='chat'" title="查看个人信息" ng-click="goToPersonInfo_title($event)" ng-bind="chatiteminfo.name | limitTo:15">
+         </h2>
+	<h2 class="title-item group z" ng-if="chattype.chattype=='groupchat'" ng-bind="chatiteminfo.name | limitTo:15">
+         </h2>
+
+	<ul class="operate-item y">
+		<li class="" ng-show="false"></li>
+		<li class="" ng-show="chatiteminfo.type=='chat'" title="单聊转群聊" ng-click="personSetup_Click()"></li>
+		<li class="" ng-show="chatiteminfo.type=='groupchat'" title="群组信息" ng-click="groupSetup_Click()" onclick="jQuery('.IMChat-group-slide').removeClass('hidden')"></li>
+	</ul>
+</div>
+<!-- 消息、人员展现窗口 -->
+<div class="IMChat-entity-display message" infinite-scroll="pullHistoryMessage()" can-load="canLoad">
+
+	<!-- 消息实体 -->
+	<ul class="message-entity" ng-click="scanePic($event);">
+
+		<!--   <li class="operate-reminder">您已经添加康康为好友</li>-->
+		<!-- 时间提示 -->
+		<!--    <li class="timer-reminder">昨天 21:50</li>-->
+
+		<li class="cl" ng-repeat="item in chatMessages track by $index" ng-class="{true:'message-iterlocutors',false:'message-self'}[item._sendType=='received']">
+			<div class="msg-time">{{item.dateline |date:"MM-dd HH:mm"}}</div>
+			<!--单聊-->
+			<div class="cl" ng-class="{true:'z',false:'y'}[item._sendType=='received']" ng-if="item._type=='chat'">
+				<span ng-click="goToPersonInfo_chat(item,$event)" class="photocard rainbow-{{item._fromVcard.nickname|getFirstLetter}} avt-s-l" ng-class="{true:'z',false:'y'}[item._sendType=='received']" ng-bind="item._fromVcard.nickname | cutString:1:2">{{item._fromVcard.nickname}}</span>
+				<div class="dialog-card">
+					<div class="namecard" ng-bind="item._fromVcard.nickname">
+						{{item._fromVcard.nickname}}
+					</div>
+					<em class="arrow">
+                    	<span></span>
+                    	<span></span>
+                    </em>
+					<div class="dialog-content">
+						<!--{{item}}-->
+						<div class="msg-read" ng-if="item._isReaded=='readed'">已读</div>
+						<div class="msg-unread" ng-if="item._isReaded=='unreaded'">未读</div>
+						<pre ng-if="'imchat201_imchat202'.indexOf(item._templateCode)>=0" ng-bind-html="item._data.content | expressionFilter"><!--{{item._data.content}}--></pre>
+						<img ng-if="'imchat801_imchat802'.indexOf(item._templateCode)>=0" ng-src="{{item._data.content.path}}" class="chat-img">
+						<span ng-if="'imchat401_imchat402'.indexOf(item._templateCode)>=0"><img class="file-icon" ng-src="WebContent/res/skin/palmyy/images/filetype/{{item._data.content.type}}.png" on-img-error="WebContent/res/skin/palmyy/images/filetype/file_default.jpg"><a href="{{item._data.content.path}}" noopen="true"  imopenurl target="_top">{{item._data.content.name}}</a></span>
+						<span ng-if="'imchat6402_imchat6402'.indexOf(item._templateCode)>=0"><img class="file-icon" ng-src="WebContent/res/skin/palmyy/images/filetype/audio.png" on-img-error="WebContent/res/skin/palmyy/images/filetype/file_default.jpg">您收到一条语音消息，请使用移动端打开</span>
+
+					</div>
+				</div>
+			</div>
+
+			<!--群聊-->
+			<div class="cl" ng-class="{true:'z',false:'y'}[item._sendType=='received']" ng-if="item._type=='groupchat'">
+				<span ng-click="goToPersonInfo_chat(item,$event)" class="photocard rainbow-{{item._fromRosterVcard.nickname|getFirstLetter}} avt-s-l" ng-class="{true:'z',false:'y'}[item._sendType=='received']" ng-if="item._sendType=='received'" ng-bind="item._fromRosterVcard.nickname | cutString:1:2">{{item._formRosterVcard.nickname}}</span>
+
+				<span ng-click="goToPersonInfo_chat(item,$event)" class="photocard rainbow-{{item._fromRosterVcard.nickname|getFirstLetter}} avt-s-l" ng-class="{true:'y',false:'z'}[item._sendType=='send']" ng-if="item._sendType=='send'" ng-bind="item._fromRosterVcard.nickname | cutString:1:2">{{item._fromRosterVcard.nickname}}</span>
+				<div class="dialog-card" ng-if="item._sendType=='received'">
+					<div class="namecard" ng-bind="item._fromRosterVcard.nickname">
+					</div>
+					<em class="arrow">
+                    	<span></span><span></span>
+                    </em>
+
+					<div class="dialog-content">
+						<pre ng-if="'imchat201_imchat202'.indexOf(item._templateCode)>=0" ng-bind-html="item._data.content | expressionFilter"><!--{{item._data.content}}--></pre>
+						<img ng-if="'imchat801_imchat802'.indexOf(item._templateCode)>=0" ng-src="{{item._data.content.path}}" class="chat-img">
+						<span ng-if="'imchat401_imchat402'.indexOf(item._templateCode)>=0"><img class="file-icon" ng-src="WebContent/res/skin/palmyy/images/filetype/{{item._data.content.type}}.png" on-img-error="WebContent/res/skin/palmyy/images/filetype/file_default.jpg"><a href="{{item._data.content.path}}" noopen="true"  imopenurl   target="_top">{{item._data.content.name}}</a></span>
+						<span ng-if="'imchat6402_imchat6402'.indexOf(item._templateCode)>=0"><img class="file-icon" ng-src="WebContent/res/skin/palmyy/images/filetype/audio.png" on-img-error="WebContent/res/skin/palmyy/images/filetype/file_default.jpg">您收到一条语音消息，请使用移动端打开</span>
+					</div>
+				</div>
+				<div class="dialog-card" ng-if="item._sendType=='send'">
+					<div class="namecard" ng-bind="item._fromRosterVcard.nickname">
+						{{item._fromRosterVcard.nickname}}
+					</div>
+					<em class="arrow">
+                    	<span></span><span></span>
+                    </em>
+
+					<div class="dialog-content">
+						<pre ng-if="'imchat201_imchat202'.indexOf(item._templateCode)>=0" ng-bind-html="item._data.content | expressionFilter"><!--{{item._data.content}}--></pre>
+						<img ng-if="'imchat801_imchat802'.indexOf(item._templateCode)>=0" ng-src="{{item._data.content.path}}" class="chat-img">
+						<span ng-if="'imchat401_imchat402'.indexOf(item._templateCode)>=0"><img class="file-icon" ng-src="WebContent/res/skin/palmyy/images/filetype/{{item._data.content.type}}.png" on-img-error="WebContent/res/skin/palmyy/images/filetype/file_default.jpg"><a href="{{item._data.content.path}}"  noopen="true"  imopenurl  target="_top">{{item._data.content.name}}</a></span>
+					</div>
+				</div>
+			</div>
+		</li>
+
+	</ul>
+	<!-- 联系人实体 -->
+</div>
+<!-- IMChat 富文本框 -->
+<button id="check_latest" ng-show="latest_btn.show" ng-click="checkLatest();">新消息</button>
+<div class="IMChat-richTextBox cl">
+	<div class="IMChat-as-center">
+		<!-- 发送按钮 -->
+		<button class="IMChat-send-btn y" disabled="true" ng-click="sendMessage()">
+		</button>
+		<div class="IMChat-editBox">
+			<div class="expression-pannel" id="expression-pannel" ng-if="expressionShow.show">
+				<ul>
+					<li ng-repeat="exp in exps.data" ng-click="addFace($index)"><img ng-src="{{exps.folder}}{{exp.url}}" /></li>
+				</ul>
+			</div>
+			<!-- 编辑工具 -->
+			<ul class="edit-toolsbar">
+				<input id="file_upload_input" ng-model="filename.file" onchange="angular.element(this).scope().sendpicFile(this)" style="visibility:hidden; height:1px;width:1px;" type="file">
+				<input id="file_upload_inputfile" ng-model="filename.file" onchange="angular.element(this).scope().sendFile(this)" style="visibility:hidden; height:1px;width:1px;" type="file">
+				<li class="expression-tool" ng-click="expressionShow.show=true"></li>
+				<li class="file-tool" onclick="jQuery('#file_upload_inputfile').trigger('click')"></li>
+				<li class="picture-tool" onclick="jQuery('#file_upload_input').trigger('click')"></li>
+				<li class="screenshot-tool relative" id="captureBtn" ng-if="install.isinstall&&iswin" ng-click="capturepic()" title="按shift可显示桌面端,ctrl+alt+x 快捷键截屏">
+						<!--<span></span>
+						<ul class="hidden">
+							<li>Shift保留窗口</li>
+							<li>Ctrl+Alt+X</li>
+						</ul>-->
+				</li>
+			</ul>
+			<!-- 文字编辑区 -->
+			<div class="textedit-box-container">
+				<textarea class="textedit-box" maxlength="1000" ng-keypress="presskey($event)" ng-keyup="handleInputMsg($event);" id="IMChat_msg_cont">
+				</textarea>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,176 @@
+﻿<div class="loading-animation cen-align hidden">
+	<span></span>
+	<span></span>
+	<span></span>
+</div>
+<div ng-include="'message/angular/template/group-setup.htm'"></div>
+
+<!--  IMChat 对话title -->
+<div class="IMChat-title cl">
+	<h2 class="title-item single z" ng-if="chattype.chattype=='chat'" title="查看个人信息" ng-click="goToPersonInfo_title($event)" ng-bind="chatiteminfo.name | limitTo:15"></h2>
+	<h2 class="title-item group z" ng-if="chattype.chattype=='groupchat'" ng-bind="chatiteminfo.name | limitTo:15"></h2>
+	<h2 class="title-item group z"  ng-if="chattype.chattype=='pubaccount'" ng-bind="chatiteminfo.name | limitTo:15"></h2>
+	
+	<ul class="operate-item y">
+		<li class="" ng-show="false"></li>
+		<li class="" ng-show="chatiteminfo.type=='chat'" title="单聊转群聊" ng-click="personSetup_Click()"></li>
+		<li class="" ng-show="chatiteminfo.type=='groupchat'" title="群组信息" ng-click="groupSetup_Click()" onclick="jQuery('.IMChat-group-slide').removeClass('hidden')"></li>
+	</ul>
+</div>
+
+<!-- 消息、人员展现窗口 -->
+<div class="IMChat-entity-container">
+<div class="IMChat-entity-display message" infinite-scroll="pullHistoryMessage()" can-load="canLoad">
+
+	<!-- 消息实体 -->
+	<ul class="message-entity" ng-click="scanePic($event);">
+
+		<!--   <li class="operate-reminder">您已经添加康康为好友</li>-->
+		<!-- 时间提示 -->
+		<!--    <li class="timer-reminder">昨天 21:50</li>-->
+
+		<li class="cl" ng-repeat="item in chatMessages track by $index" ng-class="{true:'message-iterlocutors',false:'message-self'}[item.received==true]">
+			<div class="msg-time" ng-bind="item.dateline |date:'MM-dd HH:mm'"></div>
+			<!--单聊-->
+			<div class="cl" ng-class="{true:'z',false:'y'}[item.received==true]" ng-if="item.type=='chat'">
+				<span ng-click="goToPersonInfo_chat(item,$event)" class="photocard rainbow-{{item.from.name|getFirstLetter}} avt-s-l" ng-class="{true:'z',false:'y'}[item.received==true]" ng-bind="item.from.name | cutString:1:2">{{item.from.name}}
+				</span>
+				<div class="dialog-card">
+					<div class="namecard" ng-bind="item.from.name">
+					</div>
+					<em class="arrow">
+                    	<span></span>
+                    	<span></span>
+                    </em>
+					<div class="dialog-content">
+						<div class="msg-read" ng-if="item.sendState=='readed'">已读</div>
+						<div class="msg-unread" ng-if="item.sendState=='unreaded'">未读</div>
+						<pre ng-if="item.templateCode == 2" ng-bind-html="item.data.content| expressionFilter"></pre>
+						<pre ng-if="item.templateCode == 1024" ng-bind-html="item.data.content.text| expressionFilter" ng-click="listenToWhiteBorad(item.data.content,$event)" style="cursor: pointer;"></pre>
+						
+						<img ng-if="item.templateCode == 8" ng-src="{{item.data.content.path}}" class="chat-img">
+						<span ng-if="item.templateCode == 4"><img class="file-icon" ng-src="message/angular/style/images/filetype/{{item.data.content.type}}.png" on-img-error="message/angular/style/images/filetype/file_default.jpg"><a href="{{item.data.content.path}}" noopen="true"  imopenurl target="_top">{{item.data.content.name}}</a></span>
+						<span ng-if="item.templateCode == 64"><img class="file-icon" ng-src="message/angular/style/images/filetype/audio.png" on-img-error="message/angular/style/images/filetype/file_default.jpg">您收到一条语音消息，请使用移动端打开</span>
+
+					</div>
+				</div>
+			</div>
+
+			<!--群聊-->
+			<div class="cl" ng-class="{true:'z',false:'y'}[item.received==true]" ng-if="item.type=='groupchat'">
+				<span ng-click="goToPersonInfo_chat(item,$event)" class="photocard rainbow-{{item.fromRoster.name|getFirstLetter}} avt-s-l" ng-class="{true:'z',false:'y'}[item.received==true]" ng-if="item.received==true" ng-bind="item.fromRoster.name | cutString:1:2">{{item.fromRoster.name}}</span>
+				<span ng-click="goToPersonInfo_chat(item,$event)" class="photocard rainbow-{{item.fromRoster.name|getFirstLetter}} avt-s-l" ng-class="{true:'y',false:'z'}[item.received==false]" ng-if="item.received==false" ng-bind="item.fromRoster.name| cutString:1:2">{{item.fromRoster.name}}</span>
+				<div class="dialog-card" ng-if="item.received==true">
+					<div class="namecard" ng-bind="item.fromRoster.name">
+					</div>
+					<em class="arrow">
+                    	<span></span><span></span>
+                    </em>
+
+					<div class="dialog-content">
+						<pre ng-if="item.templateCode == 2" ng-bind-html="item.data.content| expressionFilter"></pre>
+						<pre ng-if="item.templateCode == 1024" ng-bind-html="item.data.content.text| expressionFilter" ng-click="listenToWhiteBorad(item.data.content,$event)" style="cursor: pointer;"></pre>
+						
+						<img ng-if="item.templateCode == 8" ng-src="{{item.data.content.path}}" class="chat-img">
+						<span ng-if="item.templateCode == 4"><img class="file-icon" ng-src="message/angular/style/images/filetype/{{item.data.content.type}}.png" on-img-error="message/angular/style/images/filetype/file_default.jpg"><a href="{{item.data.content.path}}" noopen="true"  imopenurl   target="_top">{{item.data.content.name}}</a></span>
+						<span ng-if="item.templateCode == 64"><img class="file-icon" ng-src="message/angular/style/images/filetype/audio.png" on-img-error="message/angular/style/images/filetype/file_default.jpg">您收到一条语音消息，请使用移动端打开</span>
+					</div>
+				</div>
+				<div class="dialog-card" ng-if="item.received==false">
+					<div class="namecard" ng-bind="item.fromRoster.name">
+						{{item.fromRoster.name}}
+					</div>
+					<em class="arrow">
+                    	<span></span><span></span>
+                    </em>
+
+					<div class="dialog-content">
+						<pre ng-if="item.templateCode == 2" ng-bind-html="item.data.content| expressionFilter"></pre>
+						<pre ng-if="item.templateCode == 1024" ng-bind-html="item.data.content.text| expressionFilter" ng-click="listenToWhiteBorad(item.data.content,$event)" style="cursor: pointer;"></pre>
+						<img ng-if="item.templateCode == 8" ng-src="{{item.data.content.path}}" class="chat-img">
+						<span ng-if="item.templateCode == 4"><img class="file-icon" ng-src="message/angular/style/images/filetype/{{item.data.content.type}}.png" on-img-error="message/angular/style/images/filetype/file_default.jpg"><a href="{{item.data.content.path}}"  noopen="true"  imopenurl  target="_top">{{item.data.content.name}}</a></span>
+					</div>
+				</div>
+			</div>
+			
+			 <!--公众号消息-->
+            <div class="cl" ng-class="{true:'z',false:'y'}[item.received==true]" ng-if="item.type=='pubaccount'">
+                <span  class="photocard rainbow-{{'消息'|getFirstLetter}} avt-s-l" ng-class="{true:'z',false:'y'}[item.received==true]"  ng-bind="'消息'" ng-if="!item.business">{{item.from.name}}</span>
+                <span  class="photocard rainbow-{{item.data.content.businessType|getFirstLetter}} avt-s-l" ng-class="{true:'z',false:'y'}[item.received==true]"  ng-bind="item.data.content.businessType" ng-if="item.business"></span>
+                <div class="dialog-card">
+                   	<div class="namecard" ng-if="!item.business" ng-bind="item.from.name">
+					</div>
+					
+					<div class="namecard" ng-if="item.business"  ng-bind="item.data.content.businessName">
+					</div>
+					
+                    <em class="arrow">
+                    	<span></span>
+                    	<span></span>
+                    </em>
+                    <div class="dialog-content">
+                    	<div class="msg-read" ng-if="item.sendState=='readed'">已读</div>
+                    	<div class="msg-unread" ng-if="item.sendState=='unreaded'">未读</div>
+                    	
+                        <pre ng-if="item.templateCode == 2 && !item.business" ng-bind-html="item.data.content | expressionFilter"></pre>
+                        <pre ng-if="item.templateCode == 2 && item.business">
+                        	<a href="{{item.data.content.businessDetailUrl}}" ng-bind-html="item.data.content.messageText" target="_self"></a>
+                        </pre>
+                        <pre ng-if="item.templateCode == 1024" ng-bind-html="item.data.content.text| expressionFilter" ng-click="listenToWhiteBorad(item.data.content,$event)" style="cursor: pointer;"></pre>
+                        
+                        
+                        <img ng-if="item.templateCode == 8" ng-src="{{item.data.content.path}}" class="chat-img">
+                        <span ng-if="item.templateCode == 4"><img class="file-icon" ng-src="message/angular/style/images/filetype/{{item.data.content.type}}.png" on-img-error="message/angular/style/images/filetype/file_default.jpg"><a href="{{item.data.content.path}}" noopen="true"  imopenurl target="_top">{{item.data.content.name}}</a></span>
+                        
+                        <!-- 单图文 -->
+                        <pre ng-if="item.templateCode == 16"  ng-bind-html="item.data.title"></pre>
+                        <img  ng-if="item.templateCode == 16" ng-src="{{getfileurl(item.data.thumbId)}}"  ng-click="openmicroApp(item.data.contentSourceUrl,$event)"  class="chat-pub-img">
+                        
+                        <!-- 多图文 -->
+                        <pre ng-if="item.templateCode == 32"  ng-bind-html="item.title" ></pre>
+                        <img ng-if="item.templateCode == 32" ng-click="openmicroApp(item.contentSourceUrl,$event)"  ng-src="{{getfileurl(item.thumbId)}}" class="chat-pub-img">
+                    </div>
+                </div>
+            </div>
+			
+			
+		</li>
+
+	</ul>
+	<!-- 联系人实体 -->
+</div>
+</div>
+
+<!-- IMChat 富文本框 -->
+<button id="check_latest" ng-show="latest_btn.show" ng-click="checkLatest();">新消息</button>
+
+<div class="IMChat-richTextBox cl" ng-if="chatiteminfo.type!='pubaccount'">
+	<div class="IMChat-as-center">
+		<!-- 发送按钮 -->
+		<button class="IMChat-send-btn y" disabled="true" ng-click="sendMessage()">
+		</button>
+		<div class="IMChat-editBox">
+			<div class="expression-pannel" id="expression-pannel" ng-if="expressionShow.show">
+				<ul>
+					<li ng-repeat="exp in exps.data" ng-click="addFace($index)"><img ng-src="{{exps.folder}}{{exp.url}}" /></li>
+				</ul>
+			</div>
+			<!-- 编辑工具 -->
+			<ul class="edit-toolsbar">
+				<input id="file_upload_input" accept="image/*" ng-model="filename.file" onchange="angular.element(this).scope().sendpicFile(this)" style="visibility:hidden; height:1px;width:1px;" type="file">
+				<input id="file_upload_inputfile" ng-model="filename.file" onchange="angular.element(this).scope().sendFile(this)" style="visibility:hidden; height:1px;width:1px;" type="file">
+				<li class="expression-tool" ng-click="expressionShow.show=true"></li>
+				<li class="file-tool" onclick="jQuery('#file_upload_inputfile').trigger('click')"></li>
+				<li class="picture-tool" onclick="jQuery('#file_upload_input').trigger('click')"></li>
+				<li class="whiteboard-tool" ng-click="openWhiteBoard($event)"></li>
+				<li class="screenshot-tool relative" id="captureBtn" ng-if="install.isinstall&&iswin" ng-click="capturepic()" title="按shift可显示桌面端,ctrl+alt+x 快捷键截屏">
+				</li>
+			</ul>
+			<!-- 文字编辑区 -->
+			<div class="textedit-box-container">
+				<textarea class="textedit-box" maxlength="1000" ng-keypress="presskey($event)" ng-keyup="handleInputMsg($event);" id="IMChat_msg_cont">
+				</textarea>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,57 @@
+<div class="IMChat-list msg z" ng-if="'RECENTLIST' | getSpectacle">
+	
+	<!-- 搜索 -->
+	<div class="IMChat-search" ng-controller="personSearchController">
+	    <div>
+		   <ui-select ng-model="multipleDemo.selectedPeopleWithGroupBy" theme="bootstrap"  title="搜索联系人" on-select="goToPersoninfo_Search($item)"
+                ng-disabled="disabled">
+		    <ui-select-match placeholder="联系人">{{$select.selected.name}}</ui-select-match>
+		    <ui-select-choices group-by="someGroupFn" repeat="search in searchList"  refresh="refreshPersons($select.search)" refresh-delay="300" >
+		      <div ng-bind-html="search.name | highlight: $select.search"   ng-click="goToMessage_Search(search,$event)"></div>
+		       <div class="chat">
+		            <!-- <span class="chatbtn {{search.className}}">{{search.action}}</span>-->
+		       </div>
+		      <small>
+		       <span ng-bind-html="''+search.email | highlight: $select.search"   ng-click="goToMessage_Search(search,$event)"></span>
+		      </small>
+		    </ui-select-choices>
+		    </ui-select>
+			
+        </div>
+	</div>
+	
+	<div class="list-wrapper">
+		    <div  ng-class="{cur: $state.includes('imhome.message2',{personId:item.id,personName:item.name})}"  class="list-item" ng-repeat="item in recentList | orderBy:'index':true " ng-click="goToMessage(item)">
+		        
+		        <div class="l-blk" >
+		            <span  ng-click="removeitem(item,$event)"></span>
+		            <div class="avt-s-l on-line rainbow-{{item.name|getFirstLetter}} sys-icon-man" ng-if="item.type=='chat'"   ng-class="{true:'on-line',false:'off-line'}[getUserCurrentState(item)]" ng-bind-html="item.name | cutString:1:2"></div>
+	                <div class="avt-s-l g-history  rainbow-{{'群组'|getFirstLetter}}  sys-icon-man" ng-if="item.type=='groupchat'"    ng-bind-html="'群组'"></div>
+	                <div class="avt-s-l g-history  rainbow-{{item.name|getFirstLetter}} sys-icon-man" ng-if="item.name&&item.type=='shenpi'"    ng-bind-html="'审批'"></div>
+	                <div class="avt-s-l g-history  rainbow-{{item.name|getFirstLetter}} sys-icon-man" ng-if="item.name&&item.type=='tixing'"    ng-bind-html="item.name | cutString:1:2"></div>
+	                
+                    <div class="avt-s-l g-history  rainbow-{{'消息'|getFirstLetter}}  sys-icon-man" ng-if="!item.businessType && item.type=='pubaccount'"   ng-bind-html="'消息'"></div>
+                    <div class="avt-s-l g-history  {{item.businessType.key}} sys-icon-man" ng-if="item.businessType && item.type=='pubaccount'"   ng-bind-html="item.businessType.value"></div>
+		        </div>
+		        
+		         <div class="r-blk" >
+		            <div class="clearfix">
+		            	<div ng-if="!istoday(item.dateline)"  class="y latest-time">{{item.dateline| date:"MM-dd"}}</div>
+		            	<div ng-if="istoday(item.dateline)"  class="y latest-time">{{item.dateline| date:"HH:mm"}}</div>
+		            	<div class="y unread-msg-num"  ng-if="getunReadmessageCounts(item.id)"    ng-bind="getunReadmessageCounts(item.id)"></div>
+                         <i class="text-ellipsis"  ng-if="item.name"  ng-bind-html="item.name "></i>
+                         <i class="text-ellipsis" ng-if="!item.name"  ng-bind-html="item.id "></i>
+		                 <div class="y weak"></div>
+		            </div>
+		            <div class="weak text-ellipsis"  ng-bind-html="item.latestState">
+                    </div>
+		        </div>
+		    </div>
+	</div>	    
+</div>
+
+<div ui-view id="IMChat-content" class="IMChat-dialog">
+	<div id="default_blank">
+		<div class="developer-info">用友有信出品</div>
+	</div>
+</div>

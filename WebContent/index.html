@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="renderer" content="webkit" />
+    <title>UDN WebIM</title>
+    <script type="text/javascript">
+        /*
+        * IE6\7\8
+        */
+        var agent = navigator.userAgent.match(/MSIE\s(\d)./);
+        if (agent && agent[1]) {
+            var IEversion = agent[1];
+            if (window.parseInt(IEversion) < 8) {
+                alert("您的浏览器不支持此页面，请使用chrome、firefox、IE9以上版本,或使用极速模式！");
+                var _html = document.getElementsByTagName('html')[0];
+                _html.parentNode.removeChild(_html);
+            } else {
+                var snsLoginConflict = false;
+            }
+        }
+
+        function getSNSBasePath() {
+            return location.href.replace('index.html', '');
+        };
+    </script>
+    <link rel="stylesheet" href="res/skin/palmyy/css/IMChatstyle.css" type="text/css" />
+</head>
+<body>
+    <!-- IMChat 主框架  start-->
+    <div class="IMChat-frame full-screen">
+        <!-- 标题 Banner -->
+        <!--<div class="IMChat-banner"></div>-->
+        <div class="IMChat-body cl">
+            <div class="IMChat-as-center">
+                <!-- IMChat 菜单栏 -->
+                <div class="IMChat-menu z">
+                    <!-- MAC OS close -->
+                    <ul class="IMChat-mac-close">
+                        <li class="close-item"></li>
+                        <li class=""></li>
+                        <li class=""></li>
+                    </ul>
+                    <!-- 展示本人名片 -->
+                    <div class="IMChat-namecard">
+                        <p class="photocard">
+                            鹏</p>
+                        <p class="namecard">
+                            鹏</p>
+                    </div>
+                    <!-- 菜单 -->
+                    <ul class="IMChat-menu-items">
+                        <li class="message-item cur" ui-sref="page3">消息</li>
+                        <li class="schedule-item">日程</li>
+                        <li class="addressbook-item">通讯录</li>
+                        <li class="app-item">应用</li>
+                    </ul>
+                    <!-- 设置 -->
+                    <ul class="IMChat-menu-settings">
+                        <li class="setting-item"></li>
+                    </ul>
+                </div>
+                <!-- IMChat 列表栏 -->
+                <div class="IMChat-list z">
+                    <!-- IMChat 搜索框 -->
+                    <div class="IMChat-search">
+                        <input placeholder="搜索联系人、群组" />
+                    </div>
+                    <!-- IMChat 信息列表 -->
+                    <div class="IMChat-list-items">
+                        <!-- 列表项 -->
+                        <div class="list-item">
+                            <div class="l-blk">
+                                <span></span>
+                                <div class="pie-s rainbow-a">
+                                    信</div>
+                            </div>
+                            <div class="r-blk">
+                                <div>
+                                    新的朋友<div class="y weak">
+                                        5-30</div>
+                                </div>
+                                <div class="weak">
+                                    新的好友推荐</div>
+                            </div>
+                        </div>
+                        <!-- 列表项 -->
+                        <div class="list-item">
+                            <div class="l-blk">
+                                <span></span>
+                                <div class="pie-s rainbow-q sys-icon-man">
+                                    有</div>
+                            </div>
+                            <div class="r-blk">
+                                <div>
+                                    新的朋友<div class="y weak">
+                                        5-30</div>
+                                </div>
+                                <div class="weak">
+                                    新的好友推荐</div>
+                            </div>
+                        </div>
+                        <!-- 列表项 -->
+                        <div class="list-item">
+                            <div class="l-blk">
+                                <span></span>
+                                <div class="pie-g">
+                                    <div class="rainbow-r">
+                                        <b>信</b></div>
+                                    <div class="rainbow-g">
+                                        <b>信</b></div>
+                                    <div class="rainbow-q">
+                                        <b>信</b></div>
+                                    <div class="rainbow-c">
+                                        <b>信</b></div>
+                                </div>
+                            </div>
+                            <div class="r-blk">
+                                <div>
+                                    新的朋友<div class="y weak">
+                                        5-30</div>
+                                </div>
+                                <div class="weak">
+                                    新的好友推荐</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  IMChat 对话框 -->
+                <div class="IMChat-dialog">
+                    <!--  IMChat 对话title -->
+                    <div class="IMChat-title cl">
+                        <h2 class="title-item z">
+                            荣启彬</h2>
+                        <ul class="operate-item y">
+                            <li class=""></li>
+                            <li class=""></li>
+                            <li class=""></li>
+                        </ul>
+                    </div>
+                    <!-- 消息、人员展现窗口 -->
+                    <div class="IMChat-entity-display">
+                        <!-- 消息实体 -->
+                        <ul class="message-entity">
+                            <!-- 操作提示 -->
+                            <li class="operate-reminder">您已经添加康康为好友</li>
+                            <!-- 时间提示 -->
+                            <li class="timer-reminder">昨天 21:50</li>
+                            <!-- 对话人文本消息 -->
+                            <li class="message-iterlocutors cl">
+                                <div class="z cl">
+                                    <span class="z photocard">康</span>
+                                    <div class="dialog-card">
+                                        <div class="namecard">
+                                            康俊强</div>
+                                        <em class="arrow"></em>
+                                        <div class="dialog-content">
+                                            啊飒飒大撒大撒旦撒旦撒的撒打算打算打算的撒啊飒飒大撒大撒旦撒旦撒的撒打算打算打算的撒啊飒 飒大撒大撒旦撒旦撒的撒打算打算打算的撒啊飒飒大撒大撒旦撒旦撒的撒打算打算打算的撒
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- 本人文本消息 -->
+                            <li class="message-self cl">
+                                <div class="y cl">
+                                    <span class="y photocard">彬</span>
+                                    <div class="dialog-card">
+                                        <div class="namecard">
+                                            荣启彬</div>
+                                        <em class="arrow"></em>
+                                        <div class="dialog-content">
+                                            啊
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- 对话人图片消息 -->
+                            <li class="message-iterlocutors cl">
+                                <div class="z cl">
+                                    <span class="z photocard">康</span>
+                                    <div class="dialog-card">
+                                        <div class="namecard">
+                                            康俊强</div>
+                                        <em class="arrow"></em>
+                                        <div class="dialog-content">
+                                            <img src="http://udn.yyuap.com/data/attachment/portal/201508/24/095114aplnm9n121pmz53h.jpg"
+                                                class="chat-img">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- 本人图片消息 -->
+                            <li class="message-self cl">
+                                <div class="y cl">
+                                    <span class="y photocard">彬</span>
+                                    <div class="dialog-card">
+                                        <div class="namecard">
+                                            荣启彬</div>
+                                        <em class="arrow"></em>
+                                        <div class="dialog-content">
+                                            <img src="http://udn.yyuap.com/data/attachment/portal/201508/24/095114aplnm9n121pmz53h.jpg"
+                                                class="chat-img">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- 联系人实体 -->
+                    </div>
+                    <!-- IMChat 富文本框 -->
+                    <div class="IMChat-richTextBox cl">
+                        <div class="IMChat-as-center">
+                            <!-- 发送按钮 -->
+                            <button class="IMChat-send-btn y">
+                            </button>
+                            <div class="IMChat-editBox">
+                                <!-- 编辑工具 -->
+                                <ul class="edit-toolsbar">
+                                    <li class="file-tool"></li>
+                                    <li class="expression-tool"></li>
+                                    <li class="screenshot-tool"></li>
+                                </ul>
+                                <!-- 文字编辑区 -->
+                                <div class="textedit-box-container">
+                                    <div contenteditable="true" class="textedit-box">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="res/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="res/js/YYIMSDK.js"></script>
+    <script type="text/javascript" src="res/js/YYIMUIDemo.js"></script>
+    <!-- 版本号：?_=20150901 -->
+    <script type="text/javascript" src="res/js/YYIMinit.js"></script>
+
+    <script type="text/javascript">
+    
+    
+    
+    
+     
+    
+    
+    </script>
+</body>
+</html>

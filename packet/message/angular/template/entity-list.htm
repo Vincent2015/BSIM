@@ -1,0 +1,6 @@
+<ul class="IMChat-entity-list hidden">
+	<li ng-repeat="entity in groupMembers" ng-click="appendToAt($event,entity)">
+	    <div class="avt-s-l rainbow-{{entity.name|getFirstLetter}} sys-icon-man" ng-bind-html="entity.name | cutString:1:2"></div>
+	    <span ng-bind-html="entity.name" class="entity-name"></span>  
+	</li>
+</ul>

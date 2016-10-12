@@ -1,0 +1,71 @@
+<div class="IMChat-model-bd IMChat-set-vcard hidden"><!-- ng-controller="personcardController"-->
+    <form>
+    <div class="form-head">
+        <div class="close-model win" ng-if="iswin"  onclick="jQuery('.IMChat-model-cover').addClass('hidden');jQuery(this).closest('.IMChat-model-bd').addClass('hidden');">
+        </div>
+        <div class="close-model mac" ng-if="ismac"  onclick="jQuery('.IMChat-model-cover').addClass('hidden');jQuery(this).closest('.IMChat-model-bd').addClass('hidden');">
+        </div>
+        <div class="base-info">
+            <!--<div class="y fans-num">
+                299</div>-->
+            <div class="avt rainbow-{{personCardInfo.name|getFirstLetter}} "  >
+                {{personCardInfo.name| cutString:1:2}}</div>
+            <div class="name-info">
+                {{personCardInfo.name}}<span ng-if="false" onclick="jQuery(this).addClass('hidden').siblings('p').removeClass('hidden')">备注</span><p
+                    class="hidden">
+                   <input name="" readonly="true" value="" ng-model="personCardInfo.signature"  /><span class="confirm">确定</span>
+      
+                    <p>
+            </div>
+        </div>
+    </div>
+    <div class="form-bd">
+        <div class="avt-set hidden">
+            <div class="img-can weak cen-align" style="font-size: 12px;">
+                <span>仅支持JPG、JPEG、PNG且小于5M</span>
+                <div class="img">
+                    <!--<img src="message/style/images/avt_default.png">-->
+                </div>
+            </div>
+            <div class="foot-btns">
+                <div>
+                    确认</div>
+                <div onclick="jQuery(this).closest('.avt-set').addClass('hidden')">
+                    取消</div>
+            </div>
+        </div>
+        <ul>
+		    <li>
+				<label>姓名</label>
+				<input name="" readonly="true" value="" ng-model="personCardInfo.name" />
+			</li>
+			
+			<li>
+				<label>邮箱</label>
+				<input name="" readonly="true" value="" ng-model="personCardInfo.email" />
+			</li>
+			
+			<li>
+				<label>公司</label>
+				<input name="" readonly="true" value="" ng-model="personCardInfo.office" />
+			</li>
+			
+			<li>
+				<label>公司电话</label>
+				<input name="" readonly="true" value="" ng-model="personCardInfo.officePhone" />
+			</li>
+			
+        </ul>
+    </div>
+    <div class="form-foot clearfix">
+        <div class="user-options" ng-hide="isOperator.isuser" ng-if="!isOperator.isattention"
+            ng-click="add_attention($event)">
+            +关注</div>
+        <div class="user-options" ng-hide="isOperator.isuser" ng-if="isOperator.isattention"
+            ng-click="cancel_attention($event)">
+            取消关注</div>
+        <div class="user-options" ng-click="goToMessageChat($event)" ng-hide="isOperator.isuser">
+            发消息</div>
+    </div>
+    </form>
+</div>

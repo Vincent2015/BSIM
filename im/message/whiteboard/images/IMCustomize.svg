@@ -1,0 +1,13 @@
+<svg width="640" height="480" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
+ <g>
+  <title>Layer 1</title>
+  <circle fill-opacity="0" id="svg_1" r="17.464249" cy="213" cx="232" stroke-width="5" stroke="#9e9999" fill="#000000"/>
+  <line stroke="#9e9999" id="svg_8" y2="214" x2="243" y1="214" x1="221" fill-opacity="0" stroke-linecap="round" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" fill="none"/>
+  <line transform="rotate(2.5261168479919434 232.49999999999903,213.0000000000001) " stroke="#9e9999" id="svg_9" y2="224" x2="233" y1="202" x1="232" fill-opacity="0" stroke-linecap="round" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" fill="none"/>
+  <line stroke="#9e9999" id="svg_10" y2="242" x2="260" y1="226" x1="244" fill-opacity="0" stroke-linecap="round" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" fill="none"/>
+  <circle id="svg_11" fill-opacity="0" r="17.464249" cy="211" cx="290" stroke-width="5" stroke="#9e9999" fill="#000000"/>
+  <line stroke="#9e9999" id="svg_12" y2="212" x2="300.000001" y1="212" x1="280" fill-opacity="0" stroke-linecap="round" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" fill="none"/>
+  <line id="svg_14" stroke="#9e9999" y2="240" x2="318" y1="224" x1="302" fill-opacity="0" stroke-linecap="round" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" fill="none"/>
+ </g>
+</svg>

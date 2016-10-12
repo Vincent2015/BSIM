@@ -1,0 +1,643 @@
+/* images */
+/* common.css */
+.snsim_chat_window_tab_close_btn {
+	background: url('../icons/smallcut_icon.png') center no-repeat;
+}
+
+.sns_psw_change_container .sns_psw_change_bottom .sns_psw_change_btn {
+	background: url('../icons/buttonblue.png') no-repeat;
+}
+.sns_psw_change_container .sns_psw_change_bottom .sns_psw_change_btn_cancel {
+	background: url('../icons/button05_icon.png') no-repeat;
+}
+
+span.invite_btn {
+	background: url("../icons/add01.png") no-repeat;
+}
+
+span.invite_btn:hover {
+	background: url("../icons/add02.png") no-repeat;
+}
+
+div[node-type='snsListTitleContainer'] span.checked, .snsChatRoomnviteRosterICheckBox span.checked {
+	background: url("../icons/checkbox_selected.png") no-repeat;
+}
+
+div[node-type='snsListTitleContainer'] span.unchecked, .snsChatRoomnviteRosterICheckBox span.unchecked {
+	background: url("../icons/checkbox_btn.png") no-repeat;
+}
+
+.snsInviteRosterBody .add_whole_group{
+	background: url("../icons/invite_add_icon.png") no-repeat;
+}
+
+.snsInviteRosterBody .add_whole_group:hover{
+	background: url("../icons/invite_add_icon_hl.png") no-repeat;
+}
+
+.snsInviteRosterBody .group_arrow{
+	background: url('../icons/arrow_bottom.png') no-repeat;
+}
+
+.snsInviteRosterBody .group_arrow_bottom{
+	background: url('../icons/arrow_bottom.png') no-repeat;
+}
+
+.snsInviteRosterBody .group_arrow_right{
+	background: url('../icons/right_arrow.png') no-repeat;
+}
+
+.sns_invite_head {
+	background: url('../icons/bg.png') no-repeat;
+}
+
+.sns_roster_list_wide_menu_btn {
+	background: url('../icons/snsim_icon.png') -22px -148px no-repeat #f8f8f8;
+}
+
+.sns_setting_win .snsim_tit2_rt{
+	background: url('../icons/bg.png') no-repeat;
+}
+
+.edit_vcard_content_btn {
+	background: url('../icons/button05_icon_hl.png') no-repeat;
+}
+
+.sns_vcard_change_btn_div .sns_vcard_change_bottom .sns_vcard_change_btn {
+	background: url('../icons/buttonblue.png') no-repeat;
+}
+.sns_vcard_change_btn_div .sns_vcard_change_bottom .sns_vcard_change_btn_cancel {
+	background: url('../icons/button05_icon.png') no-repeat;
+}
+
+.invite_chatroom_member {
+	background: url('../icons/add_btn.png') no-repeat;
+}
+
+.invite_chatroom_member:hover {
+	background: url('../icons/add_btnhighlight.png') no-repeat;
+}
+
+.system_messages_bg {
+	background: url('../icons/ring.png') no-repeat;
+}
+
+.unread_system_messages {
+	background: url('../icons/ring.gif') no-repeat;
+}
+
+.system_config {
+	background: url('../icons/edic_icon.png') no-repeat;
+}
+
+.system_config:hover {
+	background: url('../icons/edic_icon.png') no-repeat;
+}
+
+.snsim_img_preview_close {
+	background: url('../icons/cut_icon.png') no-repeat;
+}
+
+.snsim_img_preview_close:hover {
+	background: url('../icons/cut_icon.png') no-repeat;
+}
+
+.multi_search {
+	background: url('../icons/search_icon.png') no-repeat;
+}
+
+.multi_search_tab .roster_search_head_icon{
+	background: url('../icons/lefttop_icon.png') no-repeat;
+}
+.multi_search_tab .chatroom_search_head_icon{
+	background: url('../icons/qun_icon.png') no-repeat;
+}
+.multi_search_tab .pubaccount_search_head_icon{
+	background: url('../icons/gongzhong_icon.png') no-repeat;
+}
+
+.multi_search_window_menu .search_head_icon{
+	background: url('../icons/search_icon.png') no-repeat;
+}
+
+.multi_search_window_close {
+	background: url('../icons/cut_icon.png') no-repeat;
+}
+
+.snsim_float_window_close_btn {
+	background: url('../icons/cut_icon.png') no-repeat;
+}
+
+.multi_search_window_close:hover {
+	background: url('../icons/cut_icon.png') no-repeat;
+}
+
+.invite_window .snsim_icon_invite_roster_tab{
+	background: url('../icons/lefttop_icon.png') no-repeat;
+}
+
+.invite_window .snsim_icon_invite_org_tab{
+	background: url('../icons/zuzhi_icon.png') no-repeat;
+}
+
+.invite_window_close {
+	background: url('../icons/cut_icon.png') no-repeat;
+}
+
+.select_rosters_to_invite .unchecked {
+	background: url("../icons/checkbox_btn.png") no-repeat;
+}
+
+.select_rosters_to_invite .checked {
+	background: url("../icons/checkbox_selected.png") no-repeat;
+}
+
+.invite_rosters_footer .submit_btn {
+	background: url('../icons/buttonblue.png') no-repeat;
+}
+
+.invite_rosters_footer .cancel_btn {
+	background: url('../icons/button05_icon.png') no-repeat;
+}
+
+.snsim_upload_file {
+	background: url('../icons/fujian_icon.png') no-repeat;
+}
+
+.sns_webim .sendbox_kind .snsim_iconsend_font {
+	background: url('../icons/font.png') no-repeat;
+}
+
+.set_font_panel .set_font_bold {
+	background: url('../icons/bold.png') no-repeat;
+}
+
+.set_font_panel .set_font_italic {
+	background: url('../icons/italic.png') no-repeat;
+}
+
+.set_font_panel .set_font_underline {
+	background: url('../icons/underline.png') no-repeat;
+}
+
+.chatroom_member_list .close_btn {
+	background: url('../icons/cut_icon.png') no-repeat;
+}
+
+.chatroom_member_list .chatroom_info{
+	background: url('../icons/bg.png') no-repeat;
+}
+
+.chatroom_member_list .see:hover {
+	background: url('../icons/see.png') no-repeat;
+}
+
+.chatroom_member_list .edit:hover {
+	background: url('../icons/edit.png') no-repeat;
+}
+
+.snsim_chatroom_settings_window .top_container{
+	background: url('../icons/bg.png') no-repeat;
+}
+.snsim_chatroom_settings_window .chatroom_settings_close_btn{
+	background: url('../icons/cut_icon.png') center no-repeat;
+}
+.snsim_chatroom_settings_window .avatar_default_preview{
+	background: url('../icons/avatar_change.png') no-repeat;
+}
+
+.snsim_chatroom_settings_window .bottom_container .snsim_confirm_btn .snsim_btn_a {
+	background: url('../icons/buttonblue.png') no-repeat;
+}
+
+.snsim_chatroom_settings_window .bottom_container .snsim_confirm_btn .snsim_btn_a:hover {
+	background: url('../icons/buttonblue_hl.png') no-repeat;
+}
+.snsim_chatroom_settings_window .bottom_container .snsim_confirm_btn .snsim_btn_b {
+	background: url('../icons/button05_icon.png') no-repeat;
+}
+
+.snsim_chatroom_settings_window .bottom_container .snsim_confirm_btn .snsim_btn_b:hover {
+	background: url('../icons/button05_icon_hl.png') no-repeat;
+}
+
+.organization_list_opt {
+	background: url('../icons/edic_icon.png') no-repeat;
+}
+
+.organization_list_opt:hover {
+	background: url('../icons/edic_icon.png') no-repeat;
+}
+
+.snsim_system_roster {
+	background: url('../icons/ring.png') no-repeat;
+}
+
+.snsim_trans_to_muc{
+	background: url('../icons/qun01_icon.png') no-repeat;
+}
+
+/* Huploadify.css */
+.delfilebtn {
+	background: url('../icons/delete_icon.png') no-repeat;
+}
+
+/* perfect-scrollbar.css none */
+
+/* snsim.css */
+.snsim_current_session_group {
+	background: url('../icons/qun_icon.png') no-repeat;
+}
+.snsim_current_session_roster {
+	background: url('../icons/lefttop_icon.png') no-repeat;
+}
+
+.snsim_message_tab_icon{
+	background: url('../icons/message_icon.png') no-repeat;
+}
+.snsim_share_tab_icon{
+	background: url('../icons/files_icon.png') no-repeat;
+}
+
+.snsim_share_file_refresh_btn .refresh_icon{
+	background: url('../icons/refrsh_icon.png') no-repeat;
+}
+.download_btn .download_icon{
+	background: url('../icons/download_icon.png') no-repeat;
+}
+
+.snsim_list_opt {
+	background: url('../icons/edic_icon.png') no-repeat;
+}
+
+.snsim_unread_message_panel .arrow{
+	background: rgba(189, 168, 168, 1) url(../icons/bottomarrow.png) no-repeat;
+}
+
+/* spectrum.css */
+.snsim_current_session_group {
+	background: url('../icons/qun_icon.png') no-repeat;
+}
+.snsim_current_session_roster {
+	background: url('../icons/lefttop_icon.png') no-repeat;
+}
+
+.snsim_message_tab_icon{
+	background: url('../icons/message_icon.png') no-repeat;
+}
+.snsim_share_tab_icon{
+	background: url('../icons/files_icon.png') no-repeat;
+}
+
+.snsim_share_file_refresh_btn .refresh_icon{
+	background: url('../icons/refrsh_icon.png') no-repeat;
+}
+.download_btn .download_icon{
+	background: url('../icons/download_icon.png') no-repeat;
+}
+
+.snsim_list_opt {
+	background: url('../icons/edic_icon.png') no-repeat;
+}
+
+.snsim_unread_message_panel .arrow{
+	background: rgba(189, 168, 168, 1) url(../icons/bottomarrow.png) no-repeat;
+}
+
+/* wbim-frame.css */
+.snsim_chat {
+	background: url('../icons/online_icon.png') no-repeat;
+}
+
+.snsim_unavailable {
+	background: url('../icons/online_icon01.png') no-repeat;
+}
+
+.snsim_dnd {
+	background: url('../icons/online_icon04.png') no-repeat;
+}
+
+.snsim_away, .snsim_xa {
+	background: url('../icons/online_icon03.png') no-repeat;
+}
+
+.snsim_chatroom {
+	background: url('../icons/small.png') no-repeat;
+}
+
+.sns_webim .W_chat_stat.W_chat_stat_systemroster {
+	background: url('../icons/messagesmall_btn.png') no-repeat;
+}
+
+.snsim_icontab_link {
+	background: url('../icons/lefttop_icon.png') no-repeat;
+}
+
+
+.snsim_icontab_single {
+	background: url('../icons/single_icon.png') no-repeat;
+}
+
+.snsim_icontab_group {
+	background: url('../icons/qun_icon.png') no-repeat;
+}
+
+.snsim_icontab_last {
+	background: url('../icons/history01_icon.png') no-repeat;
+}
+
+.snsim_icontab_organization {
+	background: url('../icons/zuzhi_icon.png') no-repeat;
+}
+
+
+.snsim_icon_search_lb {
+	background: url('../icons/search_icon.png') no-repeat;
+}
+
+
+.snsim_icon_leftfold1 {
+	background: url('../icons/in_icon.png') no-repeat;
+}
+
+.snsim_icon_leftfold1:hover {
+	background: url('../icons/in_icon.png') no-repeat;
+}
+
+
+.snsim_icon_rightfold {
+	background: url('../icons/out_icon.png') no-repeat;
+}
+
+.snsim_icon_rightfold:hover {
+	background: url('../icons/out_icon.png') no-repeat;
+}
+
+.snsim_icon_settingY, .snsim_icon_closeY, .snsim_layer_close, .snsim_icon_tipsclose, .sns_webim .icon_warnS, .sns_webim .icon_askS, .snsim_icon_com,
+	background: url(../icons/snsim_icon.png?id=1395747661147) no-repeat;
+}
+
+.snsim_icon_minY {
+	background: url('../icons/middle_left.png') center no-repeat;
+}
+
+.snsim_icon_minY:hover {
+	background: url('../icons/middle_left.png') center no-repeat;
+}
+
+.snsim_iconsend_face {
+	background: url('../icons/smile.png') no-repeat;
+}
+
+.snsim_iconsend_face:hover {
+	background: url('../icons/smile.png') no-repeat;
+}
+
+.snsim_iconsend_img {
+	background: url('../icons/image_icon.png') no-repeat;
+}
+
+#swf_upload_image {
+	background: url('../icons/image_icon.png') no-repeat;
+}
+
+#swf_upload_image:hover {
+	background: url('../icons/image_icon.png') no-repeat;
+}
+
+#SWFUpload_1 {
+	background: url('../icons/fujian_icon.png') no-repeat;
+}
+
+
+#SWFUpload_1:hover {
+	background: url('../icons/fujian_icon.png') no-repeat;
+}
+
+.snsim_iconsend_copysc {
+	background: url('../icons/share_icon.png') no-repeat;
+}
+
+.snsim_iconsend_copysc:hover {
+	background: url('../icons/share_icon.png') no-repeat;
+}
+
+.snsim_icon_shield {
+	background: url('../icons/history_icon.png') no-repeat;
+}
+
+.snsim_icon_shield:hover {
+	background: url('../icons/history_icon.png') no-repeat;
+}
+
+.sns_webim .snsim_icon_groupcreat {
+	background: url("../icons/add_icon.png") no-repeat;
+}
+
+.list_box_fold .sns_snsim_arrow {
+	background: url('../icons/right_arrow.png') no-repeat;
+}
+
+.list_box_unfold .sns_snsim_arrow {
+	background: url('../icons/arrow_bottom.png') no-repeat;
+}
+
+.sns_webim .snsim_win_minD {
+	background: url(../icons/first_add.png?id=1395747661147) 0 -91px repeat-x;
+}
+
+.sns_webim .snsim_list .snsim_fold_btn .btn_click {
+	background: url('../icons/button02_icon.png');
+}
+
+.sns_webim .snsim_list .snsim_fold_btn .btn_click.list_unfold{
+	background: url('../icons/button03_icon.png');
+}
+
+.sns_webim .snsim_dia_box .msg_arr {
+	background: url(../icons/pop_righttoparrow.png) no-repeat;
+}
+
+.sns_webim .snsim_dia_l .msg_arr {
+	background: url(../icons/pop_lefttoparrow.png) no-repeat;
+}
+
+.sns_webim .snsim_btn_sub {
+	background: url('../icons/button_icon.png') no-repeat;
+}
+
+.sns_webim .snsim_p_arr {
+	background: url(../icons/snsim_icon.png?id=1395747661147) -26px -143px;
+}
+
+.sns_webim .snsim_chat_scroll em {
+	background-image: url(../../images/snsim_scroll_bg.png?id=1395747661147);
+}
+
+.rt_icon.snsim_icon_close1 {
+	background: url('../icons/cut_icon.png') no-repeat;
+}
+
+.rt_icon.snsim_icon_close1:hover {
+	background: url('../icons/cut_icon.png') no-repeat;
+}
+
+.snsim_icon_close2 {
+	background: url('../icons/close2_icon.png') center no-repeat;
+}
+
+/* zTreeStyle.css */
+.ztree li ul.line {
+	background: url(../icons/zTree/line_conn.gif) 0 0 repeat-y;
+}
+
+.ztree li span.button {
+	background-image: url("../icons/zTree/zTreeStandard.png");
+}
+
+.ztree li span.button.loading_ico_docu, .ztree li span.button.loading_ico_open, .ztree li span.button.loading_ico_close {
+	background:url("../icons/zTree/loading.gif") no-repeat;
+}
+
+.ztree li span.button.ico_loading {
+	background: url(../icons/zTree/loading.gif) no-repeat scroll 0 0 transparent;
+}
+
+span.tmpzTreeMove_arrow {
+	background-image: url("../icons/zTree/zTreeStandard.png");
+}
+
+
+/******************** others *****************************/
+.sns_webim {
+}
+
+.sns_webim .snsim_list{
+	border: solid 1px #666141;
+}
+
+.sns_webim .snsim_win_mutiperson, .sns_setting_win, .sns_webim .snsim_list .snsim_list_setting .state_setting_btn, .sns_webim .snsim_list .snsim_state_new, .local_search_result, .snsim_unfold .head_config_panel, .sns_webim .snsim_tit2, .sns_webim .sendbox_bar, .sns_webim .sendbox_btn, .sns_webim .snsim_list .snsim_list_setting .list_setting_box, .sns_setting_win_header,.sns_webim .snsim_list .tab_list li a,.sns_webim .snsim_list .snsim_search{
+	background: #3A3531;
+}
+
+.sns_webim, .ztree, .ztree li a, .sns_curchat_title, .sns_webim .snsim_list .snsim_search input, .multi_search_window, .multi_search_input, .snsim_float_window .setting_list li a span, .sns_webim .snsim_dia_box .dia_info .info_date, .snsim_chatroom_settings_window, .chatroom_member_list .chatroom_menubar .members_title {
+	color: #CCC3C3;
+}
+
+.sns_webim .sendbox_area, .snsim_chatroom_settings_window, .sns_invite_search_result, .sns_webim .sendbox_box .sendbox_area, .snsim_chat_window, .sns_setting_win_body,.sns_webim .snsim_list ,.sns_webim .snsim_list .tab_list li.cur a,.sns_webim .snsim_win_mutiperson .snsim_chat_friend_list li.snsim_active,.sns_webim .snsim_chat_dialogue, .sns_sys_config {
+	background: #61564D;
+}
+
+.sns_webim .snsim_list .list_content_li li{
+	border-bottom: 1px solid #3A3531;
+}
+
+.sns_webim .snsim_list .tab_list li a:hover {
+	background: none;
+}
+
+.snsim_float_window .setting_list li:hover, .sns_webim .add_list_box, .sns_webim .snsim_dia_box .dia_info .info_date {
+	background: #5A5855;
+}
+
+.snsim_chat_window_tab_head .snsim_tab_head.cur .list_head_item {
+	background: #BED3D8;
+}
+
+.snsim_chat_lf {
+	background: #3A3531;
+	border-top: 1px solid #3A3531;
+	border-right: 1px solid #3A3531;
+}
+
+.sns_webim .snsim_chat_tips {
+	box-shadow: none;
+}
+
+.sns_webim .snsim_tit2 {
+	border-bottom: 1px solid #3A3531;
+}
+.sns_webim .snsim_chat_box .snsim_chat_up, .sns_webim .snsim_chat_box .snsim_chat_rt .snsim_chat_sendbox, .sns_webim .snsim_chat_box .snsim_chat_rt .snsim_chat_sendbox .sendbox_bar{
+	border-left: 1px solid #3A3531;
+}
+
+.multi_search_window, .multi_search_window_menu, .roster_info {
+	opacity: 0.8;
+	background: #3A3531;
+}
+
+.multi_search_tab li {
+	background: #493D34;
+	border-right: 1px solid #B8B8B8;
+}
+
+.sns_setting_win .snsim_settings_bottom, .sns_vcard_change_btn_div .sns_vcard_change_bottom, .sns_psw_change_container .sns_psw_change_bottom {
+	background: #3A3531;
+}
+
+.sns_share_panel, .sns_webim .snsim_chat_box .tab_list li a.process_tab, .sns_chat_inner_tab, .sns_webim .snsim_chat_box .snsim_dia_chatroom_list .snsim_dia_chatroom_tab_head,.sns_webim .snsim_chat_box .snsim_dia_chatroom_list .snsim_tab_head.cur .snsim_dia_chatroom_tab_head {
+	background: #3A3531;
+}
+
+.snsim_vcard_content_item_value, .sns_psw_change_input{
+	background: #61564D;
+	color: #CCC3C3;
+	border: #61564D 1px solid;
+}
+
+.sns_psw_change_input,.vcard_input_edit, .invite_window_input{
+	border: #d0d0d0 1px solid;
+}
+
+.sns_webim a {
+	color: #8C8C8C;
+}
+.invite_rosters_footer, .multi_search_tab li.cur, .search_result_head, .snsim_layer_faces .detail, .multi_search_window, .multi_search_window_menu, .roster_info, .snsim_float_window, .snsim_float_window .setting_list{
+	background: #493D34;
+	opacity: 1;
+}
+ .invite_window, .invite_window .snsim_selected_container, .invite_window_input, .invite_window .snsim_tab_head_container .cur a, .invite_window .snsim_tab_head_container li a {
+	background: #695C50;
+	color: #CCC3C3;
+}
+
+.snsInviteRosterBody .group_info:hover{
+	background: none;
+}
+
+.snsim_chat_window_tab_head .snsim_tab_head.cur .list_head_item, .sns_webim .snsim_list .list_content_li li:hover, .sns_webim .snsim_chat_box .sns_setting_win_header_container .cur{
+	background: #454545;
+}
+
+.sns_webim .snsim_chat_box .snsim_dia_chatroom_list .snsim_tab_head.cur .snsim_dia_chatroom_tab_head{
+	color: #FFFFFF;
+}
+
+.chatroom_member_list .odd{
+	background: #3E3E3E;
+}
+
+.chatroom_member_list li{
+	border-bottom: 1px solid #494747;
+}
+
+.chatroom_member_list li:hover{
+	background: #525252;
+}
+
+.chatroom_member_list .member_list_title{
+	background: #493D34;
+	border-bottom: 1px solid #504646;
+	border-top: 1px solid #504646;
+}
+
+.snsim_chatroom_settings_window .bottom_container{
+	background: #3A3531;
+	border-top: 1px solid #3A3531;
+}
+
+.snsim_chatroom_settings_window .chatroom_name_input{
+	background: #61564D;
+	color: #CCC3C3;
+	border: #86807B 1px solid;
+}

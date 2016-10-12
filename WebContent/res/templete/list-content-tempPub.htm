@@ -1,0 +1,93 @@
+﻿<div class="loading-animation cen-align hidden">
+	    <span></span>
+	    <span></span>
+	    <span></span>
+    </div>	
+<div ng-include="'WebContent/res/templete/microApp.htm'"></div>
+<!--  IMChat 对话title -->
+<div class="IMChat-title cl">
+    <h2 class="title-item group z"  ng-if="chattype.chattype=='pubaccount'" ng-bind="chatiteminfo.name | limitTo:15">
+         </h2>
+    <ul class="operate-item y">
+        <li class="" ng-show="false"></li>
+        <li class="" ng-show="false" ng-click="personSetup_Click()"></li>
+        <li class="" ng-show="false" ng-click="groupSetup_Click()" onclick="jQuery('.IMChat-group-slide').removeClass('hidden')"></li>
+    </ul>
+</div>
+<!-- 消息、人员展现窗口 -->
+<div class="IMChat-entity-display message" infinite-scroll="pullHistoryMessage()" can-load="canLoad">
+    <ul class="message-entity">
+         <li class="cl" ng-repeat="item in chatMessages track by $index" ng-class="{true:'message-iterlocutors',false:'message-self'}[item._sendType=='received']">
+                      <div class="msg-time">{{item.dateline |date:"MM-dd HH:mm"}}</div>
+            <!--单聊-->
+            <div class="cl" ng-class="{true:'z',false:'y'}[item._sendType=='received']" ng-if="(!ismultinfo(item))&&(!issinglepicture(item))">
+                <span  class="photocard rainbow-{{'消息'|getFirstLetter}} avt-s-l" ng-class="{true:'z',false:'y'}[item._sendType=='received']"  ng-bind="'消息'">{{item._fromVcard._name}}</span>
+                <div class="dialog-card">
+                    <div class="namecard"  ng-bind="item._fromVcard._name">
+                       {{item._fromVcard._name}}
+                        </div>
+                    <em class="arrow">
+                    	<span></span>
+                    	<span></span>
+                    </em>
+                    <div class="dialog-content"><!--{{item}}-->
+                    	<div class="msg-read" ng-if="item._isReaded=='readed'">已读</div>
+                    	<div class="msg-unread" ng-if="item._isReaded=='unreaded'">未读</div>
+                        <pre ng-if="'imchat201_imchat202'.indexOf(item._templateCode)>=0"  ng-bind-html="item._data.content | expressionFilter"><!--{{item._data.content}}--></pre>
+                        <img ng-if="'imchat801_imchat802'.indexOf(item._templateCode)>=0" ng-src="{{item._data.content.path}}" class="chat-img">
+                        <span ng-if="'imchat401_imchat402'.indexOf(item._templateCode)>=0"><img class="file-icon" ng-src="WebContent/res/skin/palmyy/images/filetype/{{item._data.content.type}}.png" on-img-error="WebContent/res/skin/palmyy/images/filetype/file_default.jpg"><a href="{{item._data.content.path}}" noopen="true"  imopenurl target="_top">{{item._data.content.name}}</a></span>	
+                    </div>
+                </div>
+            </div>
+            
+              <!--单图文消息-->
+            <div class="cl" ng-class="{true:'z',false:'y'}[item._sendType=='received']" ng-if="(!ismultinfo(item))&&(issinglepicture(item))" >
+                <span  class="photocard rainbow-{{'消息'|getFirstLetter}} avt-s-l" ng-class="{true:'z',false:'y'}[item._sendType=='received']"  ng-bind="'消息'">{{item._fromVcard._name}}</span>
+                <div class="dialog-card">
+                    <div class="namecard"  ng-bind="item._fromVcard._name">
+                       {{item._fromVcard._name}}
+                        </div>
+                    <em class="arrow">
+                    	<span></span>
+                    	<span></span>
+                    </em>
+                    <div class="dialog-content"><!--{{item}}-->
+                    	<div class="msg-read" ng-if="item._isReaded=='readed'">已读</div>
+                    	<div class="msg-unread" ng-if="item._isReaded=='unreaded'">未读</div>
+                        <pre ng-if="'imchat201_imchat202'.indexOf(item._templateCode)>=0"  ng-bind-html="item._data.content | expressionFilter"><!--{{item._data.content}}--></pre>
+                        <img ng-if="'imchat801_imchat802'.indexOf(item._templateCode)>=0" ng-src="{{item._data.content.path}}" class="chat-img">
+                        <pre ng-if="'imchat1602_imchat1602'.indexOf(item._templateCode)>=0"  ng-bind-html="item._data.title"><!--{{item._data.content}}--></pre>
+                        <!--<img ng-if="'imchat1602_imchat1602'.indexOf(item._templateCode)>=0" ng-src="{{getfileurl(item._data.thumbId)}}" class="chat-img">-->
+                        <img  ng-if="'imchat1602_imchat1602'.indexOf(item._templateCode)>=0" ng-src="{{getfileurl(item._data.thumbId)}}"  ng-click="openmicroApp(item._data.contentSourceUrl,$event)"  class="chat-pub-img">
+                        <span ng-if="'imchat401_imchat402'.indexOf(item._templateCode)>=0"><img class="file-icon" ng-src="WebContent/res/skin/palmyy/images/filetype/{{item._data.content.type}}.png" on-img-error="WebContent/res/skin/palmyy/images/filetype/file_default.jpg"><a href="{{item._data.content.path}}" noopen="true"  imopenurl target="_top">{{item._data.content.name}}</a></span>	
+                    </div>
+                </div>
+            </div>
+             <!--多图文消息-->
+             <div class="cl" ng-class="{true:'z',false:'y'}[item._sendType=='received']" ng-if="ismultinfo(item)" >
+                <span  class="photocard rainbow-{{'消息'|getFirstLetter}} avt-s-l" ng-class="{true:'z',false:'y'}[item._sendType=='received']"  ng-bind="'消息'">{{item._fromVcard._name}}</span>
+                <div class="dialog-card">
+                    <div class="namecard"  ng-bind="item._fromVcard._name">
+                       {{item._fromVcard._name}}
+                        </div>
+                    <em class="arrow">
+                    	<span></span>
+                    	<span></span>
+                    </em>
+                    <div class="dialog-content"  ng-repeat="item2 in item._data track by $index"><!--{{item}}-->
+                    	<div class="msg-read" ng-if="item._isReaded=='readed'">已读</div>
+                    	<div class="msg-unread" ng-if="item._isReaded=='unreaded'">未读</div>
+                        <img ng-if="'imchat801_imchat802'.indexOf(item._templateCode)>=0" ng-src="{{item2.content.path}}" class="chat-img">
+                        <pre ng-if="'imchat3202_imchat3202'.indexOf(item._templateCode)>=0"  ng-bind-html="item2.title" ><!--{{item._data.content}}--></pre>
+                        <img  ng-if="'imchat3202_imchat3202'.indexOf(item._templateCode)>=0" ng-click="openmicroApp(item2.contentSourceUrl,$event)"  ng-src="{{getfileurl(item2.thumbId)}}" class="chat-pub-img">
+                        <span ng-if="'imchat401_imchat402'.indexOf(item._templateCode)>=0"><img class="file-icon" ng-src="WebContent/res/skin/palmyy/images/filetype/{{item._data.content.type}}.png" on-img-error="WebContent/res/skin/palmyy/images/filetype/file_default.jpg"><a href="{{item2.content.path}}" noopen="true"  imopenurl target="_top">{{item._data.content.name}}</a></span>	
+                    </div>
+                </div>
+            </div>
+             
+        </li>
+        
+    </ul>
+    <!-- 联系人实体 -->
+</div>
+<button id="check_latest" ng-show="latest_btn.show" ng-click="checkLatest();">新消息</button>

@@ -1,0 +1,165 @@
+version 1.0
+	1. 增加匿名登录
+	2. 增加请求历史记录方法
+	3. 修改文件/图片/头像相关URL及参数
+	
+update 2015/03/30
+	1. onUserBind()回调由添加参数resource, 由onUserBind(userId)变为onUserBind(userId, resource)
+	2. 显示移动端的上线信息
+version 1.1
+	1. 修复IE10+下个人信息获取bug
+	2. 修复IE10+发送文件及图片bug
+	3. 增加判断好友是否在线接口: YYIMChat.isOnline(id)
+	4. 访客模式: 登录时使用空的用户名密码
+	
+version 1.2
+	1. 支持低版本浏览器文件上传, 不支持HTML5上传时使用flash
+	
+
+###############支持文档中需说明########################
+version 2.0 use jump
+	1. 修改搜索接口, 统一增加参数: start, size, 用于分页
+	2. 增加接口: 
+		on###########
+		onRosterDeleted(rosterId), // 自己删除好友成功或对方进行了删除操作
+		onRosterUpdateded({id : id, name : item.name, groups : item.groups}) // 好友信息更新, 可能会有新好友
+		
+		updateRosterItem({roster : { id : 好友id, name : 好友昵称, groups : ["group1","group2"], 好友所在分组 }, success : function, error : function }) // 好友更新
+		
+		getChatGroupInfo({id : 群组id, success : function, error : function}) // 查询群组信息
+		updateChatGroup({id, name, desc, photo, success: function, error: function, complete:function}) // 更新群组信息
+		
+		getVCard({id : 好友的id, 如果空则获取自己的VCard, success : function, error : function}) // 获取自己或好友的VCard
+		setVCard({vcard : {nickname, photo, email, mobile, telephone }, success : function, error : fcuntion}) // 设置自己的 VCard
+		getVCards(success : function, error : function) // 获取自己所有好友的VCard
+		
+		addPubAccount({id , success : function, error : function}) // 关注公共号
+		
+		fullSyncRoster([{id:addId1, name:name1}, {id:addId2, name:name2}, ...]) // 全量同步好友列表
+		deltaSyncRoster([deleteId1, deleteId2], [{id:addId3, name:name3}, {id:addId4, name:name4}, ...]) // 增量同步好友列表(删除列表, 增加列表)
+		fullSyncChatGroup([{id:addId1, name:name1}, {id:addId2, name:name2}, ...]) // 全量同步群列表
+		deltaSyncChatGroup([deleteId1, deleteId2], [{id:addId3, name:name3}, {id:addId4, name:name4}, ...]) // 增量同步群组列表
+		
+		getSharedFiles({id: roomId, start: 0, size: 20, success: function, error: function, complete: function}) // 获取群共享文件
+	3. 接口修改
+		搜索结果success回调:
+			之前为结果的JSON串, 现为:
+			1) 用户搜索
+			{
+				start : 0,
+				total : 100,
+				items : [
+					{
+						id : 'id1',
+						name : 'name1',
+						email : 'name1@yonyou.com',
+						photo : 'dtrgrewxxf'
+					},
+					{
+						id : 'id2',
+						name : 'name2',
+						email : 'name2@yonyou.com',
+						photo : 'dtrgrewxxf1'
+					}
+				]
+			}
+			2) 群组搜索
+			{
+				start : 0,
+				total : 100,
+				items : [
+					{
+						id : 'id1',
+						name : 'name1'
+					},
+					{
+						id : 'id2',
+						name : 'name2'
+					}
+				]
+			}
+			3) 公共号搜索
+			{
+				start : 0,
+				total : 100,
+				items : [
+					{
+						id : 'id1',
+						name : 'name1'
+					},
+					{
+						id : 'id2',
+						name : 'name2'
+					}
+				]
+			}
+	4. 修改好友/群组/公共号Provider:
+		1) 其他客户端集成SDK时, 若需要收到好友|群组|公共号添加请求及更新等, 需要在Manager中发包, 也就是发包到IM Server后去调用Provider
+		2) YYIMRosterManager/YYIMChatgroupManager/YYIMChatgroupMemberManager及其Provider只接受合法的jid, 因此须在YYIMManager中将id转为jid
+		
+		
+##########关于发送文件及修改头像######################
+1.	对于不支持HTML5上传的浏览器使用flash上传, 初始化如下:
+YYIMChat.initUpload({
+	// 被替换的元素id
+	button_placeholder_id : "upload",
+	// 替换后的按钮图标
+	button_image_url : "res/skin/default/icons/file_upload.png",
+	// flash文件所在路径
+	flash_url : "res/js/swfupload.swf",
+	// 当前发送文件类型 "file" || "image"
+	contentType : "file",
+	// 获取消息接收方的函数, 需返回: {to: 接收方id, type: "chat" or "groupchat", 默认"chat", resource: 所在端, 可为空} 
+	getChatInfo : function() {
+		return {
+			to : activeRoster.getID(),
+			type : type,
+			resource : resource
+		};
+	},
+	// 成功发送文件
+	success : function(msg) {
+	},
+	// 发送失败
+	error : function() {
+	}
+}, 
+// 第二个可上传附件的按钮
+{
+	...
+}
+	...
+);
+
+如果不是发送文件, 而是上传头像, 则初始化时无须 getChatInfo()函数, 且 contentType为'avatar', success回调中会有上传后头像id, 再进行保存(使用setVCard()).
+
+
+关于被flash替换元素后的按钮样式, 和所使用flash(swfupload.swf)中的按钮参数保持一致:
+可用参数:
+button_width
+button_height
+button_text
+button_text_style
+button_text_left_padding
+button_text_top_padding
+button_disabled
+button_cursor
+button_window_mode
+含义同swfupload.swf所定义.
+建议直接在css文件中定义#SWFUpload_0, #SWFUpload_1, …的样式, 便于控制.
+
+2.	支持HTML5文件上传的浏览器, 仍使用之前方式去初始化
+在文件选择器的change事件处理程序中发送文件并处理回调.
+简单使用如下:
+YYIMChat.sendFile({
+	fileInputId : "upload", // 文件选择器的id
+	to : "to", // 发送对象
+	type : "chat", // 聊天类型, "chat" or "groupchat"
+	resource : "android" // 所在端, 可为空
+
+	// 成功发送文件
+	success : function (msg) {},
+
+	// 文件发送失败
+	error : function () {}
+});

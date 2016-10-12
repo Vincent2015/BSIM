@@ -1,0 +1,36 @@
+﻿<div ng-include="'message/angular/template/group-setup.htm'"></div>
+	
+<!--  IMChat 对话title -->
+<div class="IMChat-title cl">
+    <h2 class="title-item z">
+        我的部门</h2>
+</div>
+<!-- 消息、人员展现窗口 -->
+<div class="IMChat-entity-container">
+<div class="IMChat-entity-display contacts">
+    <!-- 联系人实体 -->
+    <!--<ul class="contacts-entity dept">
+        <li ng-repeat="per in personListDept" ng-click="goToPersonInfo_dept(per,$event)">
+        	<div ng-click="goToMessage_dept(per,$event)" class="start-chat option">聊天</div>
+            <div class="avt-s-l rainbow-{{per.name|getFirstLetter}}">
+                <span style="color: White;" ng-bind-html="per.name | cutString:1:2"></span>
+            </div>
+            {{per.name}}</li>
+    </ul>-->
+    <table class="contacts-entity dept full-width">
+    	<tr ng-repeat="per in personListDept" ng-dblclick="goToMessage_dept(per,$event)" >
+    		<td>
+				<div class="avt-s-l rainbow-{{per.name|getFirstLetter}}"  ng-class="{true:'on-line',false:'off-line'}[getUserCurrentState(per)]"  ng-click="goToPersonInfo_dept(per,$event)">
+		        	<span style="color: White;" ng-bind="per.name | cutString:1:2"></span>
+		        </div>
+    		</td>
+    		<td class="clearfix " > 
+		        <div><span>{{per.name}}</span></div>
+    		</td>
+    		<td style="width: 30%;"><b  class="weak" ng-bind="per.phone"></b></td>
+    		<td style="width: 30%;"><b class="weak" ng-bind="per.email"></b></td>
+    	</tr>
+    </table>
+</div>
+</div>
+

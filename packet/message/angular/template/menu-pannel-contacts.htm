@@ -1,0 +1,49 @@
+﻿<div class="IMChat-list contacts z">
+	<!-- 搜索 -->
+	<div class="IMChat-search-container cl">
+		<div class="IMChat-search z" ng-controller="personSearchController">
+		   <ui-select ng-model="multipleDemo.selectedPeopleWithGroupBy" theme="bootstrap"  title="搜索联系人/群组"  on-select="checkRosterInfo($event,$item.id)" 
+	            ng-disabled="disabled">		   <!--on-select="goToPersoninfo_Search($item)"-->
+		    <ui-select-match placeholder="搜索联系人/群组">{{$select.selected.name}}</ui-select-match>
+		    <ui-select-choices group-by="someGroupFn" repeat="search in searchList"  refresh="refreshPersons($select.search)" refresh-delay="400">
+		    	<div ng-click="goToMessage_Search(search,$event)" class="search-cont">
+				    <div class="avt-s-l rainbow-{{search.name|getFirstLetter}} sys-icon-man" ng-bind-html="search.name | cutString:1:2" ng-click="checkRosterInfo($event,search.id)"></div>
+				    <span ng-bind-html="search.name | highlight: $select.search" class="search-name"></span>  
+		    	</div>
+		    </ui-select-choices>
+		    </ui-select>
+		</div>
+		
+		<span class="IMChat-create z" ng-click="createDialog($event)">
+		</span>
+	</div>
+	
+    <!-- <div class="list-item i-care" ng-class="{cur: $state.includes('contacts.follow')}" ui-sref=".follow">
+    	我的关注
+    </div> -->
+    
+    <div class="list-item i-care" ng-class="{cur: $state.includes('contacts.friend')}" ui-sref=".friend">
+    	我的好友
+    </div>
+    
+<!--     <div class="list-item my-dep" ui-sref=".dept">
+    	我的部门
+    </div> -->
+    <div class="list-item my-groups" ui-sref=".group">
+    	我的群组
+    </div>
+    <div class="list-item pub-acc" ui-sref=".pubAcc">
+    	公众号
+    </div>
+<!--     <div class="list-item usu-tel" ui-sref=".usuTel">
+    	常用电话
+    </div>
+    <div class="list-item sup-team" ui-sref=".supTeam">
+    	36800协助
+    </div> -->
+
+	
+</div>
+
+<div ui-view id="IMChat-content" class="IMChat-dialog">
+</div>

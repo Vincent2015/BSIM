@@ -1,0 +1,88 @@
+@charset "utf-8";
+/* CSS Document */
+/* .uploadify-button{
+	display:inline-block;
+	margin:12px;
+	border:1px solid #808080;
+	background-color: #707070;
+	line-height:24px;
+	border-radius:12px;
+	padding:0 18px;
+    font-size:12px;
+    font-weight: 600;
+    font-family: '微软雅黑';
+	color:#FFF;
+	cursor:pointer;
+	text-decoration:none;
+} */
+.uploadify-button{
+    cursor: pointer;
+    display: inline-block;
+    height: 16px;
+    width: 15px;
+}
+.uploadify-button:hover{
+	/* background: url('../icons/fujian_icon.png') no-repeat; */
+}
+.uploadfile{
+	width:0;
+}
+.uploadify-queue .uploadify-queue-item{
+	list-style-type:none;
+	margin-top:25px;
+}
+.uploadbtn{
+	display:inline-block;
+	border:1px solid #999;
+	line-height:24px;
+	border-radius:4px;
+	padding:0 5px;
+    font-size:12px;
+	color:#666;
+	cursor:pointer;
+	text-decoration:none;
+}
+.up_filename{
+	font-size:12px;
+	margin-left:10px;
+	float: left;
+	max-width: 100px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.progressnum,.uploadbtn,.up_percent{
+	font-size:12px;
+	color:#666;
+	margin-left:14px;
+}
+.uploadify-progress{
+	width: 240px;
+	height: 2px;
+	background-color: #ddd;
+	overflow: hidden;
+	position: absolute;
+	margin-top: 30px;
+	margin-left: 41px;
+ }
+.uploadify-progress-bar{
+	width:0;
+	height:100%;
+	background-color: #4ED059;
+}
+.delfilebtn {
+	float: right;
+	margin-right: 20px;
+	margin-top: 17px;
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+	background: url('../icons/delete_icon.png') no-repeat;
+}
+.upload_file_icon {
+	float: left;
+	margin-top: 8px;
+}
+.upload_file_icon img {
+	width: 30px;
+	height: 30px;
+}

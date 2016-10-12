@@ -1,0 +1,10 @@
+<div class="IMChat-model-bd IMChat-set-vcard  IMChat-set-app" style="width: 330px;">
+	<div class="form-app-head">
+		<div class="close-model win" ng-if="iswin" ng-click="ok_click()"></div>
+		<div class="close-model mac" ng-if="ismac" ng-click="ok_click()"></div>
+		<div style="color: #fff;margin: 10px 0 0 10px; text-align: center;">{{ngDialogData.appinfo.appname}}</div>
+		<div class="base-info" style="font-size: 0; height: 490px;">
+		 <iframe width="330" height="490" style="padding:5px;border:none;background: #fff;margin-top: 10px; margin-left: 1px; margin-right: 1px; padding-left: 0px;padding-top:0px;" scrolling="yes" src="{{ngDialogData.appinfo.appurl}}"></iframe>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,14 @@
+<a href="#" class="message-prompt" id="message-prompt" ng-click="goToHashPosition($event,messagePrompt)" ng-show="!!messagePrompt.show">
+	<div class="l-blk" >
+        <div class="avt-s-l g-history  rainbow-{{messagePrompt.name |getFirstLetter}} sys-icon-man"  ng-bind-html="messagePrompt.name | cutString:1:2"></div>
+    </div>
+     <div class="r-blk" >
+        <div class="clearfix">
+        	<div ng-if="!istoday(messagePrompt.dateline)"  class="y latest-time">{{item.dateline| date:"MM-dd"}}</div>
+        	<div ng-if="istoday(messagePrompt.dateline)"  class="y latest-time">{{item.dateline| date:"HH:mm"}}</div>
+             <i class="text-ellipsis title"  ng-if="messagePrompt.title"  ng-bind-html="messagePrompt.title "></i>
+             <div class="y weak"></div>
+        </div>
+        <div class="weak text-ellipsis"  ng-bind-html="messagePrompt.atContent"></div>
+    </div>
+</a>

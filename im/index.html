@@ -1,0 +1,222 @@
+﻿<html>
+	<head>
+		<title>YYIMChatDemo</title>
+	</head>
+	<body>
+		<!--<script src="http://10.2.104.51:8081/target/target-script-min.js#anonymous"></script>-->  
+		<!--  消息模块依赖 -->
+	<script src="message/lib/jquery-1.11.2.min.js" type="text/javascript"></script>
+	<script src="message/lib/YYIMSDK.js" type="text/javascript"></script>
+    <script src="message/cache/YYIMCache.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script src="message/angular/lib/mixture.js" type="text/javascript"></script>
+	<script src="message/angular/lib/angular.js" type="text/javascript"></script>
+	<script src="message/angular/lib/angular-ui-router.min.js" type="text/javascript"></script>
+	<script src="message/angular/lib/expression/ExpressionData.js"></script>
+	<script src="message/angular/lib/purl.js" type="text/javascript"></script>
+	<script src="message/angular/lib/angular-sanitize.js" type="text/javascript"></script>
+	<script src="message/angular/lib/angular-cookies.js" type="text/javascript"></script>
+	<script src="message/angular/lib/ngDialog.min.js" type="text/javascript"></script>
+	<script src="message/angular/lib/getFirstLetter.js"></script>
+	<script src="message/angular/lib/infinite-scroll.js"></script>
+	<script src="message/angular/lib/taffy-min.js" type="text/javascript"></script>
+	
+	
+	<script src="message/angular/directive/openUrl.js" type="text/javascript"></script>
+	<script src="message/angular/directive/imgError.js" type="text/javascript" charset="utf-8"></script>
+	
+	
+	<script src="message/angular/service/IMChatUrl.Service.js" type="text/javascript"></script>
+	<script src="message/angular/service/IMChat.NWKeyService.js" type="text/javascript"></script>
+	<script src="message/angular/service/IMChat.AudioPlay.js" type="text/javascript"></script>
+	<script src="message/angular/service/IMChat.FileCaptureService.js" type="text/javascript"></script>
+	<script src="message/angular/service/IMChat.FileConvertService.js" type="text/javascript"></script>
+	<script src="message/angular/service/IMChat.UpdateService.js" type="text/javascript"></script>
+	<script src="message/angular/service/IMChat.ShortCutService.js"></script>
+	
+
+	<script src="message/angular/controller/IMChat.Controller.js" type="text/javascript"></script>
+	<script src="message/angular/controller/IMChat.GroupController.js" type="text/javascript"></script>
+	<script src="message/angular/controller/IMChat.groupSetupController.js" type="text/javascript"></script>
+	<script src="message/angular/controller/IMChat.FriendController.js" type="text/javascript"></script>
+	
+	
+	<script src="message/angular/config/config.js" type="text/javascript"></script>
+	<script src="message/angular/app/app.js" type="text/javascript"></script>
+	<script src="message/angular/plugin/IMChat.ThirdPlug.js" type="text/javascript"></script>
+	<script src="message/angular/filter/filter.js" type="text/javascript"></script>
+	
+	<script src="message/angular/lib/ngStorage.min.js" type="text/javascript"></script>
+	<script src="message/angular/lib/angular-animate.min.js" type="text/javascript"></script>
+	<script src="message/angular/lib/toaster.min.js" type="text/javascript"></script>
+	<script src="message/angular/lib/Underscore.min.js" type="text/javascript"></script>
+	<script src="message/angular/lib/angularui-select/select.min.js" type="text/javascript"></script>
+	<script src="message/angular/lib/angular-image-cropper/ImageView.js"></script>
+	<script src="message/angular/lib/angular-image-cropper/module.js"></script>
+	<script src="message/angular/lib/angular-image-cropper/directives/directive.js"></script>
+	<!--<script src="http://10.1.78.77:8081/target/target-script-min.js#anonymous"></script>-->  
+
+	<link href="message/angular/lib/angularui-select/select.min.css" rel="stylesheet" type="text/css" />
+	<link href="message/angular/style/css/ngDialog.min.css" rel="stylesheet" type="text/css" />
+	<link href="message/angular/style/css/Bootstrap.css" rel="stylesheet" type="text/css" />
+	<link href="message/angular/style/css/homeindex.css" rel="stylesheet" type="text/css" />
+	<link href="message/angular/style/css/toaster.min.css" rel="stylesheet" type="text/css" />
+	<link href="message/angular/style/css/angular-image-cropper.min.css" rel="stylesheet" type="text/css" />
+	<link href="message/angular/style/css/IMChatstyle.css?v=201605101445" rel="stylesheet" type="text/css" />
+	
+	<!-- 登录 -->
+	
+	<div id="login-container">
+			<div id="loginform">
+			   <form> 
+			      <table width="100%" cellpadding="0" cellspacing="0">
+			        <tr>
+			       		<td colspan="2" align="center">
+			       			<img class="imlogo" src="message/angular/style/images/login_logo.png">
+			       			<div class="logotext">
+				       			<div id="errmsg"></div>
+				       			用户模拟体验
+			       			</div>
+			       		</td>
+			        </tr>
+			      
+			        <tr>
+			          <td>
+			            <label  class="userlabel mlabel" for="username">
+				            <input type="text" name="username" id="username" placeholder="name" autofocus="autofocus" autocomplete="on" tabindex="1"/> 
+			            </label>
+			          </td>
+			        </tr>
+			        
+			        <tr>
+			          <td>
+			           	<label class="passlabel mlabel" for="password">
+		          		  <input type="password" name="password" id="userpwd" placeholder="请输入密码"  tabindex="2" value="123456"/>
+		          		 </label>
+			          </td>
+			        </tr>
+			        
+			        <tr>
+			          <td>
+			            <button type="button" id="loginformsubmit"  tabindex="3" onclick="login()">登录</button>
+			          </td>
+			        </tr>
+			      </table>
+			   </form>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			  window.location = '#imhome';	
+			  var accounts = ['rongqb','zhangxin0','wangxin0','yinjie','yangjz0','yanghaoc','zhangwpb','diablo','xiayoumeng','xiaah','litfb','zhangyaoc','luxna','liuhca','liuhaoi','liuxiu1'];
+				var length = accounts.length;
+				var num = Math.floor(Math.random()*length);
+//				var account = accounts[num];
+				var account = 'yangjz0';
+				jQuery('#username').val(account);
+				var islogining = false;
+				
+			  function login(){
+					var account = jQuery('#username').val();
+					if(!islogining && account){
+						jQuery.ajax({
+							url:'http://172.20.19.196/sysadmin/rest/demo/token?username='+account+'.udn.yonyou&password=1&app=udn&etp=yonyou',
+							type:'get',
+							success:function(data){
+								//登陆
+								islogining = true;
+								YYIMChat.initSDK("udn", "yonyou",{
+									address: '172.20.19.196',
+									servlet: 'http://172.20.19.196/'
+								});
+								/*,{
+									address: '172.20.19.196',
+									servlet: 'http://172.20.19.196:80/sysadmin/'
+								}*/
+								YYIMChat.login(account+'.udn.yonyou', data.token);
+							},
+							error:function(){
+								alert('get token error');
+							}
+						});
+					}
+			  }
+	</script>	
+	
+	
+	
+	
+	<div id="im-message-app" ng-controller="mainCtrl" ng-app="app">
+		<div imopenurl  ng-click="handleClick($event);" style="height: 100%;">
+			<div id="container">
+				<toaster-container toaster-options="{'close-button':{ 'toast-warning': true, 'toast-error': false },'position-class':'toast-top-center' }"></toaster-container>
+				
+				<div class="IMChat-menu z">
+					<!-- MAC OS close -->
+					<ul class="IMChat-mac-close" ng-if="ismac" id="operatorpannel">
+						<li class="close-item" onclick="closewin()"></li>
+						<li class="" onclick="min()"></li>
+						<li class="" onclick="max()"></li>
+					</ul <!-- 展示本人名片 -->
+					<div class="IMChat-namecard trigger" ng-click="showCurrentPersonCard()">
+						<p class="photocard relative rainbow-{{currentPersonInfo.name|getFirstLetter}}" ng-class="{true:'on-line',false:'off-line'}[userState.isonline]">
+							{{currentPersonInfo.name|cutString:1:2}}</p>
+						<p class="namecard">
+							{{currentPersonInfo.name}}</p>
+					</div>
+					<!-- 菜单 -->
+					<ul class="IMChat-menu-items">
+						<li class="message-item   clearfix" ng-class="{cur: $state.includes('imhome')}" ui-sref="imhome"><span class="uread-msg-num" ng-if="AllUnReadCounts" ng-bind="AllUnReadCounts"></span>消息</li>
+						<!--<li class="schedule-item" ng-class="{cur: $state.includes('day')}" ui-sref="day">日程</li>-->
+						<li class="addressbook-item" ng-class="{cur: $state.includes('contacts')}" ui-sref="contacts.friend">通讯录</li>
+						<!--<li class="app-item" ng-class="{cur: $state.includes('app')}" ui-sref="app.appCenter">应用</li>-->
+					</ul>
+					<!-- 设置 -->
+					<ul class="IMChat-menu-settings" id="appinfo">
+						<li class="setting-item new-chat IMChat-relative">
+							创建
+							<div class="cen-align fold-menu hidden">
+								<!--<ul>
+									<li class="trigger" onclick="jQuery('.IMChat-model-cover,.IMChat-model-bd.IMChat-new-gchat').removeClass('hidden');jQuery('.ui-select-search').trigger('click');">发起群聊</li>
+									<li class="trigger" ng-click="gotoSendWeibo()">发动态</li>
+								</ul>-->
+								<span class="triangle"></span>
+							</div>
+						</li>
+						<li class="setting-item setting IMChat-relative" id="mysetting">
+							设置
+							<div class="cen-align fold-menu hidden">
+								<ul>
+									<!--<li ng-if="true" ng-click="openAppSetup();">设置</li>-->
+									<!--<li ng-click="opendownload()">下载应用</li>-->
+									<li ng-click="logoutConfirm()">退出登录</li>
+								</ul>
+								<span class="triangle"></span>
+							</div>
+		
+						</li>
+					</ul>
+				</div>
+		
+				<div ui-view id="IMChat-menu-pannel" class="IMChat-Home-info"></div>
+				
+				<div class="IMChat-model-cover hidden"></div>
+				
+				<div ng-include="'message/angular/template/user-info.htm'"></div>
+				<div ng-include="'message/angular/template/new-group-chat.htm'"></div>
+				
+				<!--<div id="whiteBoradCover" style="display: none;" ng-controller="messageController">
+					<div id="close_cur_whbd_twin" ng-click="closeWhiteBoard($event)"></div>
+					<div ng-include="'message/whiteboard/whiteboard.html'"></div>
+				</div>-->
+				<div class="cen-align hidden" id="whbd_loading">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	</body>
+</html>

@@ -1,0 +1,67 @@
+SDK:
+
+version 1.0 2015/04/01
+	1. 增加匿名登录
+	2. 增加请求历史记录方法
+	3. 修改文件/图片/头像相关URL及参数
+	4. onUserBind()回调由添加参数resource, 由onUserBind(userId)变为onUserBind(userId, resource)
+	5. 显示移动端的上线信息
+	
+version 1.1 2015/04/14
+	1. 修复IE10+下个人信息获取bug
+	2. 修复IE10+发送文件及图片bug
+	3. 增加判断好友是否在线接口: YYIMChat.isOnline(id)
+	4. 访客模式: 登录时使用空的用户名密码
+	
+version 1.2 2015/04/17
+	1. 支持低版本浏览器文件上传, 不支持HTML5上传时使用flash
+
+version 2.0 2015/05/28
+	1. 使用改进协议
+	2. 修改搜索接口, 统一增加参数: start, size, 用于分页
+	3. 增加接口: 
+	onRosterDeleted(rosterId), // 自己删除好友成功或对方进行了删除操作
+	onRosterUpdateded({id : id, name : item.name, groups : item.groups}) // 好友信息更新, 可能会有新好友
+	
+	updateRosterItem({roster : { id : 好友id, name : 好友昵称, groups : ["group1","group2"], 好友所在分组 }, success : function, error : function }) // 好友更新
+	
+	getChatGroupInfo({id : 群组id, success : function, error : function}) // 查询群组信息
+	updateChatGroup({id, name, desc, photo, success: function, error: function, complete:function}) // 更新群组信息
+	
+	getVCard({id : 好友的id, 如果空则获取自己的VCard, success : function, error : function}) // 获取自己或好友的VCard
+	setVCard({vcard : {nickname, photo, email, mobile, telephone }, success : function, error : fcuntion}) // 设置自己的 VCard
+	getVCards(success : function, error : function) // 获取自己所有好友的VCard
+	
+	addPubAccount({id , success : function, error : function}) // 关注公共号
+	
+	fullSyncRoster([{id:addId1, name:name1}, {id:addId2, name:name2}, ...]) // 全量同步好友列表
+	deltaSyncRoster([deleteId1, deleteId2], [{id:addId3, name:name3}, {id:addId4, name:name4}, ...]) // 增量同步好友列表(删除列表, 增加列表)
+	fullSyncChatGroup([{id:addId1, name:name1}, {id:addId2, name:name2}, ...]) // 全量同步群列表
+	deltaSyncChatGroup([deleteId1, deleteId2], [{id:addId3, name:name3}, {id:addId4, name:name4}, ...]) // 增量同步群组列表
+	
+	getSharedFiles({id: roomId, start: 0, size: 20, success: function, error: function, complete: function}) // 获取群共享文件
+		
+
+DEMO：
+
+version 1.0 2015/04/20
+	1. 修复IE8/9不能上传附件的bug
+	2. 修复IE8下聊天框不能拖动的bug
+
+version 2.0 2015/05/26
+	1. 修复发送消息时一些特殊符号接收时被转义的bug
+	2. 修复群组聊天记录请求异常的bug
+	3. 修复字数超限制时中止发送未生效的bug
+	4. 修复IE8下查找联系人界面搜索框过窄的bug
+	
+	5. 编辑个人信息时增加帐号信息
+	6. 选择表情后自动关闭表情窗口
+	7. 去掉组织结构
+	8. 去掉夜间模式
+	9. 保存上次在线状态
+	10. 搜索窗口可拖动
+	
+version 2.1 2015/06/04
+	1. 允许所有成员修改群头像和名称
+	2. 群组中加入新成员后，通知所有成员
+	3. 搜索结果更加合理的显示

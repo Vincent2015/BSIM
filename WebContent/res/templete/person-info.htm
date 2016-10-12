@@ -1,0 +1,37 @@
+<div class="IMChat-model-bd IMChat-set-vcard">
+	<form>
+		<div class="form-head">
+			<div class="close-model" onclick="jQuery('.IMChat-model-cover').addClass('hidden');jQuery(this).closest('.IMChat-model-bd').addClass('hidden');"></div>
+			<div class="base-info">
+					<div class="y fans-num">299</div>
+					<div class="avt" onclick="jQuery('.avt-set').removeClass('hidden')">大海</div>
+					<div class="name-info">大海<span onclick="jQuery(this).addClass('hidden').siblings('p').removeClass('hidden')">备注</span><p class="hidden"><input placeholder="请输入备注信息"/><span class="confirm">确定</span><p></div>
+			</div>
+		</div>
+		<div class="form-bd">
+			<div class="avt-set hidden">
+				<div class="img-can weak cen-align" style="font-size: 12px;">
+					<span>仅支持JPG、JPEG、PNG且小于5M</span>
+					<div class="img">
+						<!--<img src="WebContent/res/skin/palmyy/images/avt_default.png">-->
+					</div>
+				</div>
+				<div class="foot-btns">
+					<div>确认</div>
+					<div onclick="jQuery(this).closest('.avt-set').addClass('hidden')">取消</div>
+				</div>
+			</div>
+			<ul>	
+				<li><label>姓名</label><input name="" readonly="true" value="大海"/></li>
+				<li><label>昵称</label><input name="" readonly="true" value="大海"/></li>
+				<li><label>部门</label><input name="" readonly="true" value="iUAP"/></li>
+				<li><label>邮箱</label><input name="" readonly="true" value="dahai@yonyou.com"/></li>
+				<li><label>电话</label><input name="" readonly="true" value="+86-123455656"/></li>
+			</ul>	
+		</div>
+		<div class="form-foot">
+			<div class="btn-alive" onclick="jQuery(this).closest('form').find('input').removeProp('readonly');$(this).html('完成')">编辑</div>
+		</div>
+		
+	</form>
+</div>

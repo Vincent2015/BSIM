@@ -1,0 +1,39 @@
+﻿<div ng-include="'WebContent/res/templete/group-setup.htm'"></div>
+	
+<!--  IMChat 对话title -->
+<div class="IMChat-title cl">
+    <h2 class="title-item z">
+        我的好友</h2>
+</div>
+<!-- 消息、人员展现窗口 -->
+<div class="IMChat-entity-display contacts">
+    <!-- 联系人实体 -->
+    <!--<ul class="contacts-entity follow">
+    	<li  ng-repeat="item in  followList" ng-click="goToPersonInfo_follow(item,$event)" class="clearfix">
+        <div class="z avt-s-l rainbow-{{item.name|getFirstLetter}}">
+        	<span style="color: White;" ng-bind="item.name | cutString:1:2"></span>
+        </div>
+        <div style="margin-left: 50px; overflow: hidden;">
+	        {{item.name}}
+        </div>
+        </li>
+
+        
+    </ul>-->
+    <table class="contacts-entity follow full-width">
+    	<tr ng-repeat="item in  followList" ng-dblclick="goToMessage_follow(item,$event)">
+    		<td>
+    			<div class="z avt-s-l rainbow-{{item._vcard.nickname|getFirstLetter}}" ng-class="{true:'on-line',false:'off-line'}[getUserCurrentState(item)]"  ng-click="goToPersonInfo_follow(item,$event)">
+		        	<span style="color: White;" ng-bind="item._vcard.nickname | cutString:1:2"></span>
+		        </div>
+    		</td>
+    		<td class=""> 
+		        <div><div>{{item._vcard.nickname}}</div><div class="weak dep-name">{{item.department}}</div></div>
+    		</td>
+    		<td style="width: 30%;"><b class="weak" ng-bind="item._vcard.mobile"></b></td>
+    		<td style="width: 30%;"><b class="weak" ng-bind="item._vcard.email"></b></td>
+    		<td style="width: 10%;"><div ng-click="goToMessage_follow(item,$event)" class="start-chat option">聊天</div></td>
+    	</tr>
+    </table>
+</div>
+

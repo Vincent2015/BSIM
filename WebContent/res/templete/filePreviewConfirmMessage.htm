@@ -1,0 +1,14 @@
+<div class="IMChat-confirm-bd del-group-mem  filepreview-info">
+    <div class="box-head">
+        发送图片</div>
+    <div  style="padding-left: 20px;margin-top: 10px; bottom: 20px; padding-right: 20px; text-align: center; max-height: 540px;;"  >
+    	
+      <img     class="image-preview"   ng-src="data:image/png;base64,{{ngDialogData.picdata}}"/>
+    </div>
+    <div class="box-foot">
+        <div class="model-confirm" ng-if="$stateParams.chatType=='chat'||$stateParams.chatType=='groupchat'" ng-click="OK_Click()">
+            发送</div>
+         <div class="model-cancel" ng-click="NO_Click()">
+            取消</div>
+    </div>
+</div>

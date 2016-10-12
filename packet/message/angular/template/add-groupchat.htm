@@ -1,0 +1,142 @@
+<div class="IMChat-model-bd IMChat-new-gchat">
+	
+	<!-- head -->
+	<div class="box-head" ng-if="ngDialogData.mode != 'addgroupmember'">
+		<span class="close-model win" ng-click="closeCreateGroupChat($event)"></span> 创建群组
+	</div>
+	
+	<div class="box-head" ng-if="ngDialogData.mode == 'addgroupmember'">
+		<span class="close-model win" ng-click="closeCreateGroupChat($event)"></span> 添加成员
+	</div>
+	
+	<!-- body -->
+	<div class="box-bd cl">
+		<!-- left -->
+		<div class="l-blk">
+			
+			<!--群组名称-->
+			<input class="set-gname" ng-model="project_name" placeholder="群组名称" maxlength="100" ng-show="ngDialogData.mode != 'addgroupmember'">
+			
+			
+			<!--<div class="search-person-input project-detail" ng-show="ngDialogData.mode != 'addgroupmember'">
+				<textarea name="" rows="" cols="" class="detail-input" ng-model="project_detail"  maxlength="1000" placeholder="群组详情">
+					
+				</textarea>
+			</div>-->
+			
+			<!-- 群组的起始时间 -->
+			<!--<div class="search-person-input search-dateline" ng-show="ngDialogData.mode != 'addgroupmember'">
+				<table height="100%" cellpadding="0" cellspacing="0" width="100%">
+					<tr>
+						<td>
+							<div class="search-person-charge cont">
+								<h6 class="title">负责人</h6>
+								
+								<ui-select multiple ng-model="multipleDemo.selectedChargeWithGroupBy" theme="bootstrap" ng-disabled="disabled" close-on-select="true" title="名称、拼音、手机号" reset-search-input="true" class="selectCharge narrow">
+									<ui-select-match>
+										{{$item.name}}
+									</ui-select-match>
+									
+									<ui-select-choices group-by="someGroupFn" repeat="person in ChargeList" refresh="refreshPersons($select.search,'charge')" refresh-delay="300" position="down">
+										<div class="select-item">
+											<div class="rainbow-{{person.name|getFirstLetter}} avt-s-s z" ng-bind="person.name | photoname">
+											</div>
+											<span ng-bind-html="person.name + '    ' + person.email  | highlight: $select.search"></span>
+										</div>
+									</ui-select-choices>
+								</ui-select>
+							</div>
+						</td>
+						<td><div class="cont">
+								<h6 class="title">计划开始时间</h6>
+								<div class="dateline">
+									<input type="text" ng-model="project_start_time" placeholder="选择开始时间" ng-click="openTimer($event)"/>
+								</div>
+							</div>
+						</td>
+						<td><div  class="cont">
+								<h6 class="title">计划截止时间</h6>
+								<div class="dateline">
+									<input type="text" ng-model="project_end_time" placeholder="选择截止时间" ng-click="openTimer($event)"/>
+								</div>
+							</div>
+						</td>	
+					</tr>
+				</table>
+			</div>-->
+			
+			<!-- 参与人 -->
+			<div class="search-person-input search-person-affiliated" ng-class="{true:'addgroupmember'}[ngDialogData.mode == 'addgroupmember']">
+				
+				<h6 class="title y mr10" ng-if="!!multipleDemo.selectedPeopleWithGroupBy.length" ng-bind="'已选择'+multipleDemo.selectedPeopleWithGroupBy.length+'人'"></h6>
+				<h6 class="title">群成员</h6>
+				
+				<ui-select multiple ng-model="multipleDemo.selectedPeopleWithGroupBy" theme="bootstrap" ng-disabled="disabled" close-on-select="true"  title="搜索名称、拼音、手机号" reset-search-input="true" class="selectAffiliated">
+					<ui-select-match  placeholder="搜索名称、拼音、手机号">
+						{{$item.name}}
+					</ui-select-match>
+					<ui-select-choices group-by="someGroupFn" repeat="person in PersonList" refresh="refreshPersons($select.search)" refresh-delay="300" position="down">
+						<div class="select-item">
+							<div class="rainbow-{{person.name|getFirstLetter}} avt-s-s z" ng-bind="person.name | photoname">
+							</div>
+							<span ng-bind-html="person.name + '    ' + person.email  | highlight: $select.search"></span>
+						</div>
+					</ui-select-choices>
+				</ui-select>
+			</div>
+			
+		</div>
+		
+		<!-- right -->
+		<div class="r-blk">
+			<!--组织架构搜索-->
+			<!--<input class="organizational-search set-gname" ng-model="organizational_search" placeholder="搜索联系人/部门"/>-->
+			
+			<div class="pick-tab">
+				
+				<div class="tab-head text-ellipsis" ng-bind="'我的联系人'">
+				</div>
+				
+				<!-- 一级部门：公司 -->
+				<div class="organizationContainer">
+					
+					<!-- 二级部门 -->
+					<div class="departItem"  ng-repeat="entity in showList">
+						<!-- 部门标题 -->
+						<div class="departTitle cl level-{{entity.level}}">
+							<span class="arrow y" ng-click="toggleDepartMembers($event,entity.id)" ng-class="{false: '', true: 'open'}[!!entity.show]"></span>
+						    <span class="name text-ellipsis"  ng-bind="entity.name"></span>
+						</div>
+						
+						<div ng-if="entity.show">
+								<!-- 直属成员 -->
+								<div class="membersItem"  ng-if="!!entity.members && entity.members.length">
+									<div class="check-all level-{{entity.level+1}}">
+										<input id="selectAll_{{entity.id}}" type="checkbox" ng-model="entity.selectAll" ng-checked="seleteDeptAllFlag[{{entity.id}}]" ng-click="selectDeptAll($event,entity.id)" style="display:none"/>
+										<label for="selectAll_{{entity.id}}"></label>全选
+									</div>
+									<ul class="user-list">
+										<li ng-repeat="member in entity.members" ng-class="{false: 'unchecked', true: 'checked'}[!!member.checktype]" class="level-{{entity.level+1}}" ng-click="addGroupLeaguer($event,member)">
+											<div class="rainbow-{{member.name|getFirstLetter}} avt-s-s">
+												<span></span><span style="color: White;" ng-bind="member.name | photoname"></span>
+											</div>
+											{{member.name}} 
+										</li>
+									</ul>
+								</div>
+						</div>
+					</div>
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- footer -->
+	<div class="box-foot">
+		<span class="confirmBtn y" ng-click="createChatGroup($event)" ng-if="ngDialogData.mode != 'addgroupmember'">创建</span>
+		<span class="confirmBtn y" ng-click="addMembers($event,group)" ng-if="ngDialogData.mode == 'addgroupmember'">添加</span>
+		<span class="cancelBtn y" ng-click="closeCreateGroupChat($event)">取消</span>
+	</div>
+</div>

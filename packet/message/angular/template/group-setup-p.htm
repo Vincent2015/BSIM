@@ -1,0 +1,88 @@
+<div class="IMChat-group-slide group-set" ng-cloak>
+  <div class="box-head">
+        项目设置
+        <span class="close-g-set" ng-click="closeDetailDialog($event)">
+        </span>
+    </div>
+    <div class="box-bd">
+    	
+    	<!--项目名称-->
+	    <input class="set-gname mt10" ng-model="group.name" placeholder="项目名称" maxlength="100" ng-change="saveProjectDetail($event,'name')" ng-if="!isOwner" disabled="disabled">
+	    	
+	    <input class="set-gname mt10" ng-model="group.name" placeholder="项目名称" maxlength="100" ng-change="saveProjectDetail($event,'name')" ng-if="!!isOwner">
+	    	
+	    <!-- 项目详情 -->	
+		<textarea name="" rows="" cols="" class="detail-input search-person-input project-detail" ng-model="group.description"  maxlength="1000" placeholder="暂无项目详情" ng-if="!isOwner" disabled="disabled">
+		</textarea>
+		<textarea name="" rows="" cols="" class="detail-input search-person-input project-detail" ng-model="group.description"  maxlength="1000" placeholder="暂无项目详情"  ng-if="!!isOwner" ng-change="saveProjectDetail($event,'description')">
+		</textarea>
+		
+		<div class="cont-headline" ng-if="group.startdate && group.enddate || !!isOwner">
+			起止日期：
+		</div>
+		
+		<div class="cont-dateline cl" ng-if="group.startdate && group.enddate || !!isOwner">
+			<input class="project-dateline z" ng-model="group.startdate" placeholder="起始时间"  ng-click="openTimer($event)" ng-change="saveProjectDetail($event,'startdate')"  ng-if="!isOwner" disabled="disabled"/> 
+			<input class="project-dateline z" ng-model="group.startdate" placeholder="起始时间"  ng-click="openTimer($event)" ng-change="saveProjectDetail($event,'startdate')" ng-if="!!isOwner"/> 
+			<i></i> 
+			<input class="project-dateline y" ng-model="group.enddate" placeholder="截止时间"  ng-click="openTimer($event)"  ng-change="saveProjectDetail($event,'enddate')"  ng-if="!isOwner" disabled="disabled"/>
+			<input class="project-dateline y" ng-model="group.enddate" placeholder="截止时间"  ng-click="openTimer($event)"  ng-change="saveProjectDetail($event,'enddate')" ng-if="!!isOwner"/>
+		</div>
+		
+		
+		<div class="cont-headline">
+			负责人：
+			<span class="cont-value" ng-bind="group.owner.name"></span>
+		</div>
+		
+		
+		<div class="cont-headline">
+			项目成员：
+			<span class="cont-value" ng-bind="group.members.length + '人'"></span>
+			<span class="add-member y">+添加新成员</span>
+		</div>
+		
+		<ul class="project-members cl">
+			<li class="" ng-repeat="member in group.members">
+				<span ng-bind="member.name | photoname" class="name1 rainbow-{{member.name |getFirstLetter}} project-member"></span>
+				<div ng-bind="member.name" class="name2 text-ellipsis"></div>
+			</li>
+		</ul>
+		
+		
+		
+		<div class="cont-headline cl">
+			消息免打扰：
+			<span class="y mess-disturb mess-setting">
+				
+				<section class="model-1">
+			  <div class="checkbox">
+			    <input type="checkbox"/>
+			    <label></label>
+			  </div>
+			</section>   
+				
+			</span>
+		</div>
+		
+		<div class="cont-headline cl">
+			消息置顶：
+			<span class="y mess-stick mess-setting">
+				
+				<section class="model-1">
+					  <div class="checkbox">
+					    <input type="checkbox"/>
+					    <label></label>
+					  </div>
+					</section>   
+				
+			</span>
+		</div>
+        
+    </div>  
+    
+    <div class="box-footer">
+    	<span class="quitGroup groupBtn" ng-click="quitChatGroup($event)">退出项目</span>
+    	<span class="dismissGroup groupBtn" ng-if="isOwner" ng-click="exitChatGroup($event)">关闭项目</span>
+    </div>
+</div>

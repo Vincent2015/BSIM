@@ -1,0 +1,1700 @@
+@charset "utf-8";
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, select, textarea, button, p, blockquote, table, th, td, figure, img, b, span {
+    font: 14px/1.5 "Helvetica neue",Helvetica,Tahoma,"lantinghei sc",Arial,"Microsoft Yahei",sans-serif;
+    margin: 0;
+   	padding: 0;
+   	box-sizing: border-box;
+   	color:#111111;
+}
+
+input,button,select,textarea {
+	outline:none
+} 
+
+textarea {
+	resize:none
+}
+
+ul, ol { 
+   list-style: none; 
+}
+
+img { 
+   border:0;
+}
+
+table { 
+   border-collapse: collapse; 
+   border-spacing: 0;
+}
+
+a {
+	cursor: pointer;
+}
+
+a:hover {
+	text-decoration:none;
+}
+
+.cl:after { 
+	content: "."; 
+	display: block; 
+	height: 0; 
+	clear: both; 
+	visibility: hidden; 
+} 
+
+.cl { 
+	*zoom: 1; 
+}
+
+.text-ellipsis {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+    -o-text-overflow:ellipsis;
+	display: block;
+	word-wrap:normal;
+}
+
+.relative {
+	position:relative;
+}
+
+.absulute {
+	position:absolute;
+}
+
+.block{
+	display: block;
+}
+
+.inline-block {
+     display: inline-block;
+	*display: inline; /* for ie6*/
+	 zoom: 1;         /* for ie6*/
+}
+
+.hidden {
+    display: none!important;
+}
+
+.z {
+	float: left;
+}
+
+.y {
+	float: right;	
+}
+.cen-align{
+	text-align: center;
+}
+/*彩色饼 start*/
+.rainbow-a{
+	border-color: #7f352c;
+	background-color: #7f352c;	
+}
+.rainbow-b{
+	border-color: #41b6e1;
+	background-color: #41b6e1;	
+}
+.rainbow-c{
+	border-color: #ff6599;
+	background-color:#ff6599 ;	
+}
+.rainbow-d{
+	border-color: #bc4e73;
+	background-color: #bc4e73;	
+}
+.rainbow-e{
+	border-color: #8c5de9;
+	background-color: #8c5de9;	
+}
+.rainbow-f{
+	border-color: #4b7dd6;
+	background-color: #4b7dd6;	
+}
+.rainbow-g{
+	border-color: #d9a954;
+	background-color: #d9a954;	
+}
+.rainbow-h{
+	border-color: #bbb215;
+	background-color: #bbb215;	
+}
+.rainbow-i{
+	border-color: #d5564f;
+	background-color: #d5564f;	
+}
+.rainbow-j{
+	border-color: #d9ad44;
+	background-color: #d9ad44;	
+}
+.rainbow-k{
+	border-color: #0e7f73;
+	background-color: #0e7f73;	
+}
+.rainbow-l{
+	border-color: #CD4046;
+	background-color: #CD4046;	
+}
+.rainbow-m{
+	border-color: #94345A;
+	background-color: #94345A;	
+}
+.rainbow-n{
+	border-color: #318AB0;
+	background-color: #318AB0;	
+}
+.rainbow-o{
+	border-color: #81076C;
+	background-color: #81076C;	
+}
+.rainbow-p{
+	border-color: #0CAAA5;
+	background-color: #0CAAA5;	
+}
+.rainbow-q{
+	border-color: #116CBA;
+	background-color: #116CBA;	
+}
+.rainbow-r{
+	border-color: #562493;
+	background-color: #562493;	
+}
+.rainbow-s{
+	border-color: #2F54AF;
+	background-color: #2F54AF;	
+}
+.rainbow-t{
+	border-color: #B3610D;
+	background-color: #B3610D;	
+}
+.rainbow-u{
+	border-color: #4945b3;
+	background-color: #4945b3;	
+}
+.rainbow-v{
+	border-color: #8baf41;
+	background-color: #8baf41;	
+}
+.rainbow-w{
+	border-color: #8144ae;
+	background-color: #8144ae;	
+}
+.rainbow-x{
+	border-color: #549c2c;
+	background-color: #549c2c;	
+}
+.rainbow-y{
+	border-color: #299a60;
+	background-color: #299a60;	
+}
+.rainbow-z{
+	border-color: #a9326a;
+	background-color: #a9326a;	
+}
+.rainbow-1{
+	border-color: #d9ad44;
+	background-color: #d9ad44;	
+}
+.rainbow-2{
+	border-color: #549c2c;
+	background-color: #549c2c;	
+}
+.rainbow-3{
+	border-color: #b3610d;
+	background-color: #b3610d;	
+}
+.rainbow-4{
+	border-color: #f5a623;
+	background-color: #f5a623;	
+}
+.rainbow-5{
+	border-color: #ef6599;
+	background-color: #ef6599;	
+}
+.rainbow-6{
+	border-color: #cd4046;
+	background-color: #cd4046;	
+}
+.rainbow-7{
+	border-color: #bc4e73;
+	background-color: #bc4e73;	
+}
+.rainbow-8{
+	border-color: #0caaa5;
+	background-color: #0caaa5;	
+}
+.rainbow-9{
+	border-color: #8baf41;
+	background-color: #8baf41;	
+}
+.rainbow-0{
+	border-color: #4b7dd6;
+	background-color: #4b7dd6;	
+}
+/*彩色饼 end*/
+
+/*-- IMChat-common start --*/
+html,body {
+	width:100%;
+	height:100%;
+	overflow: hidden;
+	min-width: 900px;
+	min-height: 602px;
+}
+
+.full-screen {
+	width:100%;
+}
+
+.IMChat-as-center {
+	float: left;
+	width: 100%;
+}
+
+.IMChat-frame {
+	height:100%;
+}
+
+.IMChat-body {
+	/*height:-webkit-calc(100% - 60px);*/
+	height: 100%;
+}
+
+.IMChat-body .IMChat-as-center {
+	height: 100%;
+}
+
+.IMChat-dialog .IMChat-title,
+.IMChat-list.msg .IMChat-search {
+	height: 60px;
+}
+.IMChat-model-cover{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: #111;
+	opacity: 0.65;
+	z-index: 3;
+}
+.IMChat-model-bd{
+	position: absolute;
+	left: 50%;
+	top:50%;
+	z-index: 4;
+}
+.IMChat-relative{
+	position: relative;
+}
+.IMChat-white{
+	color: #fff;
+}
+/*个人头像圆 大号*/
+.avt-s-l{
+	width: 38px;
+	height: 38px;
+	cursor: pointer;
+	line-height: 38px;
+	text-align: center;
+	display: inline-block;
+	border-radius: 19px;
+	color: #fff;
+}
+.avt-s-l span{
+	font-size: 13px;
+}
+.avt-s-s span{
+	font-size: 12px;
+}
+/*群组头像*/
+.avt-g{
+	color: #fff;
+	width: 38px;
+	height: 38px;
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 0;
+}
+.avt-g>div{
+	width: 18px;
+	height: 18px;
+	line-height: 18px;
+	vertical-align: middle;
+	text-align: center;
+	display: inline-block;
+	overflow: hidden;
+	border-radius: 24px;
+}
+.avt-g b{
+	color: #fff;
+	display: inline-block;
+}
+/*-- IMChat-common end --*/
+/*-- IMChat-banner start --*/
+.IMChat-banner {
+	height:60px;
+	background-color: #008cee;
+}
+/*-- IMChat-banner end --*/
+/*-- IMChat-menu start --*/
+.IMChat-menu {
+	width:100px;
+	height:100%;
+	background-color:#f97a4f;
+	position: relative;
+}
+
+.IMChat-namecard{
+	cursor: pointer;
+	margin:58px auto 0;
+	text-align: center;
+}
+
+.IMChat-namecard .photocard {
+	display: inline-block;
+	width:38px;
+	height:38px;
+	line-height:38px;
+	border-radius: 25px;
+/*	background-color:#6fcfcf ;*/
+	color:#ffffff;
+	/*box-shadow: 0 0 2px rgba(255,255,255,0.8);*/
+	border:1px solid #ffffff;
+}
+
+.IMChat-namecard .namecard {
+	margin-top: 20px;
+	color:#ffffff;
+}
+
+.IMChat-menu-items {
+	margin-top:40px;
+}
+
+.IMChat-menu-items li {
+	height:50px;
+	line-height:50px;
+	color:#ffffff;
+	cursor: pointer;
+	padding-left:45px;
+	background: none no-repeat scroll 15px center;
+}
+
+.IMChat-menu-items li:hover {
+	background-color:rgba(233, 99, 54,0.3) ;
+}
+
+.IMChat-menu-items li.cur {
+	background-color:#e96336 ;
+}
+
+.IMChat-menu-items li.addressbook-item {
+	background-image: url(../images/address_book.png);	
+}
+
+.IMChat-menu-items li.addressbook-item:hover,
+.IMChat-menu-items li.addressbook-item.cur {
+	background-image: url(../images/address_book_s.png);	
+}
+
+.IMChat-menu-items li.message-item {
+	background-image: url(../images/message.png);	
+}
+
+.IMChat-menu-items li.message-item:hover,
+.IMChat-menu-items li.message-item.cur {
+	background-image: url(../images/message-s.png);	
+}
+
+.IMChat-menu-items li.schedule-item {
+	background-image: url(../images/schedule.png);	
+}
+
+.IMChat-menu-items li.schedule-item:hover,
+.IMChat-menu-items li.schedule-item.cur {
+	background-image: url(../images/schedule-s.png);	
+}
+
+.IMChat-menu-items li.app-item {
+	background-image: url(../images/app.png);	
+}
+
+.IMChat-menu-items li.app-item:hover,
+.IMChat-menu-items li.app-item.cur {
+	background-image: url(../images/app-s.png);	
+}
+
+.IMChat-menu-settings {
+	width:100%;
+	bottom:0;
+	margin-bottom:30px;
+}
+
+.IMChat-menu-settings>li {
+	margin-top:15px;
+	height:20px;
+	height:20px;
+	background: none no-repeat scroll center center;
+	cursor: pointer;
+}
+
+.IMChat-menu-settings li.setting {
+	background-image: url(../images/Settings.png);
+}
+.IMChat-menu-settings li.new-chat {
+	border: 1px solid #e1e1e1;
+	border-radius: 10px;
+	text-align: center;
+	font-size: 0;
+	width: 18px;
+	height: 18px;
+	margin: 0 auto;
+	
+}
+.IMChat-menu-settings .fold-menu li{
+    padding: 5px 0;
+}
+.IMChat-menu-settings li.new-chat .fold-menu{
+	position: absolute;
+	top: -40px;
+	border-radius: 4px;
+    width: 80px;
+    left: 50%;
+    background: #fff;
+    margin-left: -40px;
+}
+.IMChat-menu-settings li.new-chat span{
+	position: absolute;
+	display: inline-block;
+}
+.IMChat-menu-settings li.new-chat>span:first-child {
+	width: 8px;
+	top: 50%;
+	left: 50%;
+	margin-left: -4px;
+	border-top: 1px solid #e1e1e1;
+}
+.IMChat-menu-settings li.new-chat>span:last-child{
+	height: 8px;
+	left: 50%;
+	top:50%;
+	margin-top: -4px;
+	border-right: 1px solid #e1e1e1;
+}
+.IMChat-menu-settings li.setting .fold-menu:hover,
+.IMChat-menu-settings li.new-chat .fold-menu:hover{
+    background: #fff3ef;
+}
+.IMChat-menu-settings li.setting .fold-menu{
+	border-radius: 4px;
+	background: #fff;
+	width: 80%;
+	margin: 0 auto;
+	position: relative;
+	top: -40px;
+}
+.IMChat-menu-settings li.setting .fold-menu .triangle,
+.IMChat-menu-settings li.new-chat .fold-menu .triangle{
+	display: inline-block;
+	width: 0;
+	height: 0;
+	position: absolute;
+	bottom: -5px;
+	left:50%;
+	margin-left: -5px;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-top: 5px solid #fff;
+	
+}
+
+.IMChat-menu-settings,
+.IMChat-mac-close {
+	position: absolute;
+	left: 0;
+	right: 0;
+}
+
+.IMChat-mac-close {
+	position: absolute;
+	width: 100%;
+	top:0;
+	padding:0 20px;
+}
+
+.IMChat-mac-close li {
+	width:12px;
+	height: 12px;
+	line-height: 12px;
+	border-radius: 25px;
+	float: left;
+	margin:10px 4px;
+	cursor: pointer;
+}
+
+.IMChat-mac-close li:first-child {
+	background:none no-repeat scroll center center #ff6159;
+}
+
+.IMChat-mac-close li:first-child:hover {
+	background-image:url(../images/close.png) ;
+}
+
+.IMChat-mac-close li:nth-child(2) {
+	background-color:#ffbd2e ;
+}
+
+.IMChat-mac-close li:nth-child(3) {
+	background-color:#29ce42 ;
+}
+
+/*-- IMChat-menu end --*/
+/*-- IMChat-list.msg start --*/
+.weak{
+	color: #767674;
+}
+.IMChat-list .IMChat-search *{
+	outline: none;
+	box-shadow: none;
+	background: transparent;
+}
+.IMChat-search .dropdown-menu{
+	border: none;
+	box-shadow: 0px 0px 9px -2px #ccc;
+}
+.IMChat-search .ui-select-highlight{
+	font-weight: normal;
+	color: #f14e49;
+}
+.IMChat-search .ui-select-bootstrap .ui-select-choices-row>a:hover,
+.IMChat-search .ui-select-bootstrap .ui-select-choices-row>a:focus,
+.IMChat-search .ui-select-bootstrap .ui-select-choices-row.active>a{
+	background: #FFF3EF;
+}
+.IMChat-list .IMChat-search .ui-select-choices-content{
+	background: #fff;
+}
+.IMChat-list .IMChat-search div.ui-select-match .caret{
+	border: 0;
+}
+.IMChat-list .IMChat-search .form-control{
+	height: 31px;
+}
+.IMChat-list .IMChat-search div.ui-select-match{
+	margin: 23px 0 5px 0px;
+	height: 31px;
+	width: 174px;
+	border: 0;
+	background-color: #efefef;
+	background-image:url(../images/search.png);
+	border-radius: 20px;
+	background-repeat: no-repeat;
+	background-position: 10px center;
+	padding: 2px 10px 2px 18px;
+}
+.IMChat-list .IMChat-search div.ui-select-match .btn{
+	padding: 4px 12px;
+}
+.IMChat-list .IMChat-search{
+	margin-left: 15px;
+	width: 174px;
+}
+.IMChat-list .IMChat-search input{
+	margin: 23px 0 5px 0px;
+	width: 100%;
+	border: 0;
+	background-color: #efefef;
+	background-image:url(../images/search.png);
+	border-radius: 20px;
+	background-repeat: no-repeat;
+	background-position: 10px center;
+	padding: 5px 10px 5px 30px;
+}
+.IMChat-list.msg .list-item:hover,
+.IMChat-list.msg .list-item.cur
+{
+	background: #fff3ef;
+}
+.IMChat-list.msg {
+	width: 214px;
+	height:100%;
+	background-color:#ffffff;
+}
+
+.IMChat-list.msg .list-item{
+	padding: 10px 0;
+	cursor: pointer;
+}
+.IMChat-list.msg .list-item .l-blk,
+.IMChat-list.msg .list-item .r-blk{
+	display: inline-block;
+	vertical-align: middle;
+}
+.IMChat-list.msg .list-item .r-blk{
+	width:140px;
+}
+
+.IMChat-list.msg .list-item .avt-s-l,
+.IMChat-list.msg .list-item .avt-g {
+	color: #fff;
+	width: 38px;
+	height: 38px;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 14px;
+}
+.IMChat-list.msg .list-item .avt-s-l{
+	border-radius: 20px;
+	line-height: 38px;
+	text-align: center;
+}
+.IMChat-list.msg .list-item .avt-s-l.sys-icon-man{
+	background-image:url(../images/) ;
+}
+.IMChat-list.msg .list-item .l-blk,
+.IMChat-list.msg .list-item .avt-g{
+	font-size: 0;
+}
+.IMChat-list.msg .list-item .avt-g {
+	line-height: 18px;
+}
+.IMChat-list.msg .list-item .avt-g>div{
+	width: 18px;
+	height: 18px;
+	line-height: 18px;
+	vertical-align: middle;
+	text-align: center;
+	display: inline-block;
+	border-radius: 24px;
+}
+.IMChat-list.msg .list-item .avt-g b{
+	color: #fff;
+	transform: scale(0.8);
+	display: inline-block;
+}
+.IMChat-list.msg .list-item:hover .avt-s-l,
+.IMChat-list.msg .list-item:hover .avt-g{
+	margin: 0;
+}
+.IMChat-list.msg .list-item div:first-child span{
+	display: none;
+	padding: 0 7px;
+	cursor: pointer;
+	width: 5px;
+	height: 5px;
+	background: url(../images/close.png) center no-repeat;
+}
+.IMChat-list.msg .list-item:hover div:first-child span{
+	display: inline-block;
+}
+/*通讯录*/
+.IMChat-list.contacts .list-item,
+.IMChat-list.app .list-item
+{
+	font-size: 14px;
+	font-family: "microsoft yahei";
+	cursor: pointer;
+	color: #111;
+	padding: 12px 50px;
+	background-position:22px center ;
+	background-repeat: no-repeat;
+}
+.IMChat-list.contacts .list-item:first-child{
+	margin-top: 5px;
+}
+.IMChat-list.contacts .list-item:hover,
+.IMChat-list.contacts .list-item.cur,
+.IMChat-list.app .list-item.cur,
+.IMChat-list.app .list-item:hover{
+	color: #F97A4F;
+}
+.IMChat-list.contacts .list-item.i-care{
+	background-image: url(../images/attention.png);
+}
+.IMChat-list.contacts .list-item.my-dep{
+	background-image: url(../images/dep.png);
+}
+.IMChat-list.contacts .list-item.my-groups{
+	background-image: url(../images/group_contact.png);
+}
+.IMChat-list.contacts .list-item.pub-acc{
+	background-image: url(../images/pub_acc.png);
+}
+.IMChat-list.contacts .list-item.usu-tel{
+	background-image: url(../images/usu_tel.png);
+}
+.IMChat-list.contacts .list-item.sup-team{
+	background-image: url(../images/sup_team.png);
+}
+/****icon highlight***/
+.IMChat-list.contacts .list-item:hover.i-care,
+.IMChat-list.contacts .list-item.cur.i-care{
+	background-image: url(../images/attention_h.png);
+}
+.IMChat-list.contacts .list-item:hover.my-dep,
+.IMChat-list.contacts .list-item.cur.my-dep{
+	background-image: url(../images/dep_h.png);
+}
+.IMChat-list.contacts .list-item:hover.my-groups,
+.IMChat-list.contacts .list-item.cur.my-groups{
+	background-image: url(../images/group_contact_h.png);
+}
+.IMChat-list.contacts .list-item:hover.pub-acc,
+.IMChat-list.contacts .list-item.cur.pub-acc{
+	background-image: url(../images/pub_acc_h.png);
+}
+.IMChat-list.contacts .list-item:hover.usu-tel,
+.IMChat-list.contacts .list-item.cur.usu-tel{
+	background-image: url(../images/usu_tel_h.png);
+}
+.IMChat-list.contacts .list-item:hover.sup-team,
+.IMChat-list.contacts .list-item.cur.sup-team{
+	background-image: url(../images/sup_team_h.png);
+}
+.contacts-entity.group .avt-g b{
+	transform: scale(0.5);
+    width: 30px;
+    margin-left: -7px;
+    margin-top: -10px;
+}
+/*-- IMChat-list.msg end --*/
+/*-- IMChat-list start --*/
+.IMChat-dialog {
+	height:100%;
+	margin-left:314px;
+	background-color: #fafafa;
+	border-left: 1px solid #eaeaea;
+	position: relative;
+	/*padding: 60px 0 106px;*/
+	padding: 60px 0 0px;
+}
+
+.IMChat-dialog .IMChat-title {
+	border-bottom: 1px solid #eaeaea;
+	top:0;
+	padding:0 20px;
+}
+
+.IMChat-title .title-item {
+	line-height: 60px;
+}
+
+.IMChat-title .operate-item li {
+	float: left;
+	margin: 20px 0 0 20px;
+	background: none no-repeat scroll center center;
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+}
+
+.IMChat-title .operate-item  li:first-child {
+	background-image: url(../images/folder.png);
+}
+
+.IMChat-title .operate-item  li:nth-child(2) {
+	background-image: url(../images/addition.png);
+}
+
+.IMChat-title .operate-item  li:nth-child(3) {
+	background-image: url(../images/group.png);
+}
+
+.IMChat-dialog .IMChat-title,
+.IMChat-dialog .IMChat-richTextBox,
+.IMChat-entity-display .message-entity .arrow {
+	position: absolute;
+	width:100%;
+	left:0;
+	right: 0;
+}
+
+.IMChat-dialog .IMChat-richTextBox {
+	border-top: 1px solid #eaeaea;
+	bottom:0;
+	min-height:106px;
+	max-height:127px;
+	background-color:#ffffff ;
+}
+
+.IMChat-dialog .IMChat-send-btn {
+	width: 78px;
+	min-height:106px;
+	height: 100%;
+	background: url(../images/sendbtn.png) no-repeat scroll center center #ffffff;
+	border: none;
+	cursor: pointer;
+}
+
+.IMChat-dialog .IMChat-send-btn:hover {
+	background-image: url(../images/sendbtn-h.png);
+}
+
+.IMChat-dialog .IMChat-editBox {
+	margin-right: 78px;
+	position: relative;
+}
+
+.IMChat-editBox .edit-toolsbar {
+	height:30px;
+	background-color: #fafafa;
+	border-right:1px solid #eaeaea;
+}
+
+.IMChat-editBox .edit-toolsbar li {
+	margin:8px 0 8px 20px;
+	width:17px;
+	height:17px;
+	background: none no-repeat scroll center center;
+	background-size:17px auto;
+	float: left;
+	cursor: pointer;
+}
+
+.IMChat-editBox .edit-toolsbar li.file-tool {
+	background-image:url(../images/file.png);
+}
+
+.IMChat-editBox .edit-toolsbar li.expression-tool {
+	background-image:url(../images/expression.png) ;
+}
+
+.IMChat-editBox .edit-toolsbar li.screenshot-tool {
+	background-image:url(../images/screenshot.png) ;
+}
+
+.IMChat-editBox .textedit-box-container {
+	padding: 0 2px 10px 20px;
+	border-right:1px solid #eaeaea;
+	background-color: #fafafa;
+}
+
+.IMChat-editBox .textedit-box {
+	outline: none;
+	line-height: 21px;	
+	min-height:63px;
+	max-height:84px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	width: 100%;
+	padding-right:10px;
+}
+.IMChat-editBox .expression-pannel{
+	width: 264px;
+	position: absolute;
+	bottom: 105px;
+	left: 10px;
+	box-shadow: 0px 0px 10px 5px #555555;
+	background: #fff;
+}
+.IMChat-editBox .expression-pannel li:hover{
+	border: 1px solid #0095cd;
+	position: relative;
+}
+.IMChat-editBox .expression-pannel li{
+	display: inline-block;
+	padding: 5px;
+	height: 34px;
+	border: 1px solid #e1e1e1;
+	margin: -1px 0 0 -1px;
+	cursor: pointer;
+}
+.IMChat-entity-display {
+	overflow: hidden;
+	overflow-y: auto;
+	height: 100%;
+	padding:0 20px 30px;
+}
+.IMChat-entity-display.message{
+	height: -webkit-calc(100% - 106px);
+}
+
+.IMChat-entity-display > * {
+	overflow: hidden;
+}
+
+.IMChat-entity-display .message-entity .operate-reminder,
+.IMChat-entity-display .message-entity .timer-reminder  {
+	color: #bbbcbe;
+	font-size: 12px;
+	text-align: center;
+}
+
+.IMChat-entity-display .message-entity .operate-reminder {
+	margin-top:20px;
+}
+
+.IMChat-entity-display .message-entity .timer-reminder {
+	margin-top:16px;
+}
+
+.IMChat-entity-display .message-entity .message-iterlocutors,
+.IMChat-entity-display .message-entity .message-self {
+	margin-top: 20px;
+}
+
+.IMChat-entity-display .message-entity .photocard {
+	width:34px;
+	height:34px;
+	line-height:34px;
+	border-radius:25px;
+	border: 1px solid #ffffff;
+	text-align: center;
+	color:#ffffff;
+	margin-top:20px;
+}
+
+.IMChat-entity-display .message-entity .namecard {
+	color: #99a3be;
+}
+
+.IMChat-entity-display .message-entity .message-self .namecard {
+	text-align: right;
+}
+
+.IMChat-entity-display .message-entity .message-iterlocutors .photocard {
+	background-color: #6fcfcf;
+}
+
+.IMChat-entity-display .message-entity .message-self .photocard {
+	background-color: #fce8b7;
+}
+
+.IMChat-entity-display .message-entity .message-iterlocutors .dialog-card {
+	margin-left: 50px;
+	position: relative;
+}
+
+.IMChat-entity-display .message-entity .message-self .dialog-card {
+	margin-right: 50px;
+	position: relative;
+}
+
+.IMChat-entity-display .message-entity .dialog-content {
+  	padding: 8px 10px;
+  	border: 1px solid #e1e0e5;
+  	border-radius: 5px;
+  	max-width: 450px;
+}
+
+.IMChat-entity-display .message-entity .message-self .dialog-content {
+	background-color: #fce8b7;
+	border:none;
+}
+
+.IMChat-entity-display .message-entity .dialog-content .chat-img{
+	max-width: 430px;
+	display: block;
+}
+
+.IMChat-entity-display .message-entity .arrow {
+	left:-3px;
+	width:4px;
+	height:5px;
+	background: url(../images/leftarrow.png) no-repeat scroll center center;
+	top:35px;
+}
+
+.IMChat-entity-display .message-entity .message-self .arrow {
+	right:-3px;
+	left: initial;
+	background-image: url(../images/rightarrow.png);
+}
+
+
+/*-- IMChat-dialog end --*/
+
+/*-- webkit scrollbar start --*/
+::-webkit-scrollbar {  
+    width: 8px;  
+}  
+   
+/* 轨道样式 */  
+::-webkit-scrollbar-track {  
+  
+}  
+   
+/* Handle样式 */  
+::-webkit-scrollbar-thumb {  
+    border-radius: 10px;  
+    background: rgba(0,0,0,0.2);   
+}  
+  
+/*当前窗口未激活的情况下*/  
+::-webkit-scrollbar-thumb:window-inactive {  
+    background: rgba(0,0,0,0.1);   
+}  
+  
+/*hover到滚动条上*/  
+::-webkit-scrollbar-thumb:vertical:hover{  
+    background-color: rgba(0,0,0,0.3);  
+}  
+/*滚动条按下*/  
+::-webkit-scrollbar-thumb:vertical:active{  
+    background-color: rgba(0,0,0,0.7);  
+}  
+/*-- webkit scrollbar end --*/
+/*修改个人信息 start*/
+.btn-alive{
+	background: #F97A4F;
+	border-radius: 4px;
+	padding: 10px 0;
+	width: 142px;
+	color: #fff;
+	display: inline-block;
+	cursor: pointer;
+	border: 0;
+}
+.IMChat-set-vcard{
+	width: 378px;
+	height: 513px;
+	margin-left: -189px;
+	margin-top: -256.5px;
+	background: #fff;
+}
+.IMChat-set-vcard input{
+	width: 238px;
+	margin-left: 20px;
+	padding: 4px 0 4px 15px;
+	border: 1px solid #bbbcbe;
+}
+.IMChat-set-vcard input[readonly]{
+	border: 1px solid #fff;
+}
+.IMChat-set-vcard ul{
+	padding: 22px;
+}
+.IMChat-set-vcard li{
+	margin-top: 10px;
+}
+.IMChat-set-vcard li:first-child{
+	margin-top: 0px;
+}
+.IMChat-set-vcard label{
+	color: #BBBCBE;
+}
+.IMChat-set-vcard .form-head{
+	overflow: hidden;
+	background: #f97a4f;
+}
+.IMChat-set-vcard .form-head .base-info *{
+	color: #fff;
+}
+.IMChat-set-vcard .form-head .base-info .fans-num{
+	color: #fff;
+	padding-left: 20px;
+	margin: 70px 15px 0 0 ;
+	background: url(../images/fans.png)0 center no-repeat;
+}
+.IMChat-set-vcard .base-info .name-info>span{
+	padding-right: 20px;
+	display: block;
+	font-size: 12px;
+	line-height: 33px;
+	cursor: pointer;
+	background: url(../images/remark.png) 100% center no-repeat;
+}
+.IMChat-set-vcard .base-info .name-info>p{
+	margin-top: 5px;
+}
+.IMChat-set-vcard .base-info .name-info>p input{
+	width: 120px;
+	height: 26px;
+	border: none;
+	margin: 0;
+	background: rgba(255,255,255,0.2);
+	padding-top: 8px;
+}
+.IMChat-set-vcard .base-info .name-info>p .confirm{
+	background: #e25b2e;
+	display: inline-block;
+	cursor: pointer;
+	padding: 3px 15px;
+	margin: -1px 0 0 10px; 
+	border-radius: 2px;
+}
+.IMChat-set-vcard .base-info .name-info>p input::-webkit-input-placeholder {
+	color: #ffd0c0;
+	font-size: 12px;
+}
+.IMChat-set-vcard .base-info .name-info{
+	display: inline-block;
+	vertical-align: middle;
+}
+.IMChat-set-vcard .form-head .avt{
+	color: #fff;
+	font-size: 16px;
+	width: 55px;
+	height: 55px;
+	line-height: 55px;
+	text-align: center;
+	cursor: pointer;
+	margin: 50px 10px  48px 25px;
+	display: inline-block;
+	/*background-color: #ba914b;*/
+	border: 1px solid #fff;
+	border-radius: 50px;
+}
+.IMChat-set-vcard .avt-set{
+	position: absolute;
+	z-index: 4;
+	top:115px;
+	left:20px;
+	background: #fff;
+	width: 202px;
+	height: 258px;
+	box-shadow: 0px 3px 5px #aaa;
+}
+.IMChat-set-vcard .avt-set .img-can span{
+	display: inline-block;
+	padding: 5px 0;
+	-webkit-transform: scale(0.9);
+}
+.IMChat-set-vcard .avt-set .img-can .img{
+	width:155px;
+	height: 157px;
+	margin: 0 auto;
+	background: url(../images/avt_default.png);
+	background-size: cover;
+}
+.IMChat-set-vcard .avt-set .foot-btns{
+	background: #e3e3e3;
+	font-size: 0;
+	position: absolute;
+	padding: 10px 5px;
+	width: 100%;
+	bottom: 0;
+}
+.IMChat-set-vcard .avt-set .foot-btns>div{
+	display: inline-block;
+	background: #fff;
+	border-radius: 4px;
+	margin-left: 15px;
+	width: 74px;
+	cursor: pointer;
+	text-align: center;
+	padding: 7px 0;
+}
+.IMChat-set-vcard .form-foot{
+	background: #fafafa;
+	border-top: 1px solid #eeeced;
+	padding: 10px 0;
+	position: absolute;
+	text-align: center;
+	bottom: 0;
+	width: 100%;
+}
+.IMChat-set-vcard .close-model,.IMChat-new-gchat .close-model{
+	width: 14px;
+	display: inline-block;
+	float: left;
+	cursor: pointer;
+	height: 14px;
+	margin: 15px 0 0 15px;
+	background: #fff url(../images/red_cross.png) center no-repeat;
+	border-radius: 15px;
+}
+/*修改个人信息 end*/
+/*群聊折叠菜单start*/
+.IMChat-group-slide{
+	width: 364px;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	top: 60px;
+	box-shadow:-4px 0px 10px #A2A2A2;
+	z-index: 2; 
+	background: #fff;
+	-webkit-animation: slideLeft 0.5s;
+	-ms-animation: slideLeft 0.5s;
+}
+.IMChat-group-slide.beforeHide{
+	right: -100%;
+	-webkit-animation: slideOut 0.8s;
+}
+@-webkit-keyframes slideOut{
+	from{
+		right: 0;
+	}
+	to{
+		right: -100%;
+	}
+}
+@-webkit-keyframes slideLeft{
+	from{right: -100%;}
+	to{right: 0;}
+}
+@-ms-keyframes slideLeft{
+	from{right: -100%;}
+	to{right: 0;}
+}
+.IMChat-group-slide.group-set .box-head{
+	 text-align: center;
+	 font-size: 14px;
+	 padding: 7px 0;
+}
+.IMChat-group-slide.group-set .box-bd{
+	border-top: 1px solid #e9e8e8;
+	padding: 0 20px;
+}
+.IMChat-group-slide.group-set .box-bd li{
+	padding: 9px 0;
+	overflow: hidden;
+}
+.IMChat-group-slide.group-set .box-bd li:last-child div{
+	font-size: 0;
+}
+.IMChat-group-slide.group-set .edit-group-name{
+	color: #3bc2e7;
+	cursor: pointer;
+}
+.IMChat-group-slide.group-set .switch-btn{
+	display: inline-block;
+	width: 35px;
+	height: 15px;
+	vertical-align: middle;
+	cursor: pointer;
+	background-color:#e8e8e9 ;
+	border-radius:26px ;
+}
+.IMChat-group-slide.group-set input{
+	width: 0;
+	height: 0;
+}
+.IMChat-group-slide.group-set .switch-btn span{
+	display: inline-block;
+	padding: 8px;
+	position: relative;
+	top:-1px;
+	border-radius: 15px;
+	background: #f97a4f;
+}
+.IMChat-group-slide.group-set input:checked+.switch-btn span{
+	left: 18px;
+}
+.IMChat-group-slide.group-set .box-foot{
+	padding: 10px 0;
+	position: absolute;
+	bottom: 0;
+	background: #FAFAFA;
+	width: 100%;
+	-webkit-animation: footSlideUp 0.5s;
+}
+@-webkit-keyframes footSlideUp{
+	from{bottom: -100%;}
+	to{bottom: 0;}
+}
+#exit_group{
+	padding: 10px 0;
+	color: #fff;
+	text-align: center;
+	width: 136px;
+	margin: 0 auto;
+	border-radius:4px ;
+	background: #f03a34;
+	cursor: pointer;
+	
+}
+.IMChat-group-slide.group-set dl{
+	display: inline-block;
+	margin:14px 0 0 21px;
+	text-align: center;
+}
+.IMChat-group-slide.group-set dl:nth-child(6n+1){
+	margin-left: 0;
+}
+.IMChat-group-slide.group-set dd{
+	font-size: 12px;
+}
+.IMChat-group-slide.group-set dt{
+	width: 34px;
+	height: 34px;
+	line-height: 34px;
+	border-radius: 30px;
+	color: #fff;
+	font-size: 12px;
+	margin: 0 auto;
+	margin-bottom: 6px;
+	padding-bottom: 6px;
+}
+.IMChat-group-slide.group-set .add-mem-btn dt span:first-child{
+	width: 15px;
+	left: 50%;
+	margin-left: -7.5px;
+	display: inline-block;
+	position: absolute;
+	border-top:1px solid #0ab3e2;
+	top: 50%;
+}
+.IMChat-group-slide.group-set .add-mem-btn dt span:last-child{
+	height: 15px;
+	top: 50%;
+	margin-top: -7.5px;
+	position: absolute;
+	left: 50%;
+	display: inline-block;
+	border-left:1px solid #0ab3e2;
+}
+.IMChat-group-slide.group-set .add-mem-btn dt{
+	border-radius: 25px;
+	border: 1px solid #0ab3e2;
+	position: relative;
+}
+.IMChat-group-slide.group-set .add-mem-btn dd{
+	color: #0ab3e2;
+}
+/*群聊折叠菜单*/
+/*新建群聊 start*/
+.IMChat-new-gchat{
+	width: 676px;
+	height: 546px;
+	margin-left: -338px;
+	margin-top: -273px;
+	overflow: hidden;
+	background: #fafafc;
+	border-radius: 4px;
+}
+.IMChat-new-gchat .box-head{
+	background: #fff;
+	height: 50px;
+	line-height: 50px;
+	overflow: hidden;
+}
+.IMChat-new-gchat .box-bd{
+	padding: 0px 12px;
+}
+.IMChat-new-gchat .box-bd p{
+	padding: 20px 0 10px 0 ;
+}
+.IMChat-new-gchat .box-bd .inter-box{
+	border: 1px solid #e1e1e1;
+	border-radius: 4px;
+	background: #fff;
+	height: 282px;
+}
+.IMChat-new-gchat .box-bd .inter-box .edit-area{
+	max-width: 100%;
+	box-sizing: border-box;
+	outline: 0;
+	border:none;
+	border-radius: 4px;
+	padding: 10px;
+	/*height: 100%;*/
+}
+.IMChat-new-gchat .inter-box .match-item{
+	padding: 10px;
+	cursor: pointer;
+}
+.IMChat-new-gchat .inter-box .match-selected *{
+	vertical-align: middle;
+}
+.IMChat-new-gchat .inter-box .match-selected{
+	display: inline-block;
+	padding: 3px 5px;
+	border: 1px solid #E1E1E1;
+	border-radius: 2px;
+	margin-left: 5px;
+	margin-top: 5px;
+}
+.IMChat-new-gchat .inter-box .match-selected span{
+	display: inline-block;
+	width: 5px;
+	height: 5px;
+	cursor: pointer;
+	margin: -3px 3px 0 0;
+	vertical-align: middle;
+	background: url(../images/close.png) center no-repeat;
+}
+.IMChat-new-gchat .inter-box .match-item .avt{ 
+	width: 34px;
+	height: 34px;
+	line-height: 34px;
+	text-align: center;
+	border-radius: 25px;
+	display: inline-block;
+}
+.IMChat-new-gchat .box-bd .inter-box .match-item:hover{
+	background: #fff3ef;
+}
+.IMChat-new-gchat .box-bd .inter-box .remind-box{
+	width: 100%;
+	border: 1px solid #e1e1e1;
+	border-radius: 4px;
+} 
+.IMChat-new-gchat .box-bd .set-gname{
+	border: 1px solid #e1e1e1;
+	border-radius: 4px;
+	width: 100%;
+	padding: 8px;
+	box-sizing: border-box;
+}
+.IMChat-new-gchat .box-bd .l-blk,
+.IMChat-new-gchat .box-bd .r-blk{
+	display: inline-block;
+}
+.IMChat-new-gchat .r-blk{
+	float: right;
+	margin-left: 25px;
+}
+.IMChat-new-gchat .r-blk .pick-tab{
+	border: 1px solid #e1e1e1;
+	border-radius: 4px;
+	width: 244px;
+	height: 378px;
+	background: #fff;
+}
+.IMChat-new-gchat .r-blk .pick-tab .user-list{
+	max-height: 265px;
+	overflow-y: scroll;
+}
+.IMChat-new-gchat .r-blk .tab-head>div{
+	float: left;
+	padding: 5px 0;
+	cursor: pointer;
+	width: 50%;
+	text-align: center;
+	border: 1px solid #e1e1e1;
+	border-top: 0;
+}
+.IMChat-new-gchat .r-blk .tab-head>div:first-child{
+	border-left:0 ;
+}
+.IMChat-new-gchat .r-blk .tab-head>div:last-child{
+	border-right: 0;
+}
+.IMChat-new-gchat .r-blk .tab-head>div.cur{
+	border: 0;
+}
+.IMChat-new-gchat .box-bd .l-blk{
+	width: 380px;
+}
+.IMChat-new-gchat .box-bd .check-all *{
+	vertical-align: middle;
+}
+.IMChat-new-gchat .box-bd .check-all input{
+	width: 18px;
+	height: 18px;
+	cursor: pointer;
+	margin-right: 5px;
+	margin-left: 15px;
+	background: #fff;
+	display: inline-block;
+}
+.IMChat-new-gchat .pick-tab .user-list li{
+	padding: 7px 0;
+	padding-left: 15px;
+	cursor: pointer;
+}
+.IMChat-new-gchat .pick-tab .user-list li:first-child{
+	margin-top: 5px;
+}
+.IMChat-new-gchat .pick-tab .user-list li:hover{
+	background: #fff3ef;
+}
+.IMChat-new-gchat .box-bd .avt-s-s{
+	position: relative;
+	width: 34px;
+	height: 34px;
+	margin-right: 5px;
+	display: inline-block;
+	color: #fff;
+	line-height: 34px;
+	text-align: center;
+	border-radius:25px ;
+}
+.IMChat-new-gchat .user-list li.checked .avt-s-s:after{
+	position: absolute;
+	content: '';
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	display: block;
+	border-radius:25px ;
+	background-color: rgba(74,74,74,0.5);
+	background-image: url(../images/checked.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 20px;
+	z-index: 2;
+}
+.IMChat-new-gchat .dep-node{
+	padding: 15px 0 15px 15px;
+}
+.IMChat-new-gchat .box-foot{
+	position: absolute;
+	bottom: 0px;
+	padding: 10px 0;
+	width: 100%;
+	background: #fff;
+}
+.IMChat-new-gchat .close-model{
+	background-color: #ff6159;
+}
+.IMChat-new-gchat .weak{
+	color: #acacad;
+}
+/*新建群聊 end*/
+
+/*联系人 关注*/
+.IMChat-entity-display.contacts{
+	padding: 0;
+}
+.contacts-entity>li{
+	padding: 8px 16px 8px 20px;
+}
+.contacts-entity .avt-s-l{
+	margin-right: 5px;
+}
+.contacts-entity>li:hover{
+	background: #efefef;
+}
+.IMChat-entity-display.contacts .switch-tab{
+	border-bottom: 1px solid #e1e1e1;
+	overflow: visible;
+}
+.IMChat-entity-display.contacts .switch-tab>div{
+	cursor: pointer;
+	display: inline-block;
+	padding: 10px 11px;
+}
+.IMChat-entity-display.contacts .switch-tab>div.cur{
+	color: #F97A4F;
+	border-bottom: 2px solid #F97A4F;
+	position: relative;
+	bottom: -2px;
+}
+.IMChat-entity-display.contacts .pub-acc>li .option,
+.IMChat-entity-display.contacts .follow>li .option,
+.IMChat-entity-display.contacts .dept>li .option
+{
+	float:right ;
+	padding: 4px 0;
+	width: 70px;
+	display: none;
+	margin-top: 6px;
+	color: #fff;
+	font-size: 12px;
+	text-align: center;
+	border-radius:2px;
+}
+.IMChat-entity-display.contacts .pub-acc>li:hover .option,
+.IMChat-entity-display.contacts .follow>li:hover .option,
+.IMChat-entity-display.contacts .dept>li:hover .option{
+	display: block;
+	cursor: pointer;
+}
+.IMChat-entity-display.contacts .pub-acc .option.subscribe,
+.IMChat-entity-display.contacts .follow .option.start-chat,
+.IMChat-entity-display.contacts .dept .option{
+	background: #6ac66f;
+}
+.IMChat-entity-display.contacts .pub-acc .option.cancel-subscribe{
+	background: #F97A4F;
+}
+.IMChat-entity-display.contacts .dept li>span{
+	margin-top: 10px;
+}
+/*应用 start*/
+.app-entity dl{
+	padding: 23px 30px 5px;
+	display: inline-block;
+	cursor: pointer;
+	vertical-align: top;
+	padding-bottom: 40px;
+}
+.app-entity dl:hover{
+	background: #efefef;
+	padding-bottom: 5px;
+}
+.app-entity dd{
+	text-align: center;
+	margin-top: 8px;
+}
+.app-entity dd.add{
+	background: #6AC66F;
+	color: #fff;
+	display: none;
+	border-radius: 2px;
+}
+.app-entity dl:hover dd.add{
+	display: block;
+}
+.app-entity dt{
+	width: 50px;
+	height: 50px;
+	margin: 0 auto;
+	border-radius:4px ;
+}
+.app-entity .work-email{
+	background: url(../images/email.png) center no-repeat;
+}
+.app-entity .approve{
+	background: url(../images/approve.png) center no-repeat;
+}
+.app-entity .attendance{
+	background: url(../images/attendance.png) center no-repeat;
+}
+.app-entity .latest-act{
+	background: url(../images/latest_activity.png) center no-repeat;
+}
+.app-entity .classroom{
+	background: url(../images/classroom.png) center no-repeat;
+}
+.app-entity .salary-query{
+	background: url(../images/salary_inquery.png) center no-repeat;
+}
+.app-entity .add-more{
+	background: url(../images/add_more.png) center no-repeat;
+} 
+
+.IMChat-list.app .list-item.myapp{
+	background-image: url(../images/myapp.png);
+}
+.IMChat-list.app .list-item.app-all{
+	background-image: url(../images/app_all.png);
+}
+/****icon highlight***/
+.IMChat-list.app .list-item:hover.myapp,
+.IMChat-list.app .list-item.cur.myapp{
+	background-image: url(../images/myapp_h.png);
+}
+.IMChat-list.app .list-item:hover.app-all,
+.IMChat-list.app .list-item.cur.app-all{
+	background-image: url(../images/app_all_h.png);
+}
+/*应用end*/
+/*bootstrap 样式修正*/
+.form-control{
+	border: none!important;
+	box-shadow: none!important;
+}
+.ui-select-multiple.ui-select-bootstrap{
+	padding: 5px 5px 0 5px;
+}
+/*bootstrap 样式修正end*/
+.loading-animation span{
+	
+	display: inline-block;
+	padding: 5px;
+	border-radius:10px;
+	background: #f97a4f;
+	width: 2px;
+	height: 2px;
+	transform: scale(0);
+	-webkit-animation: loading 500ms linear infinite alternate;
+}
+.loading-animation span:nth-child(2){
+	-webkit-animation-delay: 200ms;
+}
+.loading-animation span:nth-child(3){
+	-webkit-animation-delay: 400ms;
+}
+@-webkit-keyframes loading{
+	0%{transform: scale(0);}
+	100%{transform: scale(1);}
+}

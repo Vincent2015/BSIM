@@ -1,0 +1,33 @@
+﻿<!--  IMChat 对话title -->
+<div class="IMChat-title cl">
+    <h2 class="title-item z">
+        我的群组</h2>
+</div>
+<!-- 消息、人员展现窗口 -->
+<div class="IMChat-entity-display contacts">
+    <!-- 消息实体 -->
+    <ul class="contacts-entity group" >
+    	<li  ng-repeat="group  in  groupList">
+    		<div ng-click="goToMessage_group(group,$event)" class="start-chat option">聊天</div>
+			<div ng-if="group.numberOfMembers==1" class="avt-s-l rainbow-{{group.members[0].name|getFirstLetter}}"><b ng-bind="group.members[0].name | cutString:1:2">大海</b></div>
+    		<div class="avt-g" ng-if="group.numberOfMembers==2">
+    			<div class="rainbow-{{group.members[0].name|getFirstLetter}}"><b ng-bind="group.members[0].name | cutString:1:2">大海</b></div>
+    			<div class="rainbow-{{group.members[1].name|getFirstLetter}}"><b ng-bind="group.members[1].name | cutString:1:2">大海</b></div>
+    		</div> 
+    		<div class="avt-g thr-mem" ng-if="group.numberOfMembers==3">
+    			<div class="rainbow-{{group.members[0].name|getFirstLetter}}"><b ng-bind="group.members[0].name | cutString:1:2">大海</b></div>
+    			<div class="rainbow-{{group.members[1].name|getFirstLetter}}"><b ng-bind="group.members[1].name | cutString:1:2">大海</b></div>
+    			<div class="rainbow-{{group.members[2].name|getFirstLetter}}"><b ng-bind="group.members[2].name | cutString:1:2">大海</b></div>
+    		</div> 
+    		<div class="avt-g" ng-if="group.numberOfMembers>3">
+    			<div class="rainbow-{{group.members[0].name|getFirstLetter}}"><b ng-bind="group.members[0].name | cutString:1:2">大海</b></div>
+    			<div class="rainbow-{{group.members[1].name|getFirstLetter}}"><b ng-bind="group.members[1].name | cutString:1:2">大海</b></div>
+    			<div class="rainbow-{{group.members[2].name|getFirstLetter}}"><b ng-bind="group.members[2].name | cutString:1:2">大海</b></div>
+    			<div class="rainbow-{{group.members[3].name|getFirstLetter}}"><b ng-bind="group.members[3].name | cutString:1:2">大海</b></div>
+    		</div> 
+    		<span  ng-bind-html="group.name | limitTo:15"></span>
+    	</li>
+    </ul>
+    <!-- 联系人实体 -->
+</div>
+

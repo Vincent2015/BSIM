@@ -1,0 +1,10 @@
+<div class="IMChat-group-slide group-set hidden" ng-controller="messageController">
+    <div class="box-head">
+        {{micappinfo.apptitle}}<span class="close-g-set" onclick="jQuery('.IMChat-group-slide').addClass('beforeHide');setTimeout(function(){jQuery('.IMChat-group-slide').removeClass('beforeHide').addClass('hidden')},500);">
+        </span>
+    </div>
+    <div class="box-bd micro-app">
+       <iframe nwUserAgent="Mozilla/5.0 (Linux; Android 4.2.2; GT-I9505 Build/JDQ39) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.59 Mobile Safari/537.36" width="100%" height="100%" style="padding:5px;border:none;background: #fff; margin-left: 1px; margin-right: 1px; padding-left: 0px;padding-top:0px; padding-bottom: 5px;" scrolling="auto" src="{{micappinfo.appurl}}"></iframe>
+    </div>
+    
+</div>

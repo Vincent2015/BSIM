@@ -1,0 +1,29 @@
+﻿<div class="IMChat-list app z">
+	<div class="IMChat-search" ng-controller="personSearchController">
+	    <div>
+		   <ui-select ng-model="multipleDemo.selectedPeopleWithGroupBy" theme="bootstrap"  title="搜索联系人/群组/公众号" on-select="goToPersoninfo_Search($item)"
+                ng-disabled="disabled">
+		    <ui-select-match placeholder="联系人/群组/公众号">{{$select.selected.name}}</ui-select-match>
+		    <ui-select-choices group-by="someGroupFn" repeat="search in searchList"  refresh="refreshPersons($select.search)" refresh-delay="300" >
+		      <div ng-bind-html="search.name | highlight: $select.search"></div>
+		       <div class="chat">
+		             <span class="chatbtn"  ng-click="goToMessage_Search(search,$event)">聊天</span></div>
+		      <small>
+		       <span ng-bind-html="''+search.email | highlight: $select.search"></span>
+		      </small>
+		    </ui-select-choices>
+		    </ui-select>
+			
+        </div>
+	</div>
+     
+	
+</div>
+
+<div ui-view id="IMChat-content" class="IMChat-dialog">
+	
+  <div id="default_blank">
+  		<div style="font-size:14px ;color:#f97a4f;position: absolute;left: 50%;top:50%;margin-top: 113px;margin-left: -63px;">正在开发中，敬请期待...</div>
+		<div class="developer-info">用友有信出品</div>
+	</div>
+</div>
